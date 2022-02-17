@@ -8,9 +8,7 @@ let myCaps = {
     //app: "/Users/anuragshipwell/Library/Developer/Xcode/DerivedData/Shipwell-akdpitrjnzikizcqiclbkartdtln/Build/Products/Debug-iphonesimulator/Shipwell.app",
     app: process.env.BITRISE_APP_DIR_PATH,
     xcodeOrgId: "NMS56SGZ6U",
-    xcodeSigningId: "iPhone Developer",
-    noReset: "false",
-    fullReset: "true"
+    xcodeSigningId: "iPhone Developer"
     },
     connectionRetryTimeout: 240000,
     //host: process.env.HOST|| "0.0.0.0"
