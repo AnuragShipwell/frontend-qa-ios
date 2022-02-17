@@ -12,6 +12,7 @@ let myCaps = {
     noReset: "false",
     fullReset: "true"
     },
+    connectionRetryTimeout: 240000,
     //host: process.env.HOST|| "0.0.0.0"
     host: "0.0.0.0",
     port: 4723,
