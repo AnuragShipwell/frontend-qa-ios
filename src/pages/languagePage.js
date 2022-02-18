@@ -5,6 +5,9 @@ class LanguagePage{
     async element(selector){
         return await this.driver.$(selector)
     }
+async languageViewText(){
+    return await this.element('~Select the language you want to use')
+}
 async languageViewLanguageInput(){
     return await this.element('-ios class chain:**/XCUIElementTypeTextField[`value == \"--\"`]')
 }
@@ -24,13 +27,16 @@ async languageViewSaveButton(){
     return await this.element('~sendVerification')
 }
 async languageSelectionFlow(){
-    await this.driver.pause(20000)
     const languageViewLanguageInput= await this.languageViewLanguageInput()
     const languageViewEspanolButton= await this.languageViewEspanolButton()
     const languageViewEnglishButton= await this.languageViewEnglishButton()
     const languageViewDoneButton= await this.languageViewDoneButton()
     const languageViewInputBoxEnglish= await this.languageViewInputBoxEnglish()
     const languageViewSaveButton= await this.languageViewSaveButton()
+    const languageViewText= await this.languageViewText()
+
+    await this.driver.pause(5000)
+    await languageViewText.waitForEnabled({ timeout: 10000 })
 
     await languageViewLanguageInput.waitForEnabled({ timeout: 10000 })
     await languageViewLanguageInput.touchAction('tap')
