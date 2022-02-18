@@ -10,8 +10,8 @@ let myCaps = {
     xcodeOrgId: "NMS56SGZ6U",
     xcodeSigningId: "iPhone Developer",
     autoLaunch: "true",
-    noReset: "false",
-    fullReset: "true"
+    //noReset: "false",
+    //fullReset: "true"
     },
     connectionRetryTimeout: 240000,
     //host: process.env.HOST|| "0.0.0.0"
