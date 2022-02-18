@@ -15,21 +15,13 @@ test("==001==> TESTING APP INSTALLATION and VERIFY TEST bundleID", async () => {
   expect(await app.driver.isAppInstalled("com.shipwell")).toBe(true);
   await app.driver.launchApp()
   console.log("!!!!!!####%%%%%%!!!! launch worked  !!!!!!####%%%%%%!!!! ")
-  console.log("!!!!!!####%%%%%%!!!! launch worked  !!!!!!####%%%%%%!!!! ")
-  console.log("!!!!!!####%%%%%%!!!! launch worked  !!!!!!####%%%%%%!!!! ")
   await app.driver.queryAppState("com.shipwell")
   console.log("!!!!!!####%%%%%%!!!! app in foregound  !!!!!!####%%%%%%!!!! ")
-  console.log("!!!!!!####%%%%%%!!!! app in foregound  !!!!!!####%%%%%%!!!! ")
-  console.log("!!!!!!####%%%%%%!!!! app in foregound  !!!!!!####%%%%%%!!!! ")
-  await app.driver.takeScreenshot()
-  console.log("!!!!!!####%%%%%%!!!! screenshot  !!!!!!####%%%%%%!!!! ")
-  console.log("!!!!!!####%%%%%%!!!! screenshot  !!!!!!####%%%%%%!!!! ")
-  console.log("!!!!!!####%%%%%%!!!! screenshot  !!!!!!####%%%%%%!!!! ")
   await app.driver.pause("5000")
 
 });
 //===============================================
-test.skip("==002==> TESTING SHIPPER LAUNGUAGE VIEW LOGIN", async () => {
+test("==002==> TESTING SHIPPER LAUNGUAGE VIEW LOGIN", async () => {
   await app.languagePage.languageSelectionFlow()
 });
 //===============================================

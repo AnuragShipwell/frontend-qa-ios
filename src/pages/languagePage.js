@@ -6,7 +6,7 @@ class LanguagePage{
         return await this.driver.$(selector)
     }
 async languageViewLanguageInput(){
-    return await this.element('-ios class chain:**/XCUIElementTypeTextField[`value == \"--\"`]')
+    return await this.element('//XCUIElementTypeApplication[@name="Shipwell"]/XCUIElementTypeWindow/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeTextField')
 }
 async languageViewEnglishButton(){
     return await this.element('-ios class chain:**/XCUIElementTypeWindow/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther')
