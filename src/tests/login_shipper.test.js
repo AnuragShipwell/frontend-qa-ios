@@ -17,6 +17,7 @@ test("==001==> TESTING APP INSTALLATION and VERIFY TEST bundleID", async () => {
   await app.driver.queryAppState("com.shipwell")
   console.log("!!!!!!####%%%%%%!!!! app in foregound  !!!!!!####%%%%%%!!!! ")
   await app.driver.pause("5000")
+  await app.driver.getPageSource()
 
 });
 //===============================================
