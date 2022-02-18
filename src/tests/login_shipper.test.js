@@ -14,7 +14,7 @@ describe("iOS mobileApp test", () => {
 test("==001==> TESTING APP INSTALLATION and VERIFY TEST bundleID", async () => {
   await app.driver.pause(5000)
   expect(await app.driver.isAppInstalled("com.shipwell.testflight")).toBe(true);
-  await app.driver.queryAppState("com.shipwell")
+  await app.driver.queryAppState("com.shipwell.testflight")
   console.log("!!!!!!####%%%%%%!!!! app in foregound  !!!!!!####%%%%%%!!!! ")
   await app.driver.pause("5000")
   await app.driver.getPageSource()

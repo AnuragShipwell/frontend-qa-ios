@@ -1,3 +1,5 @@
+import touchAction from "webdriverio/build/commands/browser/touchAction";
+
 class LanguagePage{
     constructor(driver){
         this.driver=driver;
@@ -10,6 +12,9 @@ async languageViewText(){
 }
 async languageViewLanguageInput(){
     return await this.element('-ios class chain:**/XCUIElementTypeTextField[`value == \"--\"`]')
+}
+async allowButton(){
+    return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"Allow\"`]')
 }
 async languageViewEnglishButton(){
     return await this.element('-ios class chain:**/XCUIElementTypeWindow/XCUIElementTypeOther[3]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther')
@@ -34,8 +39,15 @@ async languageSelectionFlow(){
     const languageViewInputBoxEnglish= await this.languageViewInputBoxEnglish()
     const languageViewSaveButton= await this.languageViewSaveButton()
     const languageViewText= await this.languageViewText()
+    const allowButton= await this.allowButton()
 
     await this.driver.pause(5000)
+    if (await allowButton.isDisplayed()){
+        await allowButton.touchAction('tap')
+
+    }
+    await this.driver.pause(5000)
+    await app.driver.getPageSource()
     await languageViewText.waitForExist({ timeout: 10000, timeoutMsg: "Not Displayed" })
     await languageViewText.waitForDisplayed({ timeout: 10000 })
 
