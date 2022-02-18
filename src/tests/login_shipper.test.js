@@ -13,6 +13,9 @@ describe("iOS mobileApp test", () => {
 
 test("==001==> TESTING APP INSTALLATION and VERIFY TEST bundleID", async () => {
   expect(await app.driver.isAppInstalled("com.shipwell")).toBe(true);
+  await app.driver.launchApp("com.shipwell")
+  await app.driver.pause("5000")
+
 });
 //===============================================
 test("==002==> TESTING SHIPPER LAUNGUAGE VIEW LOGIN", async () => {
