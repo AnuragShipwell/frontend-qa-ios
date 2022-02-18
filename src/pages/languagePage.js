@@ -36,20 +36,22 @@ async languageSelectionFlow(){
     const languageViewText= await this.languageViewText()
 
     await this.driver.pause(5000)
-    await languageViewText.waitForEnabled({ timeout: 10000 })
+    await languageViewText.waitForExist({ timeout: 10000, timeoutMsg: "Not Displayed" })
+    await languageViewText.waitForDisplayed({ timeout: 10000 })
 
-    await languageViewLanguageInput.waitForEnabled({ timeout: 10000 })
+    await languageViewLanguageInput.waitForExist({ timeout: 10000, timeoutMsg: "Not Displayed" })
+    await languageViewLanguageInput.waitForDisplayed({ timeout: 10000 })
     await languageViewLanguageInput.touchAction('tap')
     
     await languageViewEspanolButton.waitForDisplayed({ timeout: 10000 })
-    await languageViewEnglishButton.waitForEnabled({ timeout: 10000 })
+    await languageViewEnglishButton.waitForDisplayed({ timeout: 10000 })
     await languageViewEnglishButton.touchAction('tap')
-    await languageViewDoneButton.waitForEnabled({ timeout: 10000 })
+    await languageViewDoneButton.waitForDisplayed({ timeout: 10000 })
     await languageViewDoneButton.touchAction('tap')
 
     await languageViewInputBoxEnglish.waitForDisplayed({ timeout: 10000 })
     
-    await languageViewSaveButton.waitForEnabled({ timeout: 10000 })
+    await languageViewSaveButton.waitForDisplayed({ timeout: 10000 })
     await languageViewSaveButton.touchAction('tap')
 }
 
