@@ -13,16 +13,7 @@ describe("iOS mobileApp test", () => {
 
 test("==001==> TESTING APP INSTALLATION and VERIFY TEST bundleID", async () => {
   expect(await app.driver.isAppInstalled("com.shipwell")).toBe(true);
-  await app.driver.launchApp("com.shipwell")
-  console.log("*********#########   Launch should work    *********#########")
-  console.log("*********#########   Launch should work    *********#########")
-  console.log("*********#########   Launch should work    *********#########")
-  console.log("*********#########   Launch should work    *********#########")
-  console.log("*********#########   Launch should work    *********#########")
-  console.log("*********#########   Launch should work    *********#########")
-  console.log("*********#########   Launch should work    *********#########")
-  console.log("*********#########   Launch should work    *********#########")
-  console.log("*********#########   Launch should work    *********#########")
+  await app.driver.launchApp()
   await app.driver.pause("5000")
 
 });
