@@ -10,6 +10,9 @@ let myCaps = {
     xcodeOrgId: "NMS56SGZ6U",
     xcodeSigningId: "iPhone Developer",
     autoLaunch: "true",
+    wdaLaunchTimeout: "120000",
+    wdaConnectionTimeout: "360000",
+    wdaStartupRetries: "3"
     //noReset: "false",
     //fullReset: "true"
     },
