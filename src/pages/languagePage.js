@@ -29,7 +29,7 @@ async languageViewInputBoxEnglish(){
     return await this.element('-ios class chain:**/XCUIElementTypeTextField[`value == \"English\"`]')
 }
 async languageViewSaveButton(){
-    return await this.element('~sendVerification')
+    return await this.element('~Save')
 }
 
 async languageSelectionFlow(){
@@ -66,10 +66,13 @@ async languageSelectionFlow(){
     console.log("44444. Veryfying tap action on English input")
     await languageViewEnglishButton.touchAction('tap')
     await languageViewDoneButton.waitForDisplayed({ timeout: 10000 })
+
+    console.log("55555. Veryfying tap action on Done Button")
     await languageViewDoneButton.touchAction('tap')
 
     await languageViewInputBoxEnglish.waitForDisplayed({ timeout: 10000 })
     
+    console.log("66666. Veryfying tap action on Save Button")
     await languageViewSaveButton.waitForDisplayed({ timeout: 10000 })
     await languageViewSaveButton.touchAction('tap')
 }
