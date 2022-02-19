@@ -13,7 +13,8 @@ let myCaps = {
     wdaLaunchTimeout: "120000",
     wdaConnectionTimeout: "360000",
     wdaStartupRetries: "3",
-    autoGrantPermissions: "true"
+    autoGrantPermissions: "true",
+    autoAcceptAlerts: "true"
     //noReset: "false",
     //fullReset: "true"
     },
