@@ -31,14 +31,15 @@ async languageViewInputBoxEnglish(){
 async languageViewSaveButton(){
     return await this.element('~sendVerification')
 }
+
 async languageSelectionFlow(){
+    const languageViewText= await this.languageViewText()
     const languageViewLanguageInput= await this.languageViewLanguageInput()
     const languageViewEspanolButton= await this.languageViewEspanolButton()
     const languageViewEnglishButton= await this.languageViewEnglishButton()
     const languageViewDoneButton= await this.languageViewDoneButton()
     const languageViewInputBoxEnglish= await this.languageViewInputBoxEnglish()
     const languageViewSaveButton= await this.languageViewSaveButton()
-    const languageViewText= await this.languageViewText()
     const allowButton= await this.allowButton()
 
     await this.driver.pause(5000)
@@ -47,16 +48,22 @@ async languageSelectionFlow(){
 
     }
     await this.driver.pause(5000)
-    await app.driver.getPageSource()
+    await this.driver.getPageSource()
+    console.log("11111111. Verifying Header")
     await languageViewText.waitForExist({ timeout: 10000, timeoutMsg: "Not Displayed" })
     await languageViewText.waitForDisplayed({ timeout: 10000 })
-
+    console.log("222222. Language input")
     await languageViewLanguageInput.waitForExist({ timeout: 10000, timeoutMsg: "Not Displayed" })
     await languageViewLanguageInput.waitForDisplayed({ timeout: 10000 })
+    console.log("33333. Veryfying tap action on language input")
     await languageViewLanguageInput.touchAction('tap')
-    
+    await this.driver.pause(1000)
+    await this.driver.getPageSource()
+
     await languageViewEspanolButton.waitForDisplayed({ timeout: 10000 })
     await languageViewEnglishButton.waitForDisplayed({ timeout: 10000 })
+
+    console.log("44444. Veryfying tap action on English input")
     await languageViewEnglishButton.touchAction('tap')
     await languageViewDoneButton.waitForDisplayed({ timeout: 10000 })
     await languageViewDoneButton.touchAction('tap')
