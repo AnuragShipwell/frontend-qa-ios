@@ -16,6 +16,8 @@ import PlaceBidPage from "../pages/components/placeBid";
 import BookNow from "../pages/components/bookNow";
 import TenderComponent from "../pages/components/tender";
 import AssignDriverComponent from "../pages/components/assignDriver";
+import CompassOpenAlert from "../pages/compassAllOpenAlert"
+import CompassRunningLateAlert from "../pages/compassRunningLateAlert"
 
 class App {
   constructor() {
@@ -41,6 +43,8 @@ class App {
     this.bookNowComponent= new BookNow(this.driver)
     this.tenderComponent= new TenderComponent(this.driver)
     this.assignDriverComponent= new AssignDriverComponent(this.driver)
+    this.compassOpenAlert= new CompassOpenAlert(this.driver)
+    this.compassRunningLateAlert= new CompassRunningLateAlert(this.driver)
   }
 
   async stop() {
