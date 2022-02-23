@@ -5,7 +5,7 @@ let myCaps = {
     deviceName: "iPhone 11 Pro",
     udid: "DFE54EFA-7E40-458B-8FC7-9704D435A575",
     
-    app: "/Users/anuragshipwell/Library/Developer/Xcode/DerivedData/Shipwell-akdpitrjnzikizcqiclbkartdtln/Build/Products/Debug-iphonesimulator/Shipwell.app",
+    app: "/Users/anuragshipwell/Library/Developer/Xcode/DerivedData/Shipwell-akdpitrjnzikizcqiclbkartdtln/Build/Products/TestFlight-iphonesimulator/Shipwell.app",
     //udid: process.env.BITRISE_IPHONE_UDID,
     //app: process.env.BITRISE_APP_DIR_PATH,
     xcodeOrgId: "NMS56SGZ6U",
@@ -15,7 +15,8 @@ let myCaps = {
     wdaConnectionTimeout: "360000",
     wdaStartupRetries: "3",
     autoGrantPermissions: "true",
-    autoAcceptAlerts: "true"
+    //autoAcceptAlerts: "true",
+    newCommandTimeout: "60000"
     //noReset: "false",
     //fullReset: "true"
     },

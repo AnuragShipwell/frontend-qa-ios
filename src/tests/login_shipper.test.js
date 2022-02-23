@@ -27,11 +27,15 @@ test("==003==> TESTING SHIPPER LOGIN FLOW", async () => {
   await app.loginSDPage.loginShipperDispatcher("anurag@shipwell.com", "Kmv!!1234")
 });
 //===============================================
-test("==004==> TESTING SHIPPER COMPASS VIEW", async () => {
+test("==004==> TESTING SHIPPER COMPASS ALL-OPEN VIEW", async () => {
     await app.compassOpenAlert.compassAllOpenAlert()
-    await app.compassRunningLateAlert.compassRunningLateAlert()
-
     //await app.shipperCompassPage.shipperCompass()
+});
+//===============================================
+test("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
+  await app.compassRunningLateAlert.compassRunningLateAlert()
+
+  //await app.shipperCompassPage.shipperCompass()
 });
 //==============================================
 test.skip("==005==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {

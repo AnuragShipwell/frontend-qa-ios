@@ -27,7 +27,7 @@ class RunningLateAlert{
         return await this.element('~ShipwellSpinner')
     }
     async compassActionButton(){
-        return await this.element('~Actions')
+        return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"sendVerification\"`]') 
     }
     async editDeliveryAppointmentTime(){
         return await this.element("~Edit Delivery Appointment")
@@ -51,7 +51,7 @@ class RunningLateAlert{
         return await this.element("-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][1]")
     }
     async timePickerWheelMinutes(){
-        return await this.element("//XCUIElementTypeApplication[@name=\"Shipwell\"]/XCUIElementTypeWindow[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeDatePicker/XCUIElementTypePicker/XCUIElementTypePickerWheel[3]")
+        return await this.element("//XCUIElementTypeApplication[@name=\"Test Freight\"]/XCUIElementTypeWindow[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeDatePicker/XCUIElementTypePicker/XCUIElementTypePickerWheel[3]")
     }
     async checkOutEventTime(){
         return await this.element("-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][2]")
@@ -71,6 +71,11 @@ class RunningLateAlert{
     async dismissButton(){
         return await this.element('~Dismiss')
     }
+    async buttonActionSheet(){
+        return await this.element("-ios class chain:**/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeSheet")
+    }
+
+    
     
     async compassRunningLateAlert(){
 
@@ -96,6 +101,7 @@ class RunningLateAlert{
     const backButton= await this.backButton()
     const stopDetailsbackButton= await this.stopDetailsbackButton()
     const dismissButton= await this.dismissButton()
+    const buttonActionSheet= await this.buttonActionSheet()
 
     
     if (await shipperCompassViewRunningLateAlerts.isDisplayed()==false){
@@ -125,19 +131,13 @@ class RunningLateAlert{
 
         await shipperCompassViewMapViewButton.touchAction('tap')
         await mapView.waitForDisplayed({timeout: 15000})
-
         await shipperCompassViewShipmentButton.touchAction('tap')
         await compassShipmentCard.waitForDisplayed({timeout: 15000})
         await compassShipmentCard.touchAction('tap')
         await this.driver.pause(2000)
-        if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-        }
+
         await compassActionButton.waitForDisplayed({timeout: 15000})
         await compassActionButton.touchAction('tap')
-        await dismissButton.waitForDisplayed({timeout: 15000})
-        await this.driver.pause(30000)
-
         if (await editDeliveryAppointmentTime.isDisplayed()==true){
             await editDeliveryAppointmentTime.touchAction('tap')
             await this.driver.pause(1000)
@@ -148,27 +148,29 @@ class RunningLateAlert{
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await this.driver.pause(2000)
+                await compassShipmentCard.waitForDisplayed({timeout: 10000})
+                await compassShipmentCard.touchAction('tap')
+                if (await shipwellSpinner.isDisplayed()){
+                    await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                }
+                await this.driver.pause(1000)
+                await compassActionButton.waitForDisplayed({timeout: 15000})
+                await compassActionButton.touchAction('tap')
             }
             else{
-                await this.driver.pause(2000)
+                await this.driver.pause(3000)
             }
 
             if (await cancelButton.isDisplayed()){
-                 await cancelButton.touchAction('tap')
+                await cancelButton.touchAction('tap')
                 await compassActionButton.waitForDisplayed({timeout: 15000})
                 await compassActionButton.touchAction('tap')
             }
-            else{
-                await compassShipmentCard.waitForDisplayed({timeout: 10000})
-                await compassShipmentCard.touchAction('tap')
-                await this.driver.pause(3000)
-                await compassActionButton.waitForDisplayed({timeout: 15000})
-                await compassActionButton.touchAction('tap')
-            }
-        }
+       }
 
     //Mark as complete
-    if (await markStopCompleteButton.isDisplayed() ){
+        if (await markStopCompleteButton.isDisplayed() ){
         await markStopCompleteButton.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
@@ -178,7 +180,7 @@ class RunningLateAlert{
         await checkOutTimeText.waitForDisplayed({timeout: 15000})
         await checkInEventTime.touchAction('tap')
         await this.driver.pause(2000)
-        await timePickerWheelMinutes.waitForDisplayed({timeout: 15000})
+        await timePickerWheelMinutes.waitForDisplayed({timeout: 5000})
         await this.driver.pause(2000)
         await timePickerWheelMinutes.addValue('00')
         await this.driver.pause(2000)
@@ -188,7 +190,7 @@ class RunningLateAlert{
             await doneButton.touchAction('tap')
         }
         await saveButton.touchAction('tap')
-        await this.pause(1000)
+        await this.driver.pause(1000)
         if (await yesButton.isDisplayed()){
             await yesButton.touchAction('tap')
             await this.driver.pause(1000)
@@ -217,9 +219,9 @@ class RunningLateAlert{
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
         }
-    }
-    else{
-        if (await dismissButton.isDisplayed()){
+        }
+        else{
+            if (await dismissButton.isDisplayed()){
             await dismissButton.touchAction('tap')
             await stopDetailsbackButton.waitForDisplayed({timeout: 15000})
             await stopDetailsbackButton.touchAction('tap')

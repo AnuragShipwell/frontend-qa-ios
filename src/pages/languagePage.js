@@ -48,31 +48,25 @@ async languageSelectionFlow(){
 
     }
     await this.driver.pause(5000)
-    await this.driver.getPageSource()
-    console.log("11111111. Verifying Header")
+    //await this.driver.getPageSource()
     await languageViewText.waitForExist({ timeout: 10000, timeoutMsg: "Not Displayed" })
     await languageViewText.waitForDisplayed({ timeout: 10000 })
-    console.log("222222. Language input")
     await languageViewLanguageInput.waitForExist({ timeout: 10000, timeoutMsg: "Not Displayed" })
     await languageViewLanguageInput.waitForDisplayed({ timeout: 10000 })
-    console.log("33333. Veryfying tap action on language input")
     await languageViewLanguageInput.touchAction('tap')
     await this.driver.pause(1000)
-    await this.driver.getPageSource()
+    //await this.driver.getPageSource()
 
     await languageViewEspanolButton.waitForDisplayed({ timeout: 10000 })
     await languageViewEnglishButton.waitForDisplayed({ timeout: 10000 })
 
-    console.log("44444. Veryfying tap action on English input")
     await languageViewEnglishButton.touchAction('tap')
     await languageViewDoneButton.waitForDisplayed({ timeout: 10000 })
 
-    console.log("55555. Veryfying tap action on Done Button")
     await languageViewDoneButton.touchAction('tap')
 
     await languageViewInputBoxEnglish.waitForDisplayed({ timeout: 10000 })
     
-    console.log("66666. Veryfying tap action on Save Button")
     await languageViewSaveButton.waitForDisplayed({ timeout: 10000 })
     await languageViewSaveButton.touchAction('tap')
 }
