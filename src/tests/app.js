@@ -18,6 +18,7 @@ import TenderComponent from "../pages/components/tender";
 import AssignDriverComponent from "../pages/components/assignDriver";
 import CompassOpenAlert from "../pages/compassAllOpenAlert"
 import CompassRunningLateAlert from "../pages/compassRunningLateAlert"
+import CompassLatePickupAlert from "../pages/compassLatePickupAlert"
 
 class App {
   constructor() {
@@ -45,6 +46,7 @@ class App {
     this.assignDriverComponent= new AssignDriverComponent(this.driver)
     this.compassOpenAlert= new CompassOpenAlert(this.driver)
     this.compassRunningLateAlert= new CompassRunningLateAlert(this.driver)
+    this.compassLatePickupAlert= new CompassLatePickupAlert(this.driver)
   }
 
   async stop() {

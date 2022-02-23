@@ -38,6 +38,12 @@ test("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
   //await app.shipperCompassPage.shipperCompass()
 });
 //==============================================
+test("==006==> TESTING SHIPPER COMPASS LATE PICK UP VIEW", async () => {
+  await app.compassLatePickupAlert.compassRunningLateAlert()
+
+  //await app.shipperCompassPage.shipperCompass()
+});
+//==============================================
 test.skip("==005==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {
   await app.quickActionPage.quickAction()
   await app.chatPage.chat()

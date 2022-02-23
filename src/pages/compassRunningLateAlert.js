@@ -75,10 +75,7 @@ class RunningLateAlert{
         return await this.element("-ios class chain:**/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeSheet")
     }
 
-    
-    
     async compassRunningLateAlert(){
-
     const shipperCompassViewRunningLateAlerts= await this.shipperCompassViewRunningLateAlerts()
     const shipperCompassViewRunningLateTitle= await this.shipperCompassViewRunningLateTitle()
     const compassShipmentCard= await this.compassShipmentCard()
@@ -103,7 +100,6 @@ class RunningLateAlert{
     const dismissButton= await this.dismissButton()
     const buttonActionSheet= await this.buttonActionSheet()
 
-    
     if (await shipperCompassViewRunningLateAlerts.isDisplayed()==false){
         await this.driver.touchPerform([
             {action: "longPress", options: {x: 14, y: 215}},
@@ -138,6 +134,7 @@ class RunningLateAlert{
 
         await compassActionButton.waitForDisplayed({timeout: 15000})
         await compassActionButton.touchAction('tap')
+        //Edit Appointment Time
         if (await editDeliveryAppointmentTime.isDisplayed()==true){
             await editDeliveryAppointmentTime.touchAction('tap')
             await this.driver.pause(1000)
