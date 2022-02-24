@@ -19,6 +19,10 @@ import AssignDriverComponent from "../pages/components/assignDriver";
 import CompassOpenAlert from "../pages/compassAllOpenAlert"
 import CompassRunningLateAlert from "../pages/compassRunningLateAlert"
 import CompassLatePickupAlert from "../pages/compassLatePickupAlert"
+import CompassLateDeliveryAlert from "../pages/compassLateDeliveryAlert"
+import CompassNotTrackingAlert from "../pages/compassNotTrackingAlert"
+import CompassCarrierNotAssignedAlert from "../pages/compassCarrierNotAssignedAlert"
+import CompassCarrierStatusAlert from "../pages/compassCarrierStatusAlert"
 
 class App {
   constructor() {
@@ -47,6 +51,10 @@ class App {
     this.compassOpenAlert= new CompassOpenAlert(this.driver)
     this.compassRunningLateAlert= new CompassRunningLateAlert(this.driver)
     this.compassLatePickupAlert= new CompassLatePickupAlert(this.driver)
+    this.compassLateDeliveryAlert= new CompassLateDeliveryAlert(this.driver)
+    this.compassNotTrackingAlert= new CompassNotTrackingAlert(this.driver)
+    this.compassCarrierNotAssginedAlert=  new CompassCarrierNotAssignedAlert(this.driver)
+    this.compassCarrierStatusAlert= new CompassCarrierStatusAlert(this.driver)
   }
 
   async stop() {

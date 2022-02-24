@@ -32,16 +32,28 @@ test("==004==> TESTING SHIPPER COMPASS ALL-OPEN VIEW", async () => {
     //await app.shipperCompassPage.shipperCompass()
 });
 //===============================================
-test("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
+test.skip("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
   await app.compassRunningLateAlert.compassRunningLateAlert()
-
-  //await app.shipperCompassPage.shipperCompass()
 });
 //==============================================
-test("==006==> TESTING SHIPPER COMPASS LATE PICK UP VIEW", async () => {
-  await app.compassLatePickupAlert.compassRunningLateAlert()
-
-  //await app.shipperCompassPage.shipperCompass()
+test.skip("==006==> TESTING SHIPPER COMPASS LATE PICK UP VIEW", async () => {
+  await app.compassLatePickupAlert.compassLatePickUpAlert()
+});
+//==============================================
+test.skip("==007==> TESTING SHIPPER COMPASS LATE DELIVERY VIEW", async () => {
+  await app.compassLateDeliveryAlert.lateDeliveryAlert()
+});
+//==============================================
+test("==008==> TESTING SHIPPER COMPASS NOT TRACKING VIEW", async () => {
+  await app.compassNotTrackingAlert.compassNotTrackingAlert()
+});
+//==============================================
+test("==009==> TESTING SHIPPER COMPASS CARRIER NOT ASSIGNED VIEW", async () => {
+  await app.compassCarrierNotAssginedAlert.carrierNotAssignedAlert()
+});
+//==============================================
+test("==010==> TESTING SHIPPER COMPASS CARRIER STATUS VIEW", async () => {
+  await app.compassCarrierStatusAlert.carrierStatusAlert()
 });
 //==============================================
 test.skip("==005==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {

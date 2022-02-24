@@ -72,7 +72,7 @@ class CompassLatePickupAlert{
     async dismissButton(){
         return await this.element('~Dismiss')
     }
-async compassRunningLateAlert(){
+async compassLatePickUpAlert(){
     const shipperCompassViewLatePickupAlerts= await this.shipperCompassViewLatePickupAlerts()
     const shipperCompassViewLatePickupTitle= await this.shipperCompassViewLatePickupTitle()
     const compassShipmentCard= await this.compassShipmentCard()
@@ -113,8 +113,8 @@ async compassRunningLateAlert(){
         }
     }
     await shipperCompassViewLatePickupAlerts.touchAction('tap')
-    await shipperCompassViewLatePickupTitle.waitForDisplayed({ timeout: 15000 })
     try{
+        await shipperCompassViewLatePickupTitle.waitForDisplayed({ timeout: 15000 })
         await compassShipmentCard.waitForDisplayed({timeout: 15000})
         await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 15000})
         await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 15000})
