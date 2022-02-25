@@ -59,22 +59,20 @@ async loginShipperDispatcher(email, password){
     
     await loginViewSignInImage.waitForDisplayed({ timeout: 5000 })
     await loginViewRememberMeText.waitForDisplayed({ timeout: 5000 })
-    await loginViewSignInButton.waitForEnabled({ timeout: 5000 })
     await loginViewSignUpText.waitForDisplayed({ timeout: 5000 })
     await loginViewForgotPasswordButton.waitForDisplayed({ timeout: 5000 })
 
-    await loginViewEmailInput.waitForEnabled({ timeout: 5000 })
     await loginViewEmailInput.touchAction('tap')
     await loginViewEmailInput.setValue(email)
 
-    await loginViewPasswordInput.waitForEnabled({ timeout: 5000 })
+    await loginViewPasswordInput.waitForDisplayed({ timeout: 5000 })
     await loginViewPasswordInput.touchAction('tap')
     await loginViewPasswordInput.setValue(password)
 
-    await loginViewRememberMeButton.waitForEnabled({ timeout: 5000 })
+    await loginViewRememberMeButton.waitForDisplayed({ timeout: 5000 })
     await loginViewRememberMeButton.touchAction('tap')
 
-    await loginViewRememberMeSelected.waitForEnabled({ timeout: 5000 })
+    await loginViewRememberMeSelected.waitForDisplayed({ timeout: 5000 })
     await loginViewRememberMeSelected.touchAction('tap')
     await loginViewSignInButton.touchAction('tap')
 }

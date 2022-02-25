@@ -294,6 +294,7 @@ class CompassCarrierNotAssignedAlert{
             else{
                 await this.driver.pause(3000)
             }
+            await this.driver.pause(2000)
 
 /*
 //Tender to Carrier
@@ -324,6 +325,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
                 await this.driver.pause(3000)
             }
             //CNA: Request bid
+            await this.driver.pause(2000)
             await compassActionButton.waitForDisplayed({ timeout: 15000 })
             await compassActionButton.touchAction('tap')
             await CNArequestBid.waitForDisplayed({ timeout: 15000 })
@@ -350,6 +352,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
             else{
                 await this.driver.pause(10000)
             }
+            await this.driver.pause(2000)
             await stopDetailsbackButton.waitForDisplayed({ timeout: 8000 })
             await stopDetailsbackButton.waitForEnabled({ timeout: 8000 })
             await stopDetailsbackButton.touchAction('tap')

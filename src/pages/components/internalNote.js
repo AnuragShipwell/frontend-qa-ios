@@ -43,21 +43,19 @@ class InternalNotesPage{
         //await quickActionInternalNotesShipID.waitForDisplayed({ timeout: 5000 })
         //await quickActionInternalNotesAddress.waitForDisplayed({ timeout: 5000 })
         
-        await quickActionChatInput.waitForEnabled({ timeout: 5000 })
+        await quickActionChatInput.waitForDisplayed({ timeout: 5000 })
         await quickActionChatInput.touchAction('tap')
         await quickActionChatInput.setValue('Testing')
 
         await quickActionChatSendButton.waitForDisplayed({ timeout: 5000 })
-        await quickActionChatSendButton.waitForEnabled({ timeout: 5000 })
         await quickActionChatSendButton.touchAction('tap')
         
         await backIcon.waitForDisplayed({ timeout: 5000 })
-        await backIcon.waitForEnabled({ timeout: 5000 })
         await backIcon.touchAction('tap')
         
         await backIcon.waitForDisplayed({ timeout: 5000 })
-        await backIcon.waitForEnabled({ timeout: 5000 })
         await backIcon.touchAction('tap')
+        await this.driver.pause(1000)
     
     }
 

@@ -30,20 +30,17 @@ async quickAction(){
 
     await this.driver.pause(3000)
     await shipperCompassOpenAllAlerts.waitForDisplayed({ timeout: 5000 })
-    await shipperCompassOpenAllAlerts.waitForEnabled({ timeout: 5000 })
     await shipperCompassOpenAllAlerts.touchAction('tap')
 
     await shipperCompassOpenAllTitle.waitForDisplayed({ timeout: 5000 })
 
     await mapViewButton.waitForDisplayed({ timeout: 5000 })
-    await mapViewButton.waitForEnabled({ timeout: 5000 })
     await mapViewButton.touchAction('tap')
 
     await shipperCompassOpenAllTitle.waitForDisplayed({ timeout: 5000 })
     await mapPin1.waitForDisplayed({ timeout: 5000 })
     
     await shipmentListButton.waitForDisplayed({ timeout: 5000 })
-    await shipmentListButton.waitForEnabled({ timeout: 5000 })
     await shipmentListButton.touchAction('tap')
 
 }

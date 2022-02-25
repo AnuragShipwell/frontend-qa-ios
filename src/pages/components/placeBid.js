@@ -79,7 +79,6 @@ await loadBoardSearchField.touchAction('tap')
 await loadBoardSearchField.setValue(bidLoadID) //LIDT2CGWP
 
 await loadBoardOpenShipmentPlaceBid.waitForDisplayed({ timeout: 10000 })
-await loadBoardOpenShipmentPlaceBid.waitForEnabled({ timeout: 10000 })
 await loadBoardOpenShipmentPlaceBid.touchAction('tap')
 
 await loadBoardOpenShipmentPlaceBidTitle.waitForDisplayed({ timeout: 5000 })
@@ -87,54 +86,49 @@ await loadBoardOpenShipmentPlaceBidModeDropDown.waitForDisplayed({ timeout: 5000
 await loadBoardOpenShipmentPlaceBidEquipmentDropDown.waitForDisplayed({ timeout: 5000 })
 
 await loadBoardOpenShipmentPlaceBidAmountDropDown.waitForDisplayed({ timeout: 5000 })
-await loadBoardOpenShipmentPlaceBidAmountDropDown.waitForEnabled({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBidAmountDropDown.touchAction('tap')
 await loadBoardOpenShipmentPlaceBidAmountDropDown.setValue(bidAmount)
 
-await doneButton.waitForDisplayed({ timeout: 5000 })
-await doneButton.waitForEnabled({ timeout: 5000 })
-await doneButton.touchAction('tap')
+if(await doneButton.isDisplayed()){
+    await doneButton.touchAction('tap')
+}
 await loadBoardOpenShipmentPlaceBidSubmitButton.waitForDisplayed({ timeout: 5000 })
-await loadBoardOpenShipmentPlaceBidSubmitButton.waitForEnabled({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBidSubmitButton.touchAction('tap')
 
 await loadBoardOpenShipmentPlaceBidSuccessModal.waitForDisplayed({ timeout: 5000 })
-await loadBoardOpenShipmentPlaceBidSuccessModal.waitForEnabled({ timeout: 5000 })
 
 await loadBoardOpenShipmentPlaceBidSuccessModalFndMoreLoadButton.waitForDisplayed({ timeout: 5000 })
-await loadBoardOpenShipmentPlaceBidSuccessModalFndMoreLoadButton.waitForEnabled({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBidSuccessModalFndMoreLoadButton.touchAction('tap')
 await this.driver.pause(3000)
 
 //Going inside the shipment to place a bid from shipment details
-await biddingLoadIDText.waitForExist({ timeout: 5000 })
-await biddingLoadIDText.waitForEnabled({ timeout: 5000 })
+await biddingLoadIDText.waitForDisplayed({ timeout: 5000 })
 await biddingLoadIDText.touchAction('tap')
 
 await loadBoardOpenShipmentPlaceBid.waitForDisplayed({ timeout: 5000 })
-await loadBoardOpenShipmentPlaceBid.waitForEnabled({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBid.touchAction('tap')
 
 await loadBoardOpenShipmentPlaceBidTitle.waitForDisplayed({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBidModeDropDown.waitForDisplayed({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBidEquipmentDropDown.waitForDisplayed({ timeout: 5000 })
 
-await loadBoardOpenShipmentPlaceBidAmountDropDown.waitForEnabled({ timeout: 5000 })
+await loadBoardOpenShipmentPlaceBidAmountDropDown.waitForDisplayed({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBidAmountDropDown.touchAction('tap')
 await loadBoardOpenShipmentPlaceBidAmountDropDown.setValue(bidAmount)
 
-await doneButton.waitForExist({ timeout: 5000 })
-await doneButton.touchAction('tap')
-
-await loadBoardOpenShipmentPlaceBidSubmitButton.waitForExist({ timeout: 5000 })
+if (await doneButton.isDisplayed()){
+    await doneButton.touchAction('tap')
+}
+await loadBoardOpenShipmentPlaceBidSubmitButton.waitForDisplayed({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBidSubmitButton.touchAction('tap')
 
 await loadBoardOpenShipmentPlaceBidSuccessModal.waitForDisplayed({ timeout: 5000 })
 
-await loadBoardOpenShipmentPlaceBidSuccessModalFndMoreLoadButton.waitForExist({ timeout: 5000 })
+await loadBoardOpenShipmentPlaceBidSuccessModalFndMoreLoadButton.waitForDisplayed({ timeout: 5000 })
 await loadBoardOpenShipmentPlaceBidSuccessModalFndMoreLoadButton.touchAction('tap')
 
 await this.driver.pause(3000)
+await loadDetailsBackBtn.waitForDisplayed({ timeout: 5000 })
 await loadDetailsBackBtn.touchAction('tap')
 await this.driver.pause(3000)
 

@@ -62,11 +62,11 @@ class InboxPage{
         if (await hamburgerButton.isDisplayed()){
             await hamburgerButton.touchAction('tap')
         }
-        await inboxText.waitForEnabled({ timeout: 5000 })
+        await inboxText.waitForDisplayed({ timeout: 5000 })
         await inboxText.touchAction('tap')
 
         //Checking Inbox >> Messages
-        await inboxMessages.waitForEnabled({ timeout: 5000 })
+        await inboxMessages.waitForDisplayed({ timeout: 5000 })
         await inboxMessages.touchAction('tap')
 
         await inboxMessagesTitle.waitForDisplayed({ timeout: 5000 })
@@ -75,7 +75,7 @@ class InboxPage{
         await hamburgerButton.touchAction('tap')
 
         //Checking Inbox >> Notification
-        await inboxNotification.waitForEnabled({ timeout: 5000 })
+        await inboxNotification.waitForDisplayed({ timeout: 5000 })
         await inboxNotification.touchAction('tap')
 
         await inboxNotificationsTitle.waitForDisplayed({ timeout: 5000 })
@@ -90,7 +90,6 @@ class InboxPage{
             {action: "release"},
         ])
             await notificationReadtext.waitForDisplayed({ timeout: 5000 })
-            await notificationReadtext.waitForEnabled({ timeout: 5000 })
             await notificationReadtext.touchAction('tap')
 
             await this.driver.touchPerform([
@@ -100,7 +99,6 @@ class InboxPage{
                 {action: "release"},
             ])
             await notificationUnReadtext.waitForDisplayed({ timeout: 5000 })
-            await notificationUnReadtext.waitForEnabled({ timeout: 5000 })
             await notificationUnReadtext.touchAction('tap')
 
         }
@@ -112,7 +110,6 @@ class InboxPage{
                 {action: "release"},
             ])
             await notificationUnReadtext.waitForDisplayed({ timeout: 5000 })
-            await notificationUnReadtext.waitForEnabled({ timeout: 5000 })
             await notificationUnReadtext.touchAction('tap')
 
             await this.driver.touchPerform([
@@ -122,7 +119,6 @@ class InboxPage{
                 {action: "release"},
             ])
             await notificationReadtext.waitForDisplayed({ timeout: 5000 })
-            await notificationReadtext.waitForEnabled({ timeout: 5000 })
             await notificationReadtext.touchAction('tap')
        
         }

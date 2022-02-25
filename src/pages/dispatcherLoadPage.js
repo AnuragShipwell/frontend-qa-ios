@@ -120,7 +120,6 @@ class LoadPage{
   
   //Searching for an open shipment
   await loadBoardSearchField.waitForDisplayed({ timeout: 5000 })
-  await loadBoardSearchField.waitForEnabled({ timeout: 5000 })
   await loadBoardSearchField.touchAction('tap')
   await loadBoardSearchField.setValue('LIDW8U4ZM')
   await loadBoardOpenShipment.waitForDisplayed({ timeout: 10000 })

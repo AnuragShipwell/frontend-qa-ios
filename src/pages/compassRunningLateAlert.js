@@ -197,6 +197,7 @@ class RunningLateAlert{
             else{
                 await this.driver.pause(3000)
             }
+            await this.driver.pause(2000)
             await backButton.waitForDisplayed({timeout: 15000})
             await backButton.touchAction('tap')
         }
@@ -209,6 +210,7 @@ class RunningLateAlert{
             if (await shipwellSpinner.isDisplayed()==true){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
+            await this.driver.pause(1000)
             await backButton.waitForDisplayed({timeout: 15000})
             await backButton.touchAction('tap')
             await this.driver.pause(1000)
@@ -226,8 +228,8 @@ class RunningLateAlert{
             if (await shipwellSpinner.isDisplayed()==true){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
+            await this.driver.pause(2000)
             await backButton.waitForDisplayed({timeout: 15000})
-            await backButton.waitForEnabled({ timeout: 15000 })
             await backButton.touchAction('tap')
         }
     }

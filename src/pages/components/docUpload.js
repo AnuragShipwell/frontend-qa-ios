@@ -112,66 +112,60 @@ class DocUploadPage{
             await documentUploadButton.touchAction('tap')
             backIcon1=backIcon;
         }
+        await shipDocumentTitle.waitForDisplayed({ timeout: 5000 })
+        await shipUploadDocumentText.waitForDisplayed({ timeout: 5000 })
         
-        await shipDocumentTitle.waitForExist({ timeout: 5000 })
-        await shipUploadDocumentText.waitForExist({ timeout: 5000 })
-        
-        await shipUploadDocumentButton.waitForExist({ timeout: 5000 })
+        await shipUploadDocumentButton.waitForDisplayed({ timeout: 5000 })
         await shipUploadDocumentButton.touchAction('tap')
 
-        await camera.waitForExist({ timeout: 5000 })
+        await camera.waitForDisplayed({ timeout: 5000 })
 
-        await photoLibrary.waitForExist({ timeout: 5000 })
+        await photoLibrary.waitForDisplayed({ timeout: 5000 })
         await photoLibrary.touchAction('tap')
-        await photo.waitForExist({ timeout: 5000 })
+        await photo.waitForDisplayed({ timeout: 5000 })
         await photo.touchAction('tap')
-        await chooseButton.waitForExist({ timeout: 5000 })
+        await chooseButton.waitForDisplayed({ timeout: 5000 })
         await chooseButton.touchAction('tap')
         if (chooseButton.isDisplayed()){
             await chooseButton.touchAction('tap')
         }
-        await documentPreviewTitle.waitForExist({ timeout: 5000 })
-        await imagePreview.waitForExist({ timeout: 5000 })
+        await this.driver.pause(1000)
+        await documentPreviewTitle.waitForDisplayed({ timeout: 5000 })
+        await imagePreview.waitForDisplayed({ timeout: 5000 })
         
-        await nextButton.waitForExist({ timeout: 5000 })
+        await nextButton.waitForDisplayed({ timeout: 5000 })
         await nextButton.touchAction('tap')
         
-        await documentInfoTitle.waitForExist({ timeout: 5000 })
-        await documentInfoImagePreview.waitForExist({ timeout: 5000 })
+        await documentInfoTitle.waitForDisplayed({ timeout: 5000 })
+        await documentInfoImagePreview.waitForDisplayed({ timeout: 5000 })
        
-        await documentInfoDocumentType.waitForExist({ timeout: 5000 })
-        await documentInfoDocumentType.waitForEnabled({ timeout: 5000 })
+        await documentInfoDocumentType.waitForDisplayed({ timeout: 5000 })
         await documentInfoDocumentType.touchAction('tap')
         await documentInfoDocumentType.setValue("Proof of Delivery (POD)")
 
-        await documentInfoDescription.waitForExist({ timeout: 5000 })
-        await documentInfoDescription.waitForEnabled({ timeout: 5000 })
+        await documentInfoDescription.waitForDisplayed({ timeout: 5000 })
         await documentInfoDescription.touchAction('tap')
         await documentInfoDescription.setValue('Testing')
 
-        await doneButton.waitForExist({ timeout: 5000 })
-        await doneButton.waitForEnabled({ timeout: 5000 })
-        await doneButton.touchAction("tap")
-
-        await documentInfoSaveButton.waitForExist({ timeout: 5000 })
-        await documentInfoSaveButton.waitForEnabled({ timeout: 5000 })
+        if (await doneButton.isDisplayed()){
+            await doneButton.touchAction("tap")
+        }
+        await documentInfoSaveButton.waitForDisplayed({ timeout: 5000 })
         await documentInfoSaveButton.touchAction('tap')
 
-        await successModalOkSavebutton.waitForExist({ timeout: 10000 })
-        await successModalOkSavebutton.waitForEnabled({ timeout: 5000 })
+        await successModalOkSavebutton.waitForDisplayed({ timeout: 10000 })
         await successModalOkSavebutton.touchAction('tap')
         
-        await documentPreviewTitle.waitForExist({ timeout: 5000 })
-        await saveImagePreview.waitForExist({ timeout: 5000 })
+        await documentPreviewTitle.waitForDisplayed({ timeout: 5000 })
+        await saveImagePreview.waitForDisplayed({ timeout: 5000 })
         await this.driver.pause(3000)
         
-        await backIcon.waitForExist({ timeout: 5000 })
-        await backIcon.waitForEnabled({ timeout: 5000 })
+        await backIcon.waitForDisplayed({ timeout: 5000 })
         await backIcon.touchAction('tap')
         
-        await backIcon1.waitForExist({ timeout: 5000 })
-        await backIcon1.waitForEnabled({ timeout: 5000 })
+        await backIcon1.waitForDisplayed({ timeout: 5000 })
         await backIcon1.touchAction('tap')
+        await this.driver.pause(1000)
 }
 }
 export default DocUploadPage;

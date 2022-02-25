@@ -60,19 +60,20 @@ class ChatPage{
         else{
             await loadChatButton.touchAction('tap')
         }
-        await quickActionChatInput.waitForEnabled({ timeout: 5000 })
+        await quickActionChatInput.waitForDisplayed({ timeout: 5000 })
         await quickActionChatInput.touchAction('tap')
         await quickActionChatInput.setValue("Testing")
 
-        await quickActionChatSendButton.waitForExist({ timeout: 5000 })
+        await quickActionChatSendButton.waitForDisplayed({ timeout: 5000 })
         await quickActionChatSendButton.touchAction('tap')
 
-        await messageBackButton.waitForExist({ timeout: 5000 })
+        await messageBackButton.waitForDisplayed({ timeout: 5000 })
         await messageBackButton.touchAction('tap')
 
         if (await loadTitle.isDisplayed()){
             await loadDetailBackButton.touchAction('tap')
         }
+        await this.driver.pause(2000)
     }
 }
 

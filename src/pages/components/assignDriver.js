@@ -73,47 +73,36 @@ class AssignDriverComponent{
 
         await this.driver.pause(2000)
         await clearTextButton.waitForDisplayed({ timeout: 5000 })
-        await clearTextButton.waitForEnabled({ timeout: 5000 })
         await clearTextButton.touchAction('tap')
 
         await shipmentBoardSearchField.waitForDisplayed({ timeout: 5000 })
-        await shipmentBoardSearchField.waitForEnabled({ timeout: 5000 })
         await shipmentBoardSearchField.touchAction('tap')
         await shipmentBoardSearchField.setValue('KPKC65')
 
         await shipmentcardDetails.waitForDisplayed({ timeout: 5000 })
-        await shipmentcardDetails.waitForEnabled({ timeout: 5000 })
         await shipmentcardID.waitForDisplayed({ timeout: 5000 })
-        await shipmentcardID.waitForEnabled({ timeout: 5000 })
         await shipmentcardAssignButton.waitForDisplayed({ timeout: 5000 })
-        await shipmentcardAssignButton.waitForEnabled({ timeout: 5000 })
         await shipmentcardAssignButton.touchAction('tap')
 
         await shipmentcardAssignDriverText.waitForDisplayed({ timeout: 5000 })
-        await shipmentcardAssignDriverText.waitForEnabled({ timeout: 5000 })
         await shipmentcardAssignDriverPhNumber.waitForDisplayed({ timeout: 5000 })
-        await shipmentcardAssignDriverPhNumber.waitForEnabled({ timeout: 5000 })
         await shipmentcardMakeMeDriverButton.waitForDisplayed({ timeout: 5000 })
-        await shipmentcardMakeMeDriverButton.waitForEnabled({ timeout: 5000 })
         await shipmentcardAssignEquipmentText.waitForDisplayed({ timeout: 5000 })
-        await shipmentcardAssignEquipmentText.waitForEnabled({ timeout: 5000 })
         await shipmentPowerUnitInput.waitForDisplayed({ timeout: 5000 })
-        await shipmentPowerUnitInput.waitForEnabled({ timeout: 5000 })
         await shipmentTrailer.waitForDisplayed({ timeout: 5000 })
-        await shipmentTrailer.waitForEnabled({ timeout: 5000 })
 
         await shipmentcardAssignDriverPhNumber.setValue('5128064080')
-        await doneButton.touchAction('tap')
+        if(await doneButton.isDisplayed()){
+            await doneButton.touchAction('tap')
+        }
         await shipmentPowerUnitInput.touchAction('tap')
         await shipmentTrailer.setValue('FTL')
-        await doneButton.touchAction('tap')
-
+        if(await doneButton.isDisplayed()){
+            await doneButton.touchAction('tap')
+        }
         await shipmentAssignDriverCancelButton.waitForDisplayed({ timeout: 5000 })
-        await shipmentAssignDriverCancelButton.waitForEnabled({ timeout: 5000 })
-
         await shipmentAssignDriverAssignButton.waitForDisplayed({ timeout: 5000 })
-        await shipmentAssignDriverAssignButton.waitForEnabled({ timeout: 5000 })
-
+        await backButton.waitForDisplayed({ timeout: 5000 })
         await backButton.touchAction('tap')
 
 

@@ -128,23 +128,20 @@ class ShipmentPage{
         if (await hamburger.isDisplayed()){
             await hamburger.touchAction('tap')
         }
-        await shipmentButton.waitForExist({ timeout: timeOut })
+        await shipmentButton.waitForDisplayed({ timeout: timeOut })
         await shipmentButton.touchAction('tap')
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
-        await shipmentActiveButton.waitForEnabled({ timeout: timeOut })
         await shipmentActiveButton.touchAction('tap')
         
-        await shipActiveButtonInside.waitForExist({ timeout: timeOut })
-        await shipDeliveredButton.waitForExist({ timeout: timeOut })
-        await shipShipmentListTitle.waitForExist({ timeout: timeOut })
+        await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
+        await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
+        await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
 
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
-        await shipShipmentSearchInput.waitForEnabled({ timeout: timeOut })
         await shipShipmentSearchInput.touchAction('tap')
         await shipShipmentSearchInput.setValue(activeShipmentID)
 
         await shipSearchedShipmentText.waitForDisplayed({ timeout: timeOut })
-        await shipSearchedShipmentText.waitForEnabled({ timeout: timeOut })
         await shipSearchedShipmentText.touchAction('tap')
 
         await shipmentTitletext.waitForDisplayed({ timeout: timeOut })
@@ -193,7 +190,6 @@ class ShipmentPage{
         await shipEquipmentExpandButton.waitForDisplayed({ timeout: timeOut })
         await shipLineTitle.waitForDisplayed({ timeout: timeOut })
         await backButton.waitForDisplayed({ timeout: timeOut })
-        await backButton.waitForEnabled({ timeout: timeOut })
         await backButton.touchAction('tap')
    }
 }

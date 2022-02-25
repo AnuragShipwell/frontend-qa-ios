@@ -15,7 +15,7 @@ class SideMenuPage{
         return await this.element('~Anurag Gogoi')
     }
     async shipperCompanyName(){
-        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Shipwell Inc.\"`]')
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Shipwell, Inc.\"`]')
     }
     async compassButton(){
         return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"Compass\"`]')
@@ -60,20 +60,20 @@ class SideMenuPage{
     if (await hamburger.isDisplayed()){
         await hamburger.touchAction('tap')
     }
-    
-    await shipperText.waitForExist({ timeout: 5000 })
-    await shipperName.waitForExist({ timeout: 5000 })
-    await shipperCompanyName.waitForExist({ timeout: 5000 })
-    await compassButton.waitForExist({ timeout: 5000 })
-    await settingsButton.waitForExist({ timeout: 5000 })
+    await this.driver.pause(2000)
+    await shipperText.waitForDisplayed({ timeout: 5000 })
+    await shipperName.waitForDisplayed({ timeout: 5000 })
+    await shipperCompanyName.waitForDisplayed({ timeout: 5000 })
+    await compassButton.waitForDisplayed({ timeout: 5000 })
+    await settingsButton.waitForDisplayed({ timeout: 5000 })
 
-    await shipmentButton.waitForEnabled({ timeout: 5000 })
+    await shipmentButton.waitForDisplayed({ timeout: 5000 })
     await shipmentButton.touchAction('tap')
 
     await shipmentActiveButton.waitForDisplayed({ timeout: 5000 })
     await shipmentDeliveredButton.waitForDisplayed({ timeout: 5000 })
 
-    await inboxButton.waitForEnabled({ timeout: 5000 })
+    await inboxButton.waitForDisplayed({ timeout: 5000 })
     await inboxButton.touchAction('tap')
 
     await inboxMessagesButton.waitForDisplayed({ timeout: 5000 })

@@ -215,6 +215,7 @@ class CompassNotTrackingAlert{
             else{
                 await this.driver.pause(3000)
             }
+            await this.driver.pause(2000)
 
         //Send Email
             await this.driver.pause(2000)
@@ -244,6 +245,7 @@ class CompassNotTrackingAlert{
             else{
                 await this.driver.pause(3000)
             }
+            await this.driver.pause(2000)
             await compassShipmentCard.waitForDisplayed({timeout: 15000})
             await compassShipmentCard.touchAction('tap')
             if (await shipwellSpinner.isDisplayed()==true){
@@ -276,8 +278,8 @@ class CompassNotTrackingAlert{
             else{
                 await this.driver.pause(3000)
             }
+            await this.driver.pause(2000)
             await backButton.waitForDisplayed({timeout: 15000})
-            await backButton.waitForEnabled({timeout: 15000})
             await backButton.touchAction('tap')
         }
         catch (error){
