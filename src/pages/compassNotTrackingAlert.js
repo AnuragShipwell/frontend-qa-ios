@@ -147,12 +147,12 @@ class CompassNotTrackingAlert{
             await this.driver.touchPerform([
                 {action: "longPress", options: {x: 14, y: 215}},
                 { action: 'wait', options: { ms: 100 }},
-                {action: "moveTo", options: {x: 14, y: 680}},
+                {action: "moveTo", options: {x: 14, y: 700}},
                 {action: "release"},
             ])
             if(await shipperCompassViewNotTrackingAlerts.isDisplayed()==false){
                 await this.driver.touchPerform([
-                    {action: "longPress", options: {x: 14, y: 680}},
+                    {action: "longPress", options: {x: 14, y: 700}},
                     { action: 'wait', options: { ms: 100 }},
                     {action: "moveTo", options: {x: 14, y: 215}},
                     {action: "release"},
@@ -161,11 +161,15 @@ class CompassNotTrackingAlert{
         }
         //Not Tracking View
         await shipperCompassViewNotTrackingAlerts.touchAction('tap')
+        await this.driver.pause(1000)
         try{
-            await shipperCompassViewNotTrackingTitle.waitForDisplayed({ timeout: 15000 })
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            }
+            await shipperCompassViewNotTrackingTitle.waitForDisplayed({ timeout: 5000 })
             await compassShipmentCard.waitForDisplayed({timeout: 5000})
-            await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 15000})
-            await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 15000})
+            await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 5000})
+            await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 5000})
 
             await shipperCompassViewMapViewButton.touchAction('tap')
             await mapView.waitForDisplayed({timeout: 5000})

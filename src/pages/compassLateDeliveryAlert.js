@@ -77,10 +77,15 @@ async lateDeliveryAlert(){
         }
     }
     //Late Delivery View
+    await shipperCompassViewLateDeliveryAlerts.waitForDisplayed({ timeout: 15000 })
     await shipperCompassViewLateDeliveryAlerts.touchAction('tap')
+    await this.driver.pause(1000)
     try{
-        await shipperCompassViewLateDeliveryTitle.waitForDisplayed({ timeout: 15000 })
-        await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 15000})
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
+        await shipperCompassViewLateDeliveryTitle.waitForDisplayed({ timeout: 5000 })
+        await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 5000})
         await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 15000})
 
         await shipperCompassViewMapViewButton.touchAction('tap')

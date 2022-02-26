@@ -93,6 +93,9 @@ class ShipmentPage{
     async backButton(){
         return await this.element('~back icon')
     }
+    async shipwellSpinner(){
+        return await this.element('~ShipwellSpinner')
+    }
 
     async shipment(activeShipmentID, timeOut){
         const hamburger= await this.hamburger()
@@ -124,6 +127,7 @@ class ShipmentPage{
         const shipEquipmentExpandButton= await this.shipEquipmentExpandButton()
         const shipLineTitle= await this.shipLineTitle()
         const backButton=await this.backButton()
+        const shipwellSpinner= await this.shipwellSpinner()
 
         if (await hamburger.isDisplayed()){
             await hamburger.touchAction('tap')
@@ -132,7 +136,12 @@ class ShipmentPage{
         await shipmentButton.touchAction('tap')
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
         await shipmentActiveButton.touchAction('tap')
-        
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            }
+          else{
+            await this.driver.pause(4000)
+          }
         await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
         await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })

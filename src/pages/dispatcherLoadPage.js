@@ -76,6 +76,10 @@ class LoadPage{
     async bidHistoryText(){
         return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Bid History\"`]')
     }
+    async shipwellSpinner(){
+        return await this.element('~ShipwellSpinner')
+    }
+    
 
   async dispatcherLoad(){
   const loadBoardTitle= await this.loadBoardTitle()
@@ -101,6 +105,7 @@ class LoadPage{
   const loadDetailsDeclaredValue= await this.loadDetailsDeclaredValue()
   const loadDetailsAccessorials= await this.loadDetailsAccessorials()
   const bidHistoryText= await this.bidHistoryText()
+  const shipwellSpinner= await this.shipwellSpinner()
   
 
   await this.driver.pause(2000)
@@ -114,8 +119,13 @@ class LoadPage{
   await loadBoardOpenButton.waitForDisplayed({ timeout: 5000 })
   await loadBoardOpenButton.waitForEnabled({ timeout: 5000 })
   await loadBoardOpenButton.touchAction('tap')
-  await this.driver.pause(4000)
-  
+  await this.driver.pause(1000)
+  if (await shipwellSpinner.isDisplayed()){
+    await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+    }
+  else{
+    await this.driver.pause(4000)
+  }
   
   
   //Searching for an open shipment

@@ -119,7 +119,11 @@ class RunningLateAlert{
     await shipperCompassViewRunningLateAlerts.waitForDisplayed({ timeout: 15000 })
     await shipperCompassViewRunningLateAlerts.waitForEnabled({ timeout: 15000 })
     await shipperCompassViewRunningLateAlerts.touchAction('tap')
+    await this.driver.pause(1000)
     try{
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
         await shipperCompassViewRunningLateTitle.waitForDisplayed({ timeout: 15000 })
         await compassShipmentCard.waitForDisplayed({timeout: 15000})
         await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 15000})

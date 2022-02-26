@@ -35,6 +35,9 @@ class CompassCarrierStatusAlert{
     async backButton(){
         return await this.element("~back icon")
     }
+    async shipwellSpinner(){
+        return await this.element('~ShipwellSpinner')
+    }
     async carrierStatusAlert(){
         const shipperCompassViewCarrierStatusAlerts= await this.shipperCompassViewCarrierStatusAlerts()
         const shipperCompassViewCarrierStatusTitle= await this.shipperCompassViewCarrierStatusTitle()
@@ -67,9 +70,12 @@ class CompassCarrierStatusAlert{
     //Carrier Status View
         await shipperCompassViewCarrierStatusAlerts.waitForDisplayed({ timeout: 15000 })
         await shipperCompassViewCarrierStatusAlerts.touchAction('tap')
- 
+        await this.driver.pause(1000)
         try{
-            await shipperCompassViewCarrierStatusTitle.waitForDisplayed({ timeout: 15000 })
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            }
+            await shipperCompassViewCarrierStatusTitle.waitForDisplayed({ timeout: 5000 })
             await compassShipmentCard.waitForDisplayed({timeout: 5000})
             await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 15000})
             await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 15000})

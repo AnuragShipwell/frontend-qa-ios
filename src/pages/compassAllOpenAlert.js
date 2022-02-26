@@ -30,6 +30,9 @@ class OpenAlert{
     async backButton(){
         return await this.element("~back icon")
     }
+    async shipwellSpinner(){
+        return await this.element('~ShipwellSpinner')
+    }
 
 async compassAllOpenAlert(){
 
@@ -41,12 +44,17 @@ async compassAllOpenAlert(){
     const shipperCompassViewMapViewButton= await this.shipperCompassViewMapViewButton()
     const mapView= await this.mapView()
     const backButton= await this.backButton()
+    const shipwellSpinner= await this.shipwellSpinner()
 
     await shipperCompassViewTitle.waitForDisplayed({ timeout: 7000 })
     await shipperCompassViewTitle.waitForEnabled({ timeout: 7000 })
     await shipperCompassAllOpenlerts.waitForDisplayed({ timeout: 15000 })
     await shipperCompassAllOpenlerts.waitForEnabled({ timeout: 15000 })
     await shipperCompassAllOpenlerts.touchAction('tap')
+    await this.driver.pause(1000)
+    if (await shipwellSpinner.isDisplayed()){
+        await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+    }
     await shipperCompassAllOpenTitle.waitForDisplayed({ timeout: 8000 })
 
     await compassShipmentCard.waitForDisplayed({timeout: 15000})

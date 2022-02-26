@@ -55,7 +55,7 @@ class InternalNotesPage{
         
         await backIcon.waitForDisplayed({ timeout: 5000 })
         await backIcon.touchAction('tap')
-        await this.driver.pause(1000)
+        await this.driver.pause(2000)
     
     }
 

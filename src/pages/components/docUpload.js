@@ -130,7 +130,7 @@ class DocUploadPage{
             await chooseButton.touchAction('tap')
         }
         await this.driver.pause(1000)
-        await documentPreviewTitle.waitForDisplayed({ timeout: 5000 })
+        await documentPreviewTitle.waitForDisplayed({ timeout: 15000 })
         await imagePreview.waitForDisplayed({ timeout: 5000 })
         
         await nextButton.waitForDisplayed({ timeout: 5000 })
@@ -156,7 +156,7 @@ class DocUploadPage{
         await successModalOkSavebutton.waitForDisplayed({ timeout: 10000 })
         await successModalOkSavebutton.touchAction('tap')
         
-        await documentPreviewTitle.waitForDisplayed({ timeout: 5000 })
+        await documentPreviewTitle.waitForDisplayed({ timeout: 15000 })
         await saveImagePreview.waitForDisplayed({ timeout: 5000 })
         await this.driver.pause(3000)
         
@@ -165,7 +165,7 @@ class DocUploadPage{
         
         await backIcon1.waitForDisplayed({ timeout: 5000 })
         await backIcon1.touchAction('tap')
-        await this.driver.pause(1000)
+        await this.driver.pause(2000)
 }
 }
 export default DocUploadPage;
