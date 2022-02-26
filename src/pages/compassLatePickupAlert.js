@@ -43,7 +43,7 @@ class CompassLatePickupAlert{
         return await this.element("-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][1]")
     }
     async timePickerWheelMinutes(){
-        return await this.element("//XCUIElementTypeApplication[@name=\"Test Freight\"]/XCUIElementTypeWindow[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeDatePicker/XCUIElementTypePicker/XCUIElementTypePickerWheel[3]")
+        return await this.element("//XCUIElementTypePickerWheel[3]")
     }
     async checkOutEventTime(){
         return await this.element("-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][2]")
@@ -183,8 +183,6 @@ async compassLatePickUpAlert(){
     await checkInTimeText.waitForDisplayed({timeout: 15000})
     await checkOutTimeText.waitForDisplayed({timeout: 15000})
     await checkInEventTime.touchAction('tap')
-    await this.driver.pause(2000)
-    await timePickerWheelMinutes.waitForDisplayed({timeout: 5000})
     await this.driver.pause(2000)
     await timePickerWheelMinutes.addValue('00')
     await this.driver.pause(2000)
