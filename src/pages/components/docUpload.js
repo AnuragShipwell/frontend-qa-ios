@@ -120,15 +120,17 @@ class DocUploadPage{
         await shipUploadDocumentButton.touchAction('tap')
 
         await camera.waitForDisplayed({ timeout: 5000 })
-
+        await this.driver.pause(1000)
         await photoLibrary.waitForDisplayed({ timeout: 5000 })
         await photoLibrary.touchAction('tap')
+        await this.driver.pause(1000)
         await photo.waitForDisplayed({ timeout: 5000 })
         await photo.touchAction('tap')
-        await chooseButton.waitForDisplayed({ timeout: 5000 })
+        await this.driver.pause(2000)
+        await chooseButton.waitForDisplayed({ timeout: 15000 })
         await chooseButton.touchAction('tap')
         await this.driver.pause(1000)
-        if (chooseButton.isDisplayed()){
+        if (await chooseButton.isDisplayed()){
             await chooseButton.touchAction('tap')
         }
         await this.driver.pause(1000)
