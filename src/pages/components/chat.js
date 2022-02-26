@@ -74,7 +74,7 @@ class ChatPage{
         if (await loadTitle.isDisplayed()){
             await loadDetailBackButton.touchAction('tap')
         }
-        await this.driver.pause(2000)
+        await this.driver.pause(1000)
     }
 }
 

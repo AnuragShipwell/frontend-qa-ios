@@ -32,8 +32,11 @@ class DocUploadPage{
     async photoLibrary(){
         return await this.element('~Photo Library')
     }
+    //async photo(){
+        //return await this.element('~Photo, March 30, 2018, 2:14 PM')
+    //}
     async photo(){
-        return await this.element('~Photo, March 30, 2018, 2:14 PM')
+        return await this.element('//XCUIElementTypeImage[2]')
     }
     async chooseButton(){
         return await this.element('~Choose')
@@ -80,6 +83,12 @@ class DocUploadPage{
     async backIcon1(){
         return await this.element('~AllDocumentsBackBtn')
     }
+    async cancelButton(){
+        return await this.element('~Cancel')
+    } 
+    async shipwellSpinner(){
+        return await this.element('~ShipwellSpinner')
+    }
     async shipmentDocumentUpload(){
         const documentUploadButton= await this.documentUploadButton()
         const shipperCompassAllOpenTitle= await this.shipperCompassAllOpenTitle()
@@ -104,6 +113,8 @@ class DocUploadPage{
         const saveImagePreview= await this.saveImagePreview()
         const backIcon= await this.backIcon()
         let backIcon1= await this.backIcon1()
+        const cancelButton= await this.cancelButton()
+        const shipwellSpinner= await this.shipwellSpinner()
 
         await this.driver.pause(1000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
@@ -124,8 +135,8 @@ class DocUploadPage{
         await photoLibrary.waitForDisplayed({ timeout: 5000 })
         await photoLibrary.touchAction('tap')
         await this.driver.pause(1000)
-        await photo.waitForDisplayed({ timeout: 5000 })
-        await photo.touchAction('tap')
+        if (await photo.isDisplayed()){
+            await photo.touchAction('tap')
         await this.driver.pause(2000)
         await chooseButton.waitForDisplayed({ timeout: 15000 })
         await chooseButton.touchAction('tap')
@@ -156,6 +167,10 @@ class DocUploadPage{
         }
         await documentInfoSaveButton.waitForDisplayed({ timeout: 5000 })
         await documentInfoSaveButton.touchAction('tap')
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
 
         await successModalOkSavebutton.waitForDisplayed({ timeout: 10000 })
         await successModalOkSavebutton.touchAction('tap')
@@ -169,7 +184,24 @@ class DocUploadPage{
         
         await backIcon1.waitForDisplayed({ timeout: 5000 })
         await backIcon1.touchAction('tap')
-        await this.driver.pause(2000)
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
+        }
+        else{
+            await cancelButton.waitForDisplayed({ timeout: 5000 })
+            await cancelButton.touchAction('tap')
+            await backIcon1.waitForDisplayed({ timeout: 5000 })
+            await backIcon1.touchAction('tap')
+            await this.driver.pause(1000)
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            }
+
+
+        }
+        
 }
 }
 export default DocUploadPage;

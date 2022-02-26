@@ -4,7 +4,6 @@ let myCaps = {
     automationName: "XCUITest",
     deviceName: "iPhone 11 Pro",
     //udid: "DFE54EFA-7E40-458B-8FC7-9704D435A575",
-    
     //app: "/Users/anuragshipwell/Library/Developer/Xcode/DerivedData/Shipwell-akdpitrjnzikizcqiclbkartdtln/Build/Products/TestFlight-iphonesimulator/Shipwell.app",
     udid: process.env.BITRISE_IPHONE_UDID,
     app: process.env.BITRISE_APP_DIR_PATH,
