@@ -50,7 +50,7 @@ class ChatPage{
         const messageBackButton= await this.messageBackButton()
         const loadChatButton= await this.loadChatButton()
         const loadDetailBackButton= await this.loadDetailBackButton()
-
+        await this.driver.pause(2000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
             await quickActionChat.touchAction('tap')
         }
