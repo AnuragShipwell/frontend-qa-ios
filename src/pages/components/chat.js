@@ -69,6 +69,7 @@ class ChatPage{
 
         await messageBackButton.waitForDisplayed({ timeout: 5000 })
         await messageBackButton.touchAction('tap')
+        await this.driver.pause(1000)
 
         if (await loadTitle.isDisplayed()){
             await loadDetailBackButton.touchAction('tap')

@@ -120,8 +120,8 @@ class InboxPage{
             ])
             await notificationReadtext.waitForDisplayed({ timeout: 5000 })
             await notificationReadtext.touchAction('tap')
-       
         }
+        await this.driver.pause(1000)
     }
 
 

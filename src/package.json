@@ -29,6 +29,7 @@
   "jest": {
     "setupFilesAfterEnv": [
       "./specs/jest_setup.js"
-    ]
+    ],
+      "testResultsProcessor": "./node_modules/jest-html-reporter"
   }
 }

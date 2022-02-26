@@ -178,12 +178,14 @@ class CompassNotTrackingAlert{
             await compassShipmentCard.waitForDisplayed({timeout: 15000})
 
             await compassShipmentCard.touchAction('tap')
+            await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
             }
+            await this.driver.pause(1000)
             await NTDriverSection.waitForDisplayed({timeout: 15000})
             if (await NTdriverPhoneText.isDisplayed()){
                     await NTDriverCallButton.waitForDisplayed({timeout: 15000})
@@ -252,6 +254,7 @@ class CompassNotTrackingAlert{
             await this.driver.pause(2000)
             await compassShipmentCard.waitForDisplayed({timeout: 15000})
             await compassShipmentCard.touchAction('tap')
+            await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
@@ -261,6 +264,7 @@ class CompassNotTrackingAlert{
             await this.driver.pause(2000)
             await compassActionButton.waitForDisplayed({timeout: 15000})
             await compassActionButton.touchAction('tap')
+            await this.driver.pause(1000)
             await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: 15000})
             await NTAddLocationEventOnTimeLineButton.touchAction('tap')
             await NTAdddEventlocationZipCode.setValue('78746')
@@ -285,6 +289,7 @@ class CompassNotTrackingAlert{
             await this.driver.pause(2000)
             await backButton.waitForDisplayed({timeout: 15000})
             await backButton.touchAction('tap')
+            await this.driver.pause(2000)
         }
         catch (error){
             console.log(error)

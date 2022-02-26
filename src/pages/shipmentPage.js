@@ -132,10 +132,12 @@ class ShipmentPage{
         if (await hamburger.isDisplayed()){
             await hamburger.touchAction('tap')
         }
+        await this.driver.pause(1000)
         await shipmentButton.waitForDisplayed({ timeout: timeOut })
         await shipmentButton.touchAction('tap')
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
         await shipmentActiveButton.touchAction('tap')
+        await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
@@ -149,7 +151,7 @@ class ShipmentPage{
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
         await shipShipmentSearchInput.touchAction('tap')
         await shipShipmentSearchInput.setValue(activeShipmentID)
-
+        await this.driver.pause(1000)
         await shipSearchedShipmentText.waitForDisplayed({ timeout: timeOut })
         await shipSearchedShipmentText.touchAction('tap')
 
@@ -200,6 +202,7 @@ class ShipmentPage{
         await shipLineTitle.waitForDisplayed({ timeout: timeOut })
         await backButton.waitForDisplayed({ timeout: timeOut })
         await backButton.touchAction('tap')
+        await this.driver.pause(1000)
    }
 }
 export default ShipmentPage

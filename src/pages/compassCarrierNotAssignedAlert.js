@@ -195,6 +195,7 @@ class CompassCarrierNotAssignedAlert{
         const stopDetailsbackButton= await this.stopDetailsbackButton()
         const backButton= await this.backButton()
         
+        await this.driver.pause(1000)
         if (await shipperCompassViewCarrierNotAssignedAlerts.isDisplayed()==false){
             await this.driver.touchPerform([
                 {action: "longPress", options: {x: 14, y: 215}},
@@ -360,6 +361,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
             await stopDetailsbackButton.waitForDisplayed({ timeout: 8000 })
             await stopDetailsbackButton.waitForEnabled({ timeout: 8000 })
             await stopDetailsbackButton.touchAction('tap')
+            await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
@@ -368,6 +370,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
             }
             await backButton.waitForDisplayed({ timeout: 15000 })
             await backButton.touchAction('tap')
+            await this.driver.pause(2000)
             }
         catch (error){
             console.log(error)

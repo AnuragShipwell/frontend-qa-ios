@@ -78,6 +78,7 @@ class SideMenuPage{
 
     await inboxMessagesButton.waitForDisplayed({ timeout: 5000 })
     await inboxNotificationsButton1.waitForDisplayed({ timeout: 5000 })
+    await this.driver.pause(2000)
 }
 
 }

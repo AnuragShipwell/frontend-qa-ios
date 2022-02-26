@@ -50,7 +50,7 @@ class CompassCarrierStatusAlert{
         const shipwellSpinner= await this.shipwellSpinner()
         const backButton= await this.backButton()
 
-
+        await this.driver.pause(1000)
         if (await shipperCompassViewCarrierStatusAlerts.isDisplayed()==false){
             await this.driver.touchPerform([
                 {action: "longPress", options: {x: 14, y: 215}},
@@ -91,6 +91,7 @@ class CompassCarrierStatusAlert{
 
             await stopDetailsbackButton.waitForDisplayed({timeout: 15000})
             await stopDetailsbackButton.touchAction('tap')
+            await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
                     await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
@@ -99,6 +100,7 @@ class CompassCarrierStatusAlert{
             }
             await backButton.waitForDisplayed({timeout: 15000})
             await backButton.touchAction('tap')
+            await this.driver.pause(2000)
         }
         catch (error){
             console.log(error)

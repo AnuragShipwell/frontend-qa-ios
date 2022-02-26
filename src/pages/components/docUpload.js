@@ -105,6 +105,7 @@ class DocUploadPage{
         const backIcon= await this.backIcon()
         let backIcon1= await this.backIcon1()
 
+        await this.driver.pause(1000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
             await quickActionDocument.touchAction('tap')
         }
@@ -126,6 +127,7 @@ class DocUploadPage{
         await photo.touchAction('tap')
         await chooseButton.waitForDisplayed({ timeout: 5000 })
         await chooseButton.touchAction('tap')
+        await this.driver.pause(1000)
         if (chooseButton.isDisplayed()){
             await chooseButton.touchAction('tap')
         }

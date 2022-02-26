@@ -138,6 +138,7 @@ class RunningLateAlert{
 
         await compassActionButton.waitForDisplayed({timeout: 15000})
         await compassActionButton.touchAction('tap')
+        await this.driver.pause(1000)
         //Edit Appointment Time
         if (await editDeliveryAppointmentTime.isDisplayed()==true){
             await editDeliveryAppointmentTime.touchAction('tap')
@@ -152,12 +153,14 @@ class RunningLateAlert{
                 await this.driver.pause(2000)
                 await compassShipmentCard.waitForDisplayed({timeout: 10000})
                 await compassShipmentCard.touchAction('tap')
+                await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
                 }
                 await this.driver.pause(1000)
                 await compassActionButton.waitForDisplayed({timeout: 15000})
                 await compassActionButton.touchAction('tap')
+                await this.driver.pause(1000)
             }
             else{
                 await this.driver.pause(3000)
@@ -167,6 +170,7 @@ class RunningLateAlert{
                 await cancelButton.touchAction('tap')
                 await compassActionButton.waitForDisplayed({timeout: 15000})
                 await compassActionButton.touchAction('tap')
+                await this.driver.pause(1000)
             }
        }
 
@@ -177,6 +181,7 @@ class RunningLateAlert{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
         }
+        await this.driver.pause(1000)
         await checkInTimeText.waitForDisplayed({timeout: 15000})
         await checkOutTimeText.waitForDisplayed({timeout: 15000})
         await checkInEventTime.touchAction('tap')
@@ -204,6 +209,7 @@ class RunningLateAlert{
             await this.driver.pause(2000)
             await backButton.waitForDisplayed({timeout: 15000})
             await backButton.touchAction('tap')
+            await this.driver.pause(1000)
         }
         else if (await cancelButton.isDisplayed()){
             await cancelButton.touchAction('tap')
