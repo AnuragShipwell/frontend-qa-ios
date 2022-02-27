@@ -68,7 +68,7 @@ test("==006==> TESTING SHIPPER SIDE MENU COMPONENT", async () => {
 });
 //==============================================
 test("==007==> TESTING SHIPPER SHIPMENT VIEW: ACTIVE AND DELIVERED", async () => {
-    await app.shipmentPage.shipment("5RUCFH", 10000)
+    await app.shipmentPage.shipment("5RUCFH", 15000)
 });
 //==============================================
 test("==008==> TESTING INBOX: MESSAGES AND NOTIFICATIONS VIEW", async () => {

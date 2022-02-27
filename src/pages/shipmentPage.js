@@ -15,6 +15,9 @@ class ShipmentPage{
     async shipmentActiveButton(){
         return await this.element('~ACTIVE')
     }
+    async shipmentDeliveryButton(){
+        return await this.element('~DELIVERED')
+    }
     async shipActiveButtonInside(){
         return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"ACTIVE\"`]')
     }
@@ -127,7 +130,7 @@ class ShipmentPage{
         const shipEquipmentExpandButton= await this.shipEquipmentExpandButton()
         const shipLineTitle= await this.shipLineTitle()
         const backButton=await this.backButton()
-        const shipwellSpinner= await this.shipwellSpinner()
+        const shipmentDeliveryButton= await this.shipmentDeliveryButton()
 
         if (await hamburger.isDisplayed()){
             await hamburger.touchAction('tap')
@@ -135,9 +138,12 @@ class ShipmentPage{
         await this.driver.pause(1000)
         await shipmentButton.waitForDisplayed({ timeout: timeOut })
         await shipmentButton.touchAction('tap')
+        await this.driver.pause(3000)
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
+        await shipmentDeliveryButton.waitForDisplayed({ timeout: timeOut })
+        await this.driver.pause(1000)
         await shipmentActiveButton.touchAction('tap')
-        await this.driver.pause(5000)  
+        await this.driver.pause(7000)  
         await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
         await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
