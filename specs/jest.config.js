@@ -13,5 +13,6 @@ const config = {
       transform: {
         "^.+\\.jsx?$": "babel-jest"
       },
+      testTimeout: 300000000
     };
   };
