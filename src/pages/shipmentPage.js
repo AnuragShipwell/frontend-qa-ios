@@ -137,13 +137,14 @@ class ShipmentPage{
         await shipmentButton.touchAction('tap')
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
         await shipmentActiveButton.touchAction('tap')
-        await this.driver.pause(1000)
+        await this.driver.pause(500)
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
-          else{
+        else{
             await this.driver.pause(4000)
           }
+        await this.driver.pause(1000)  
         await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
         await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
@@ -151,10 +152,24 @@ class ShipmentPage{
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
         await shipShipmentSearchInput.touchAction('tap')
         await shipShipmentSearchInput.setValue(activeShipmentID)
+        await this.driver.pause(500)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
+        else{
+            await this.driver.pause(4000)
+        }
         await this.driver.pause(1000)
         await shipSearchedShipmentText.waitForDisplayed({ timeout: timeOut })
         await shipSearchedShipmentText.touchAction('tap')
-
+        await this.driver.pause(500)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
+        else{
+            await this.driver.pause(4000)
+        }
+        await this.driver.pause(1000)
         await shipmentTitletext.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedText.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedTextTick.waitForDisplayed({ timeout: timeOut })
