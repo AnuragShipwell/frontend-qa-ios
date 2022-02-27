@@ -120,7 +120,7 @@ class DocUploadPage{
         const shipwellSpinner= await this.shipwellSpinner()
         const testback= await this.testback()
 
-        await this.driver.pause(1000)
+        await this.driver.pause(3000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
             await quickActionDocument.touchAction('tap')
         }
