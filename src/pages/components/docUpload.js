@@ -138,7 +138,7 @@ class DocUploadPage{
         await this.driver.pause(1000)
         await photoLibrary.waitForDisplayed({ timeout: 5000 })
         await photoLibrary.touchAction('tap')
-        await this.driver.pause(1000)
+        await this.driver.pause(2000)
         if (await photo.isDisplayed()){
             await photo.touchAction('tap')
         await this.driver.pause(2000)
