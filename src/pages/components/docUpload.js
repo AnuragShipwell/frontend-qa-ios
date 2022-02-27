@@ -83,6 +83,9 @@ class DocUploadPage{
     async backIcon1(){
         return await this.element('~AllDocumentsBackBtn')
     }
+    async testback(){
+        return await this.element('~AllDocumentsBackBtn')
+    }
     async cancelButton(){
         return await this.element('~Cancel')
     } 
@@ -115,6 +118,7 @@ class DocUploadPage{
         let backIcon1= await this.backIcon1()
         const cancelButton= await this.cancelButton()
         const shipwellSpinner= await this.shipwellSpinner()
+        const testback= await this.testback()
 
         await this.driver.pause(1000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
@@ -192,8 +196,8 @@ class DocUploadPage{
         else{
             await cancelButton.waitForDisplayed({ timeout: 5000 })
             await cancelButton.touchAction('tap')
-            await backIcon1.waitForDisplayed({ timeout: 5000 })
-            await backIcon1.touchAction('tap')
+            await testback.waitForDisplayed({ timeout: 5000 })
+            await testback.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
