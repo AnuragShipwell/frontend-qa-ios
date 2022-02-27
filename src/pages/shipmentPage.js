@@ -138,8 +138,10 @@ class ShipmentPage{
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
         await shipmentActiveButton.touchAction('tap')
         await this.driver.pause(500)
+        console.log("*****************************1. Shipment spinner before if check*****************************")
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            console.log("*****************************1. Shipment spinner after if check*****************************")
             }
         else{
             await this.driver.pause(4000)
@@ -153,9 +155,11 @@ class ShipmentPage{
         await shipShipmentSearchInput.touchAction('tap')
         await shipShipmentSearchInput.setValue(activeShipmentID)
         await this.driver.pause(500)
+        console.log("*****************************2. Shipment spinner before if check*****************************")
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-        }
+            console.log("*****************************2. Shipment spinner after if check*****************************")
+            }
         else{
             await this.driver.pause(4000)
         }
@@ -163,9 +167,11 @@ class ShipmentPage{
         await shipSearchedShipmentText.waitForDisplayed({ timeout: timeOut })
         await shipSearchedShipmentText.touchAction('tap')
         await this.driver.pause(500)
+        console.log("*****************************3. Shipment spinner before if check*****************************")
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-        }
+            console.log("*****************************3. Shipment spinner after if check*****************************")
+            }
         else{
             await this.driver.pause(4000)
         }
