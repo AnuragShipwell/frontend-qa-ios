@@ -59,7 +59,7 @@ test("==010==> TESTING SHIPPER COMPASS CARRIER STATUS VIEW", async () => {
 test("==005==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {
   await app.quickActionPage.quickAction()
   await app.chatPage.chat()
-  await app.docUploadPage.shipmentDocumentUpload()
+  //await app.docUploadPage.shipmentDocumentUpload()
   await app.internalNotePage.shipmentInternalNotes()
 });
 //==============================================
