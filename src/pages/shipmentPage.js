@@ -13,7 +13,7 @@ class ShipmentPage{
         return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Shipments\"`]')
     }
     async shipmentActiveButton(){
-        return await this.element('-ios class chain:**/XCUIElementTypeTable[`name == \"SWSideMenuController-table\"`]/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
+        return await this.element('~ACTIVE')
     }
     async shipActiveButtonInside(){
         return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"ACTIVE\"`]')
@@ -137,16 +137,7 @@ class ShipmentPage{
         await shipmentButton.touchAction('tap')
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
         await shipmentActiveButton.touchAction('tap')
-        await this.driver.pause(500)
-        console.log("*****************************1. Shipment spinner before if check*****************************")
-        if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-            console.log("*****************************1. Shipment spinner after if check*****************************")
-            }
-        else{
-            await this.driver.pause(4000)
-          }
-        await this.driver.pause(1000)  
+        await this.driver.pause(5000)  
         await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
         await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
@@ -154,28 +145,10 @@ class ShipmentPage{
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
         await shipShipmentSearchInput.touchAction('tap')
         await shipShipmentSearchInput.setValue(activeShipmentID)
-        await this.driver.pause(500)
-        console.log("*****************************2. Shipment spinner before if check*****************************")
-        if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-            console.log("*****************************2. Shipment spinner after if check*****************************")
-            }
-        else{
-            await this.driver.pause(4000)
-        }
-        await this.driver.pause(1000)
+        await this.driver.pause(5000)
         await shipSearchedShipmentText.waitForDisplayed({ timeout: timeOut })
         await shipSearchedShipmentText.touchAction('tap')
-        await this.driver.pause(500)
-        console.log("*****************************3. Shipment spinner before if check*****************************")
-        if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-            console.log("*****************************3. Shipment spinner after if check*****************************")
-            }
-        else{
-            await this.driver.pause(4000)
-        }
-        await this.driver.pause(1000)
+        await this.driver.pause(5000)
         await shipmentTitletext.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedText.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedTextTick.waitForDisplayed({ timeout: timeOut })
