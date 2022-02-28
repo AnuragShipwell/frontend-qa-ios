@@ -131,6 +131,7 @@ class ShipmentPage{
         const shipLineTitle= await this.shipLineTitle()
         const backButton=await this.backButton()
         const shipmentDeliveryButton= await this.shipmentDeliveryButton()
+        const shipwellSpinner= await this.shipwellSpinner()
 
         if (await hamburger.isDisplayed()){
             await hamburger.touchAction('tap')
@@ -138,12 +139,18 @@ class ShipmentPage{
         await this.driver.pause(1000)
         await shipmentButton.waitForDisplayed({ timeout: timeOut })
         await shipmentButton.touchAction('tap')
-        await this.driver.pause(3000)
+        await this.driver.pause(2000)
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
         await shipmentDeliveryButton.waitForDisplayed({ timeout: timeOut })
-        await this.driver.pause(1000)
+        console.log("***Before Tap***")
+        await this.driver.getPageSource()
         await shipmentActiveButton.touchAction('tap')
-        await this.driver.pause(7000)  
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
+        console.log("***After Tap***")
+        await this.driver.getPageSource()
         await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
         await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
@@ -151,10 +158,16 @@ class ShipmentPage{
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
         await shipShipmentSearchInput.touchAction('tap')
         await shipShipmentSearchInput.setValue(activeShipmentID)
-        await this.driver.pause(5000)
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
         await shipSearchedShipmentText.waitForDisplayed({ timeout: timeOut })
         await shipSearchedShipmentText.touchAction('tap')
-        await this.driver.pause(5000)
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
         await shipmentTitletext.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedText.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedTextTick.waitForDisplayed({ timeout: timeOut })
