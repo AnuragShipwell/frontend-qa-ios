@@ -19,10 +19,10 @@ class ShipmentPage{
         return await this.element('~DELIVERED')
     }
     async shipActiveButtonInside(){
-        return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"ACTIVE\"`]')
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"ACTIVE\"`][2]')
     }
     async shipDeliveredButton(){
-        return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"DELIVERED\"`]')
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"DELIVERED\"`][2]')
     }
     async shipShipmentListTitle(){
         return await this.element('~ShipmentListTitle')
@@ -142,17 +142,13 @@ class ShipmentPage{
         await this.driver.pause(2000)
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
         await shipmentDeliveryButton.waitForDisplayed({ timeout: timeOut })
-        console.log("***Before Tap***")
-        await this.driver.getPageSource()
         await shipmentActiveButton.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
         }
-        console.log("***After Tap***")
-        await this.driver.getPageSource()
-        await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
-        await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
+        //await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
+        //await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
 
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
