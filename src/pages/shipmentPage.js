@@ -147,8 +147,8 @@ class ShipmentPage{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
         }
-        //await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
-        //await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
+        await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
+        await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
 
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
