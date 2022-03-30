@@ -31,10 +31,10 @@ class ShipmentPage{
         return await this.element('~Search Shipments') //=====================//
     }
     async shipSearchedShipmentText(){
-        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"# 5RUCFH\"`]')
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"# KCJSG5\"`]')
     }
     async shipmentTitletext(){
-        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"5RUCFH\"`]')
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"KCJSG5\"`]')
     }
     async shipDispatchedText(){
         return await this.element('~DISPATCHED')
@@ -147,6 +147,9 @@ class ShipmentPage{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
         }
+        else{
+            await this.driver.pause(3000)
+        }
         await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
         await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
@@ -158,11 +161,17 @@ class ShipmentPage{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
         }
+        else{
+            await this.driver.pause(3000)
+        }
         await shipSearchedShipmentText.waitForDisplayed({ timeout: timeOut })
         await shipSearchedShipmentText.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
+        else{
+            await this.driver.pause(3000)
         }
         await shipmentTitletext.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedText.waitForDisplayed({ timeout: timeOut })

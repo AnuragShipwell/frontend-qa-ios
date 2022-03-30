@@ -98,11 +98,12 @@ async lateDeliveryAlert(){
         await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
         await compassActionButton.waitForDisplayed({timeout: 15000})
         await compassActionButton.touchAction('tap')
+        await this.driver.pause(1000)
     //Edit Delivery Appointment time
 
         await editDeliveryAppointmentTime.waitForDisplayed({timeout: 15000})
         await editDeliveryAppointmentTime.touchAction('tap')
-
+        await this.driver.pause(1000)
         await saveButton.waitForDisplayed({timeout: 15000})
         await saveButton.touchAction('tap')
         await this.driver.pause(1000)
@@ -115,6 +116,7 @@ async lateDeliveryAlert(){
         await this.driver.pause(1000)
         await backButton.waitForDisplayed({timeout: 15000})
         await backButton.touchAction('tap')
+        await this.driver.pause(1000)
 
         if (await cancelButton.isDisplayed()==true){
             await cancelButton.touchAction('tap')

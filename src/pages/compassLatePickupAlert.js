@@ -150,6 +150,7 @@ async compassLatePickUpAlert(){
             await this.driver.pause(2000)
             await compassShipmentCard.waitForDisplayed({timeout: 10000})
             await compassShipmentCard.touchAction('tap')
+            await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
@@ -187,7 +188,7 @@ async compassLatePickUpAlert(){
     await timePickerWheelMinutes.addValue('00')
     await this.driver.pause(2000)
     await checkOutEventTime.touchAction('tap')
-
+    await this.driver.pause(1000)
     if (await doneButton.isDisplayed()){
         await doneButton.touchAction('tap')
     }
@@ -206,6 +207,7 @@ async compassLatePickUpAlert(){
         await this.driver.pause(1000)
         await backButton.waitForDisplayed({timeout: 15000})
         await backButton.touchAction('tap')
+        await this.driver.pause(1000)
     }
     if (await cancelButton.isDisplayed()){
         await cancelButton.touchAction('tap')
@@ -235,6 +237,7 @@ async compassLatePickUpAlert(){
         }
         await backButton.waitForDisplayed({timeout: 15000})
         await backButton.touchAction('tap')
+        await this.driver.pause(1000)
     }
 }
 await this.driver.pause(2000)

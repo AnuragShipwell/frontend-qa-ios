@@ -191,7 +191,7 @@ class RunningLateAlert{
         await timePickerWheelMinutes.addValue('00')
         await this.driver.pause(2000)
         await checkOutEventTime.touchAction('tap')
-
+        await this.driver.pause(1000)
         if (await doneButton.isDisplayed()){
             await doneButton.touchAction('tap')
         }
@@ -241,6 +241,7 @@ class RunningLateAlert{
             await this.driver.pause(2000)
             await backButton.waitForDisplayed({timeout: 15000})
             await backButton.touchAction('tap')
+            await this.driver.pause(1000)
         }
     }
     await this.driver.pause(2000)

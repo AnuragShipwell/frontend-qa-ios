@@ -12,10 +12,8 @@ describe("iOS mobileApp test", () => {
   });
 
 test("==001==> TESTING APP INSTALLATION and VERIFY TEST bundleID", async () => {
-  await app.driver.pause(5000)
+  await app.driver.pause(2000)
   await app.driver.queryAppState("com.shipwell.testflight")
-  await app.driver.pause("5000")
-  await app.driver.getPageSource()
 
 });
 //===============================================
@@ -56,23 +54,22 @@ test("==010==> TESTING SHIPPER COMPASS CARRIER STATUS VIEW", async () => {
   await app.compassCarrierStatusAlert.carrierStatusAlert()
 });
 //==============================================
-test("==005==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {
+test("==011==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {
   await app.quickActionPage.quickAction()
   await app.chatPage.chat()
   await app.docUploadPage.shipmentDocumentUpload()
   await app.internalNotePage.shipmentInternalNotes()
 });
 //==============================================
-test("==006==> TESTING SHIPPER SIDE MENU COMPONENT", async () => {
+test("==012==> TESTING SHIPPER SIDE MENU COMPONENT", async () => {
     await app.sideMenuPage.sideMenu()
 });
 //==============================================
-/*
-test("==007==> TESTING SHIPPER SHIPMENT VIEW: ACTIVE AND DELIVERED", async () => {
-    await app.shipmentPage.shipment("5RUCFH", 15000)
+test("==013==> TESTING SHIPPER SHIPMENT VIEW: ACTIVE AND DELIVERED", async () => {
+    await app.shipmentPage.shipment("KCJSG5", 15000)
 });
 //==============================================
-test("==008==> TESTING INBOX: MESSAGES AND NOTIFICATIONS VIEW", async () => {
+test("==014==> TESTING INBOX: MESSAGES AND NOTIFICATIONS VIEW", async () => {
   await app.inboxPage.inbox()
-});*/
+});
 });

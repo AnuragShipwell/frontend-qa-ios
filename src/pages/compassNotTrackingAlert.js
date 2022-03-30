@@ -209,6 +209,7 @@ class CompassNotTrackingAlert{
             await NTSelectTrailer.waitForDisplayed({timeout: 15000})
             await NTSelectTrailer.clearValue()
             await NTSelectTrailer.setValue('Ford')
+            await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
@@ -227,6 +228,7 @@ class CompassNotTrackingAlert{
             await this.driver.pause(2000)
             await compassActionButton.waitForDisplayed({timeout: 15000})
             await compassActionButton.touchAction('tap')
+            await this.driver.pause(1000)
             await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: 15000})
             await NTSendNotTrackingEmailButton.waitForDisplayed({timeout: 15000})
             await NTSendNotTrackingEmailButton.touchAction('tap')
@@ -234,12 +236,14 @@ class CompassNotTrackingAlert{
             await NTSendEmailContact2.waitForDisplayed({timeout: 15000})
             await NTSendEmailAdditionalContact.waitForDisplayed({timeout: 15000})
             await NTSendEmailAdditionalContact.setValue('anurag371@gmail.com')
+            await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
             await NTSendEmailSelectTemplate.waitForDisplayed({timeout: 15000})
             await NTSendEmailCustomerMessage.waitForDisplayed({timeout: 15000})
             await NTSendEmailCustomerMessage.setValue('Testing, kindly ignore')
+            await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
@@ -270,11 +274,13 @@ class CompassNotTrackingAlert{
             await NTAdddEventlocationZipCode.setValue('78746')
             await NTAdddEventlocationZipCodeResult.waitForDisplayed({timeout: 15000})
             await NTAdddEventlocationZipCodeResult.touchAction('tap')
+            await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
             await NTAddEventDescription.waitForDisplayed({timeout: 15000})
             await NTAddEventDescription.setValue('Testing, kindly ignore')
+            await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }

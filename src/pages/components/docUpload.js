@@ -45,7 +45,7 @@ class DocUploadPage{
         return await this.element('~Document Preview')
     }
     async imagePreview(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeImage')
+        return await this.element('//XCUIElementTypeImage')
     }
     async nextButton(){
         return await this.element('~Next')
@@ -54,10 +54,10 @@ class DocUploadPage{
         return await this.element('~Document Info')
     }
     async documentInfoImagePreview(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeImage')
+        return await this.element('//XCUIElementTypeImage')
     }
     async documentInfoDocumentType(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeTextField')
+        return await this.element('//XCUIElementTypeTextField')
     }
     async documentInfoDescription(){
         return await this.element('~Description:')
@@ -75,7 +75,7 @@ class DocUploadPage{
         return await this.element('~OK')
     }
     async saveImagePreview(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage')
+        return await this.element('//XCUIElementTypeImage')
     }
     async backIcon(){
         return await this.element('~back icon')
@@ -92,6 +92,10 @@ class DocUploadPage{
     async shipwellSpinner(){
         return await this.element('~ShipwellSpinner')
     }
+    async pickerWhell(){
+        return await this.element('//XCUIElementTypePickerWheel')
+    }
+    
     async shipmentDocumentUpload(){
         const documentUploadButton= await this.documentUploadButton()
         const shipperCompassAllOpenTitle= await this.shipperCompassAllOpenTitle()
@@ -119,6 +123,7 @@ class DocUploadPage{
         const cancelButton= await this.cancelButton()
         const shipwellSpinner= await this.shipwellSpinner()
         const testback= await this.testback()
+        const pickerWhell= await this.pickerWhell()
 
         await this.driver.pause(3000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
@@ -148,7 +153,7 @@ class DocUploadPage{
         if (await chooseButton.isDisplayed()){
             await chooseButton.touchAction('tap')
         }
-        await this.driver.pause(1000)
+        await this.driver.pause(2000)
         await documentPreviewTitle.waitForDisplayed({ timeout: 15000 })
         await imagePreview.waitForDisplayed({ timeout: 5000 })
         
@@ -160,7 +165,8 @@ class DocUploadPage{
        
         await documentInfoDocumentType.waitForDisplayed({ timeout: 5000 })
         await documentInfoDocumentType.touchAction('tap')
-        await documentInfoDocumentType.setValue("Proof of Delivery (POD)")
+        await pickerWhell.waitForDisplayed({ timeout: 5000 })
+        await pickerWhell.addValue("Proof of Delivery (POD)")
 
         await documentInfoDescription.waitForDisplayed({ timeout: 5000 })
         await documentInfoDescription.touchAction('tap')
@@ -181,10 +187,17 @@ class DocUploadPage{
         
         await documentPreviewTitle.waitForDisplayed({ timeout: 15000 })
         await saveImagePreview.waitForDisplayed({ timeout: 5000 })
-        await this.driver.pause(3000)
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
         
         await backIcon.waitForDisplayed({ timeout: 5000 })
         await backIcon.touchAction('tap')
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        }
         
         await backIcon1.waitForDisplayed({ timeout: 5000 })
         await backIcon1.touchAction('tap')
