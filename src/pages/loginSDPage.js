@@ -38,6 +38,9 @@ async loginViewForgotPasswordButton(){
 async loginViewRememberMeSelected(){
     return await this.element("~remember me icon selected")
 }
+async shipwellSpinner(){
+    return await this.element('~ShipwellSpinner')
+}
 
 async loginShipperDispatcher(email, password){
     const loginViewImDriverButton= await this.loginViewImDriverButton()
@@ -51,6 +54,7 @@ async loginShipperDispatcher(email, password){
     const loginViewSignUpText= await this.loginViewSignUpText()
     const loginViewForgotPasswordButton= await this.loginViewForgotPasswordButton()
     const loginViewRememberMeSelected= await this.loginViewRememberMeSelected()
+    const shipwellSpinner= await this.shipwellSpinner()
 
     await this.driver.pause(2000)
     await loginViewImDriverButton.waitForDisplayed({ timeout: 5000 })
@@ -78,7 +82,15 @@ async loginShipperDispatcher(email, password){
     await loginViewRememberMeSelected.touchAction('tap')
     await loginViewSignInButton.waitForDisplayed({ timeout: 5000 })
     await loginViewSignInButton.touchAction('tap')
-    await this.driver.pause(2000)
+    await this.driver.pause(1000)
+    if (await shipwellSpinner.isDisplayed()){
+         await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+         await this.driver.pause(1000)
+        }
+    else{
+        await this.driver.pause(3000)
+    }
+    
 }
 }
 
