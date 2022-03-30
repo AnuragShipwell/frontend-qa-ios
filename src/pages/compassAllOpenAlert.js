@@ -45,7 +45,8 @@ async compassAllOpenAlert(){
     const mapView= await this.mapView()
     const backButton= await this.backButton()
     const shipwellSpinner= await this.shipwellSpinner()
-
+    
+    await this.driver.pause(2000)
     await shipperCompassViewTitle.waitForDisplayed({ timeout: 7000 })
     await shipperCompassViewTitle.waitForEnabled({ timeout: 7000 })
     await shipperCompassAllOpenlerts.waitForDisplayed({ timeout: 15000 })

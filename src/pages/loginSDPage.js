@@ -52,9 +52,10 @@ async loginShipperDispatcher(email, password){
     const loginViewForgotPasswordButton= await this.loginViewForgotPasswordButton()
     const loginViewRememberMeSelected= await this.loginViewRememberMeSelected()
 
+    await this.driver.pause(2000)
     await loginViewImDriverButton.waitForDisplayed({ timeout: 5000 })
 
-    await loginViewIHaveShipwellAccountButton.waitForEnabled({ timeout: 5000 })
+    await loginViewIHaveShipwellAccountButton.waitForDisplayed({ timeout: 5000 })
     await loginViewIHaveShipwellAccountButton.touchAction('tap')
     
     await loginViewSignInImage.waitForDisplayed({ timeout: 5000 })
@@ -62,6 +63,7 @@ async loginShipperDispatcher(email, password){
     await loginViewSignUpText.waitForDisplayed({ timeout: 5000 })
     await loginViewForgotPasswordButton.waitForDisplayed({ timeout: 5000 })
 
+    await loginViewEmailInput.waitForDisplayed({ timeout: 5000 })
     await loginViewEmailInput.touchAction('tap')
     await loginViewEmailInput.setValue(email)
 
@@ -74,7 +76,9 @@ async loginShipperDispatcher(email, password){
 
     await loginViewRememberMeSelected.waitForDisplayed({ timeout: 5000 })
     await loginViewRememberMeSelected.touchAction('tap')
+    await loginViewSignInButton.waitForDisplayed({ timeout: 5000 })
     await loginViewSignInButton.touchAction('tap')
+    await this.driver.pause(2000)
 }
 }
 
