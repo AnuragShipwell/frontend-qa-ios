@@ -13,6 +13,7 @@ describe("iOS mobileApp test", () => {
 
 test("==001==> TESTING APP INSTALLATION and VERIFY TEST bundleID", async () => {
   await app.driver.pause(2000)
+  expect(await app.driver.isAppInstalled("com.shipwell.testflight")).toBe(true);
   await app.driver.queryAppState("com.shipwell.testflight")
 
 });

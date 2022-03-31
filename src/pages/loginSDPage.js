@@ -88,7 +88,7 @@ async loginShipperDispatcher(email, password){
          await this.driver.pause(1000)
         }
     else{
-        await this.driver.pause(3000)
+        await this.driver.pause(4000)
     }
     
 }
