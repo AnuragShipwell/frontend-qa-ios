@@ -9,7 +9,7 @@ class InternalNotesPage{
         return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"ic internal notes default\"`][1]')
     }
     async quickActionInternalNotesTitle(){
-        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Internal Notes\"`]')
+        return await this.element('~Internal Notes')
     }
     //async quickActionInternalNotesShipID(){
       //  return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Shipment S4AU6R\"`]')
@@ -42,7 +42,7 @@ class InternalNotesPage{
         
         await quickActionInternalNotes.waitForDisplayed({ timeout: 10000 })
         await quickActionInternalNotes.touchAction('tap')
-        
+        await this.driver.pause(2000)
         await quickActionInternalNotesTitle.waitForDisplayed({ timeout: 5000 })
         //await quickActionInternalNotesShipID.waitForDisplayed({ timeout: 5000 })
         //await quickActionInternalNotesAddress.waitForDisplayed({ timeout: 5000 })
@@ -65,6 +65,9 @@ class InternalNotesPage{
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
+        }
+        else{
+            await this.driver.pause(3000)
         }
         await backIcon.waitForDisplayed({ timeout: 5000 })
         await backIcon.touchAction('tap')
