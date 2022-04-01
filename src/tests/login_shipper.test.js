@@ -15,6 +15,7 @@ test("==001==> TESTING APP INSTALLATION and VERIFY TEST bundleID", async () => {
   await app.driver.pause(2000)
   expect(await app.driver.isAppInstalled("com.shipwell.testflight")).toBe(true);
   await app.driver.queryAppState("com.shipwell.testflight")
+  await app.driver.pause(3000)
 
 });
 //===============================================
@@ -28,7 +29,6 @@ test("==003==> TESTING SHIPPER LOGIN FLOW", async () => {
 //===============================================
 test("==004==> TESTING SHIPPER COMPASS ALL-OPEN VIEW", async () => {
     await app.compassOpenAlert.compassAllOpenAlert()
-    //await app.shipperCompassPage.shipperCompass()
 });
 //===============================================
 test("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
