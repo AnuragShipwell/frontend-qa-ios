@@ -60,6 +60,7 @@ class ChatPage{
         else{
             await loadChatButton.touchAction('tap')
         }
+        await this.driver.pause(2000)
         await quickActionChatInput.waitForDisplayed({ timeout: 5000 })
         await quickActionChatInput.touchAction('tap')
         await quickActionChatInput.setValue("Testing")
