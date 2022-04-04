@@ -57,6 +57,7 @@ class SideMenuPage{
     const inboxMessagesButton= await this.inboxMessagesButton()
     const inboxNotificationsButton1= await this.inboxNotificationsButton()
     
+    await this.driver.pause(3000)
     if (await hamburger.isDisplayed()){
         await hamburger.touchAction('tap')
     }
@@ -78,7 +79,7 @@ class SideMenuPage{
 
     await inboxMessagesButton.waitForDisplayed({ timeout: 5000 })
     await inboxNotificationsButton1.waitForDisplayed({ timeout: 5000 })
-    await this.driver.pause(2000)
+    await this.driver.pause(3000)
 }
 
 }

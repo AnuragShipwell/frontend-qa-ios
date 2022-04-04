@@ -133,10 +133,11 @@ class ShipmentPage{
         const shipmentDeliveryButton= await this.shipmentDeliveryButton()
         const shipwellSpinner= await this.shipwellSpinner()
 
+        await this.driver.pause(3000)
         if (await hamburger.isDisplayed()){
             await hamburger.touchAction('tap')
         }
-        await this.driver.pause(1000)
+        await this.driver.pause(2000)
         await shipmentButton.waitForDisplayed({ timeout: timeOut })
         await shipmentButton.touchAction('tap')
         await this.driver.pause(2000)
@@ -150,7 +151,7 @@ class ShipmentPage{
         else{
             await this.driver.pause(3000)
         }
-        await this.driver.pause(2000)
+        await this.driver.pause(3000)
         await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
         await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
