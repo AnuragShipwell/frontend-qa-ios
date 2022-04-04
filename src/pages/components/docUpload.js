@@ -72,7 +72,7 @@ class DocUploadPage{
         return await this.element('~Success')
     }
     async successModalOkSavebutton(){
-        return await this.element('~OK')
+        return await this.element('~SuccessModalConfirmBtn')
     }
     async saveImagePreview(){
         return await this.element('//XCUIElementTypeImage')
@@ -169,7 +169,7 @@ class DocUploadPage{
             await pickerWhell.addValue("Proof of Delivery (POD)")
 
             await documentInfoDescription.waitForDisplayed({ timeout: 5000 })
-            await documentInfoDescription.touchAction('tap')
+            //await documentInfoDescription.touchAction('tap')
             await documentInfoDescription.setValue('Testing')
 
             if (await doneButton.isDisplayed()){
@@ -181,10 +181,13 @@ class DocUploadPage{
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
-
+            else{
+                await this.driver.pause(3000)
+            }
+            await this.driver.pause(3000)
             await successModalOkSavebutton.waitForDisplayed({ timeout: 10000 })
             await successModalOkSavebutton.touchAction('tap')
-        
+            await this.driver.pause(1000)
             await documentPreviewTitle.waitForDisplayed({ timeout: 15000 })
             await saveImagePreview.waitForDisplayed({ timeout: 5000 })
             await this.driver.pause(1000)

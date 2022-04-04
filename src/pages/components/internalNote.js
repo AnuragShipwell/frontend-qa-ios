@@ -29,6 +29,9 @@ class InternalNotesPage{
     async shipwellSpinner(){
         return await this.element('~ShipwellSpinner')
     }
+    async doneButton(){
+        return await this.element("~done")
+    }
 
     async shipmentInternalNotes(){
         const quickActionInternalNotes= await this.quickActionInternalNotes()
@@ -39,6 +42,7 @@ class InternalNotesPage{
         const quickActionChatSendButton= await this.quickActionChatSendButton()
         const backIcon= await this.backIcon()
         const shipwellSpinner= await this.shipwellSpinner()
+        const doneButton= await this.doneButton()
         
         await quickActionInternalNotes.waitForDisplayed({ timeout: 10000 })
         await quickActionInternalNotes.touchAction('tap')
@@ -48,12 +52,14 @@ class InternalNotesPage{
         //await quickActionInternalNotesAddress.waitForDisplayed({ timeout: 5000 })
         
         await quickActionChatInput.waitForDisplayed({ timeout: 5000 })
+        await this.driver.pause(2000)
         await quickActionChatInput.touchAction('tap')
         await quickActionChatInput.setValue('Testing')
+        await this.driver.hideKeyboard()
 
         await quickActionChatSendButton.waitForDisplayed({ timeout: 5000 })
         await quickActionChatSendButton.touchAction('tap')
-        await this.driver.pause(500)
+        await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
         }

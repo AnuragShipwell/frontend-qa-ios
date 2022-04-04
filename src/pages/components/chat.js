@@ -8,9 +8,6 @@ class ChatPage{
     async quickActionChat(){
         return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"ic singleChat\"`][1]')
     }
-    async chatButton(){
-        return await this.element('~ic singleChat')
-    }
     async loadChatButton(){
         return await this.element('~LoadDetailsChatBtn')
     }
@@ -38,9 +35,12 @@ class ChatPage{
     async loadDetailBackButton(){
         return await this.element('~LoadDetailsBackBtn')
     }
+    async doneButton(){
+        return await this.element("~done")
+    }
+
     async chat(){
         const shipperCompassAllOpenTitle= await this.shipperCompassAllOpenTitle()
-        const chatButton= await this.chatButton()
         const quickActionChat= await this.quickActionChat()
         //const quickActionChatTitle= await this.quickActionChatTitle()
         //const quickActionChatTitle1= await this.quickActionChatTitle1()
@@ -50,21 +50,22 @@ class ChatPage{
         const messageBackButton= await this.messageBackButton()
         const loadChatButton= await this.loadChatButton()
         const loadDetailBackButton= await this.loadDetailBackButton()
+        const doneButton= await this.doneButton()
+
         await this.driver.pause(2000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
             await quickActionChat.touchAction('tap')
         }
-        //if (await quickActionChatTitle.isDisplayed()){
-          //  await chatButton.touchAction('tap')
-        //}
         else{
             await loadChatButton.touchAction('tap')
         }
         await this.driver.pause(2000)
         await quickActionChatInput.waitForDisplayed({ timeout: 5000 })
+        await this.driver.pause(2000)
         await quickActionChatInput.touchAction('tap')
         await quickActionChatInput.setValue("Testing")
-
+        await this.driver.hideKeyboard()
+        await this.driver.pause(1000)
         await quickActionChatSendButton.waitForDisplayed({ timeout: 5000 })
         await quickActionChatSendButton.touchAction('tap')
 
