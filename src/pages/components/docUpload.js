@@ -133,6 +133,7 @@ class DocUploadPage{
             await documentUploadButton.touchAction('tap')
             backIcon1=backIcon;
         }
+        await this.driver.pause(3000)
         await shipDocumentTitle.waitForDisplayed({ timeout: 5000 })
         await shipUploadDocumentText.waitForDisplayed({ timeout: 5000 })
         
