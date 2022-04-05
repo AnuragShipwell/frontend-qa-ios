@@ -153,10 +153,17 @@ class ShipmentPage{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
         }
-        else{
-            await this.driver.pause(3000)
-        }
         await this.driver.pause(3000)
+        if (await shipActiveButtonInside.isDisplayed()==false){
+            if (await hamburger.isDisplayed()){
+                await hamburger.touchAction('tap')
+                await shipmentActiveButton.touchAction('tap')
+                await this.driver.pause(2000)
+            }
+            else{
+                await this.driver.pause(3000)
+            }
+        }
         await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
         await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
