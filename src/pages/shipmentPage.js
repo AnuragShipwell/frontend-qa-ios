@@ -151,7 +151,7 @@ class ShipmentPage{
         await shipmentActiveButton.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
         }
         else{
             await this.driver.pause(3000)
@@ -166,7 +166,7 @@ class ShipmentPage{
         await shipShipmentSearchInput.setValue(activeShipmentID)
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
         }
         else{
             await this.driver.pause(3000)
@@ -175,7 +175,7 @@ class ShipmentPage{
         await shipSearchedShipmentText.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
         }
         else{
             await this.driver.pause(3000)
