@@ -138,9 +138,14 @@ class ShipmentPage{
             await hamburger.touchAction('tap')
         }
         await this.driver.pause(2000)
-        await shipmentButton.waitForDisplayed({ timeout: timeOut })
+        await shipmentButton.waitForDisplayed({ timeout: 10000})
+        await this.driver.pause(2000)
         await shipmentButton.touchAction('tap')
         await this.driver.pause(2000)
+        if (await shipmentActiveButton.isDisplayed()==false){
+            await shipmentButton.touchAction('tap')
+            await this.driver.pause(2000)
+        }
         await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
         await shipmentDeliveryButton.waitForDisplayed({ timeout: timeOut })
         await shipmentActiveButton.touchAction('tap')

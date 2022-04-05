@@ -66,12 +66,11 @@ test("==012==> TESTING SHIPPER SIDE MENU COMPONENT", async () => {
     await app.sideMenuPage.sideMenu()
 });
 //==============================================
-/*
 test("==013==> TESTING SHIPPER SHIPMENT VIEW: ACTIVE AND DELIVERED", async () => {
     await app.shipmentPage.shipment("KCJSG5", 15000)
 });
 //==============================================
 test("==014==> TESTING INBOX: MESSAGES AND NOTIFICATIONS VIEW", async () => {
   await app.inboxPage.inbox()
-});*/
+});
 });
