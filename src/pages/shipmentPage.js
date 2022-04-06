@@ -154,6 +154,11 @@ class ShipmentPage{
             await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
         }
         await this.driver.pause(3000)
+        console.log("================================================================")
+        console.log("================================================================")
+        console.log("================================================================")
+        console.log("================================================================")
+        await this.driver.getPageSource()
         if (await shipActiveButtonInside.isDisplayed()==false){
             if (await hamburger.isDisplayed()){
                 await hamburger.touchAction('tap')
