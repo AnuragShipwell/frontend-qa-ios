@@ -157,15 +157,16 @@ class ShipmentPage{
         if (await shipActiveButtonInside.isDisplayed()==false){
             if (await hamburger.isDisplayed()){
                 await hamburger.touchAction('tap')
+                if (await shipmentActiveButton.isDisplayed()==false){
+                    await shipmentButton.touchAction('tap')
+                    await this.driver.pause(2000)
+                }
                 await shipmentActiveButton.touchAction('tap')
                 await this.driver.pause(2000)
             }
-            else{
-                await this.driver.pause(3000)
-            }
         }
-        //await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
-        //await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
+        await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
+        await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
 
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
