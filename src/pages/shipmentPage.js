@@ -19,10 +19,10 @@ class ShipmentPage{
         return await this.element('~DELIVERED')
     }
     async shipActiveButtonInside(){
-        return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"ACTIVE\"`]')
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"ACTIVE\"`][2]')
     }
     async shipDeliveredButton(){
-        return await this.element('-ios class chain:**/XCUIElementTypeButton[`label == \"DELIVERED\"`]')
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"DELIVERED\"`][2]')
     }
     async shipShipmentListTitle(){
         return await this.element('~ShipmentListTitle')
@@ -164,8 +164,8 @@ class ShipmentPage{
                 await this.driver.pause(3000)
             }
         }
-        await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
-        await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
+        //await shipActiveButtonInside.waitForDisplayed({ timeout: timeOut })
+        //await shipDeliveredButton.waitForDisplayed({ timeout: timeOut })
         await shipShipmentListTitle.waitForDisplayed({ timeout: timeOut })
 
         await shipShipmentSearchInput.waitForDisplayed({ timeout: timeOut })
