@@ -65,6 +65,9 @@ class InboxPage{
         await inboxText.waitForDisplayed({ timeout: 5000 })
         await inboxText.touchAction('tap')
 
+        if (await inboxMessages.isDisplayed()==false){
+            await inboxText.touchAction('tap')
+        }
         //Checking Inbox >> Messages
         await inboxMessages.waitForDisplayed({ timeout: 5000 })
         await inboxMessages.touchAction('tap')
