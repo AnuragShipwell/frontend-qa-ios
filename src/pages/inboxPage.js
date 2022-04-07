@@ -44,6 +44,9 @@ class InboxPage{
     async redDotNotification(){
         return await this.element("-ios class chain:**/XCUIElementTypeOther[`name == \"SWNotificationsViewController\"`]/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeOther[3]")
     }
+    async shipwellSpinner(){
+        return await this.element('~ShipwellSpinner')
+    }
     async inbox(){
         const hamburgerButton= await this.hamburgerButton()
         const inboxText= await this.inboxText()
@@ -58,6 +61,7 @@ class InboxPage{
         const notificationReadtext= await this.notificationReadtext()
         const notificationUnReadtext= await this.notificationUnReadtext()
         const redDotNotification= await this.redDotNotification()
+        const shipwellSpinner= await this.shipwellSpinner()
         await this.driver.pause(2000)
         if (await hamburgerButton.isDisplayed()){
             await hamburgerButton.touchAction('tap')
@@ -71,7 +75,10 @@ class InboxPage{
         //Checking Inbox >> Messages
         await inboxMessages.waitForDisplayed({ timeout: 5000 })
         await inboxMessages.touchAction('tap')
-
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()==true){
+            await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
+        }
         await inboxMessagesTitle.waitForDisplayed({ timeout: 5000 })
         await inboxMessageTop.waitForDisplayed({ timeout: 5000 })
         await inboxMessageBottom.waitForDisplayed({ timeout: 5000 })
@@ -80,7 +87,10 @@ class InboxPage{
         //Checking Inbox >> Notification
         await inboxNotification.waitForDisplayed({ timeout: 5000 })
         await inboxNotification.touchAction('tap')
-
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()==true){
+            await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
+        }
         await inboxNotificationsTitle.waitForDisplayed({ timeout: 5000 })
         await newShipmentTopNotification.waitForDisplayed({ timeout: 5000 })
         await newShipmentButtomNotification.waitForDisplayed({ timeout: 5000 })
