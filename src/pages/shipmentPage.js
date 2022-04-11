@@ -184,6 +184,7 @@ class ShipmentPage{
         else{
             await this.driver.pause(3000)
         }
+        await this.driver.pause(1000)
         await shipSearchedShipmentText.waitForDisplayed({ timeout: timeOut })
         await shipSearchedShipmentText.touchAction('tap')
         await this.driver.pause(1000)
@@ -193,6 +194,7 @@ class ShipmentPage{
         else{
             await this.driver.pause(3000)
         }
+        await this.driver.pause(1000)
         await shipmentTitletext.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedText.waitForDisplayed({ timeout: timeOut })
         await shipDispatchedTextTick.waitForDisplayed({ timeout: timeOut })

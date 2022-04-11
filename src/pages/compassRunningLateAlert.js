@@ -124,6 +124,7 @@ class RunningLateAlert{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
         }
+        await this.driver.pause(1000)
         await shipperCompassViewRunningLateTitle.waitForDisplayed({ timeout: 15000 })
         await compassShipmentCard.waitForDisplayed({timeout: 15000})
         await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 15000})
@@ -227,6 +228,7 @@ class RunningLateAlert{
             if (await shipwellSpinner.isDisplayed()==true){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
             }
+            await this.driver.pause(1000)
         }
         }
         else{

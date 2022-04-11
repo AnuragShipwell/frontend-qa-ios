@@ -77,8 +77,9 @@ class InboxPage{
         await inboxMessages.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()==true){
-            await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
         }
+        await this.driver.pause(2000)
         await inboxMessagesTitle.waitForDisplayed({ timeout: 5000 })
         await inboxMessageTop.waitForDisplayed({ timeout: 5000 })
         await inboxMessageBottom.waitForDisplayed({ timeout: 5000 })
@@ -89,11 +90,12 @@ class InboxPage{
         await inboxNotification.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()==true){
-            await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
         }
+        await this.driver.pause(1000)
         await inboxNotificationsTitle.waitForDisplayed({ timeout: 5000 })
         await newShipmentTopNotification.waitForDisplayed({ timeout: 5000 })
-        await newShipmentButtomNotification.waitForDisplayed({ timeout: 5000 })
+        //await newShipmentButtomNotification.waitForDisplayed({ timeout: 5000 })
 
         if(await redDotNotification.isDisplayed()){
             await this.driver.touchPerform([

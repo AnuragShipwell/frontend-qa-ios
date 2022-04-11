@@ -87,9 +87,8 @@ async loginShipperDispatcher(email, password){
          await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
          await this.driver.pause(1000)
         }
-    else{
-        await this.driver.pause(4000)
-    }
+   
+    await this.driver.pause(3000)
     
 }
 }

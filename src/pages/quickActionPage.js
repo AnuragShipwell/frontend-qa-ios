@@ -40,6 +40,7 @@ async quickAction(){
     else{
         await this.driver.pause(5000)
     }
+    await this.driver.pause(1000)
     await shipperCompassOpenAllTitle.waitForDisplayed({ timeout: 5000 })
     await this.driver.pause(2000)
 

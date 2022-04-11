@@ -126,6 +126,7 @@ class LoadPage{
   else{
     await this.driver.pause(4000)
   }
+  await this.driver.pause(1000)
   
   
   //Searching for an open shipment
