@@ -39,7 +39,7 @@ test("==006==> TESTING SHIPPER COMPASS LATE PICK UP VIEW", async () => {
   await app.compassLatePickupAlert.compassLatePickUpAlert()
 });
 //==============================================
-test("==007==> TESTING SHIPPER COMPASS LATE DELIVERY VIEW", async () => {
+test.skip("==007==> TESTING SHIPPER COMPASS LATE DELIVERY VIEW", async () => {
   await app.compassLateDeliveryAlert.lateDeliveryAlert()
 });
 //==============================================
