@@ -12,13 +12,13 @@ class InboxPage{
         return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"Inbox\"`]')
     }
     async inboxMessages(){
-        return await this.element('-ios class chain:**/XCUIElementTypeTable[`name == \"SWSideMenuController-table\"`]/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
+        return await this.element('~MESSAGES')
     }
     async inboxNotification(){
-        return await this.element('-ios class chain:**/XCUIElementTypeTable[`name == \"SWSideMenuController-table\"`]/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther')
+        return await this.element('~NOTIFICATIONS')
     }
     async inboxMessagesTitle(){
-      return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Messages\"`]')
+      return await this.element('~MessagesHubTitle')
     }
     async inboxMessageTop(){
         return await this.element('-ios class chain:**/XCUIElementTypeCell[`name == \"ShipmentMessagesCardParentView\"`][1]')
@@ -72,6 +72,7 @@ class InboxPage{
         if (await inboxMessages.isDisplayed()==false){
             await inboxText.touchAction('tap')
         }
+        await this.driver.pause(1000)
         //Checking Inbox >> Messages
         await inboxMessages.waitForDisplayed({ timeout: 5000 })
         await inboxMessages.touchAction('tap')
@@ -79,7 +80,7 @@ class InboxPage{
         if (await shipwellSpinner.isDisplayed()==true){
             await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
         }
-        await this.driver.pause(2000)
+        await this.driver.pause(1000)
         await inboxMessagesTitle.waitForDisplayed({ timeout: 5000 })
         await inboxMessageTop.waitForDisplayed({ timeout: 5000 })
         await inboxMessageBottom.waitForDisplayed({ timeout: 5000 })
