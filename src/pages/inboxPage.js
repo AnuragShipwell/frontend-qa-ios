@@ -81,7 +81,7 @@ class InboxPage{
             await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
         }
         await this.driver.pause(1000)
-        await inboxMessagesTitle.waitForDisplayed({ timeout: 5000 })
+        await inboxMessagesTitle.waitForDisplayed({ timeout: 10000 })
         await inboxMessageTop.waitForDisplayed({ timeout: 5000 })
         await inboxMessageBottom.waitForDisplayed({ timeout: 5000 })
         await hamburgerButton.touchAction('tap')
