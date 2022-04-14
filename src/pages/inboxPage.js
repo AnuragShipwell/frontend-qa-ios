@@ -83,7 +83,7 @@ class InboxPage{
         await this.driver.pause(1000)
         await inboxMessagesTitle.waitForDisplayed({ timeout: 10000 })
         await inboxMessageTop.waitForDisplayed({ timeout: 5000 })
-        await inboxMessageBottom.waitForDisplayed({ timeout: 5000 })
+        //await inboxMessageBottom.waitForDisplayed({ timeout: 5000 })
         await hamburgerButton.touchAction('tap')
 
         //Checking Inbox >> Notification
