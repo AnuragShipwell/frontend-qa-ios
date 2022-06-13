@@ -71,7 +71,7 @@ test("==013==> TESTING SHIPPER SHIPMENT VIEW: ACTIVE AND DELIVERED", async () =>
     await app.shipmentPage.shipment("KCJSG5", 15000)
 });*/
 //==============================================
-test("==014==> TESTING INBOX: MESSAGES AND NOTIFICATIONS VIEW", async () => {
+/*test("==014==> TESTING INBOX: MESSAGES AND NOTIFICATIONS VIEW", async () => {
   await app.inboxPage.inbox()
-});
+});*/
 });
