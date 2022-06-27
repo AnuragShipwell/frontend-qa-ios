@@ -217,7 +217,7 @@ class CompassCarrierNotAssignedAlert{
         await this.driver.pause(1000)
         try{
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
             }
             await this.driver.pause(1000)
             await shipperCompassViewCarrierNotAssignedTitle.waitForDisplayed({ timeout: 5000 })
@@ -297,7 +297,7 @@ class CompassCarrierNotAssignedAlert{
             await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: 15000 })
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -346,6 +346,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
             else{
                 await this.driver.pause(10000)
             }
+            await this.driver.pause(1000)
             await CNARequestBidTitle.waitForDisplayed({ timeout: 10000 })
             await CNAcarrierNameInput.waitForDisplayed({ timeout: 15000 })
             await CNAcarrierNameInput.setValue('Anurag')

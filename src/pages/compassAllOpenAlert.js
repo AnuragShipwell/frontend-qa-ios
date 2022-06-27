@@ -53,9 +53,11 @@ async compassAllOpenAlert(){
     await shipperCompassAllOpenlerts.waitForEnabled({ timeout: 15000 })
     await shipperCompassAllOpenlerts.touchAction('tap')
     await this.driver.pause(1000)
+    await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
-        await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
+        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
     }
+    await this.driver.pause(1000)
     await shipperCompassAllOpenTitle.waitForDisplayed({ timeout: 8000 })
 
     await compassShipmentCard.waitForDisplayed({timeout: 15000})

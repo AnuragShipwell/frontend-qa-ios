@@ -38,6 +38,9 @@ class ChatPage{
     async doneButton(){
         return await this.element("~done")
     }
+    async shipwellSpinner(){
+        return await this.element('~ShipwellSpinner')
+    }
 
     async chat(){
         const shipperCompassAllOpenTitle= await this.shipperCompassAllOpenTitle()
@@ -51,6 +54,7 @@ class ChatPage{
         const loadChatButton= await this.loadChatButton()
         const loadDetailBackButton= await this.loadDetailBackButton()
         const doneButton= await this.doneButton()
+        const shipwellSpinner= await this.shipwellSpinner()
 
         await this.driver.pause(2000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
@@ -77,6 +81,9 @@ class ChatPage{
             await loadDetailBackButton.touchAction('tap')
         }
         await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+        }
     }
 }
 

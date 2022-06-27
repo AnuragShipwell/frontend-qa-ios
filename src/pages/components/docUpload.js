@@ -133,6 +133,8 @@ class DocUploadPage{
             await documentUploadButton.touchAction('tap')
             backIcon1=backIcon;
         }
+
+
         await this.driver.pause(3000)
         await shipDocumentTitle.waitForDisplayed({ timeout: 5000 })
         await shipUploadDocumentText.waitForDisplayed({ timeout: 5000 })
@@ -220,7 +222,7 @@ class DocUploadPage{
             await testback.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
             }
 
 

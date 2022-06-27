@@ -79,7 +79,7 @@ class InternalNotesPage{
         await backIcon.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 20000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
         }
         await this.driver.pause(2000)
     

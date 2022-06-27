@@ -82,7 +82,7 @@ async lateDeliveryAlert(){
     await this.driver.pause(1000)
     try{
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
         }
         await shipperCompassViewLateDeliveryTitle.waitForDisplayed({ timeout: 5000 })
         await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 5000})
@@ -134,7 +134,7 @@ async lateDeliveryAlert(){
             await stopDetailsbackButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)

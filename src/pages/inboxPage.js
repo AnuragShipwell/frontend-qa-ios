@@ -93,7 +93,7 @@ class InboxPage{
         if (await shipwellSpinner.isDisplayed()==true){
             await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
         }
-        await this.driver.pause(1000)
+        await this.driver.pause(2000)
         await inboxNotificationsTitle.waitForDisplayed({ timeout: 5000 })
         await newShipmentTopNotification.waitForDisplayed({ timeout: 5000 })
         //await newShipmentButtomNotification.waitForDisplayed({ timeout: 5000 })

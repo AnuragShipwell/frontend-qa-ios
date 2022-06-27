@@ -35,7 +35,7 @@ async quickAction(){
     await shipperCompassOpenAllAlerts.touchAction('tap')
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()==true){
-        await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
     }
     else{
         await this.driver.pause(5000)
