@@ -143,7 +143,10 @@ async lateDeliveryAlert(){
             await backButton.waitForDisplayed({timeout: 15000})
             await backButton.touchAction('tap')
         }
-        await this.driver.pause(2000)
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+        }
     }
     catch (error){
         console.log(error)

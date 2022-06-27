@@ -47,12 +47,14 @@ async compassAllOpenAlert(){
     const shipwellSpinner= await this.shipwellSpinner()
     
     await this.driver.pause(2000)
+    if (await shipwellSpinner.isDisplayed()){
+        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+    }
     await shipperCompassViewTitle.waitForDisplayed({ timeout: 7000 })
     await shipperCompassViewTitle.waitForEnabled({ timeout: 7000 })
     await shipperCompassAllOpenlerts.waitForDisplayed({ timeout: 15000 })
     await shipperCompassAllOpenlerts.waitForEnabled({ timeout: 15000 })
     await shipperCompassAllOpenlerts.touchAction('tap')
-    await this.driver.pause(1000)
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
         await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
@@ -69,7 +71,10 @@ async compassAllOpenAlert(){
     await this.driver.pause(1000)
     await shipperCompassViewShipmentButton.touchAction('tap')
     await backButton.touchAction('tap')
-    await this.driver.pause(2000)
+    await this.driver.pause(1000)
+    if (await shipwellSpinner.isDisplayed()){
+        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+    }
 }
 
 }
