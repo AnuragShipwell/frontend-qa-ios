@@ -77,11 +77,14 @@ class CompassNotTrackingAlert{
     async NTSendNotTrackingEmailButton(){
         return await this.element('~Send Not Tracking Email')
     }
-    async NTSendEmailContact1(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeOther[1]')
+    async NTSendEmailCarrierContact(){
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label CONTAINS[c] \"Carrier\"`]')
     }
-    async NTSendEmailContact2(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeOther[1]')
+    async NTSendEmailStop1Contact(){
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label CONTAINS[c] \"Stop 1\"`]')
+    }
+    async NTSendEmailStop2Contact(){
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label CONTAINS[c] \"Stop 2\"`]')
     }
     async NTSendEmailAdditionalContact(){
         return await this.element('-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][1]')
@@ -132,8 +135,9 @@ class CompassNotTrackingAlert{
         const compassActionButton= await this.compassActionButton()
         const NTAddLocationEventOnTimeLineButton= await this.NTAddLocationEventOnTimeLineButton()
         const NTSendNotTrackingEmailButton= await this.NTSendNotTrackingEmailButton()
-        const NTSendEmailContact1= await this.NTSendEmailContact1()
-        const NTSendEmailContact2= await this.NTSendEmailContact2()
+        const NTSendEmailCarrierContact= await this.NTSendEmailCarrierContact()
+        const NTSendEmailStop1Contact= await this.NTSendEmailStop1Contact()
+        const NTSendEmailStop2Contact= await this.NTSendEmailStop2Contact()
         const NTSendEmailAdditionalContact= await this.NTSendEmailAdditionalContact()
         const NTSendEmailSelectTemplate= await this.NTSendEmailSelectTemplate()
         const NTSendEmailCustomerMessage= await this.NTSendEmailCustomerMessage()
@@ -243,8 +247,9 @@ class CompassNotTrackingAlert{
             await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: timeOut})
             await NTSendNotTrackingEmailButton.waitForDisplayed({timeout: timeOut})
             await NTSendNotTrackingEmailButton.touchAction('tap')
-            await NTSendEmailContact1.waitForDisplayed({timeout: timeOut})
-            await NTSendEmailContact2.waitForDisplayed({timeout: timeOut})
+            await NTSendEmailCarrierContact.waitForDisplayed({timeout: timeOut})
+            await NTSendEmailStop1Contact.waitForDisplayed({timeout: timeOut})
+            await NTSendEmailStop2Contact.waitForDisplayed({timeout: timeOut})
             await NTSendEmailAdditionalContact.waitForDisplayed({timeout: timeOut})
             await NTSendEmailAdditionalContact.setValue('anurag371@gmail.com')
             await this.driver.pause(1000)
