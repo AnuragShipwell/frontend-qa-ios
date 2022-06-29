@@ -107,7 +107,7 @@ class CompassNotTrackingAlert{
     async backButton(){
         return await this.element("~back icon")
     }
-    async compassNotTrackingAlert(){
+    async compassNotTrackingAlert(timeOut=20000){
         const shipperCompassViewNotTrackingAlerts= await this.shipperCompassViewNotTrackingAlerts()
         const shipperCompassViewNotTrackingTitle= await this.shipperCompassViewNotTrackingTitle()
         const compassShipmentCard= await this.compassShipmentCard()
@@ -143,6 +143,12 @@ class CompassNotTrackingAlert{
         const saveButton= await this.saveButton()
         const backButton= await this.backButton()
 
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+        }
+        await this.driver.pause(1000)
+
         if (await shipperCompassViewNotTrackingAlerts.isDisplayed()==false){
             await this.driver.touchPerform([
                 {action: "longPress", options: {x: 14, y: 215}},
@@ -159,66 +165,70 @@ class CompassNotTrackingAlert{
                 ])
             }
         }
+        if (await doneButton.isDisplayed()){
+            await doneButton.touchAction('tap')
+        } 
         //Not Tracking View
+        await this.driver.pause(1000)
         await shipperCompassViewNotTrackingAlerts.touchAction('tap')
         await this.driver.pause(1000)
         try{
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             await this.driver.pause(1000)
-            await shipperCompassViewNotTrackingTitle.waitForDisplayed({ timeout: 5000 })
-            await compassShipmentCard.waitForDisplayed({timeout: 5000})
-            await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 5000})
-            await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 5000})
+            await shipperCompassViewNotTrackingTitle.waitForDisplayed({ timeout: timeOut })
+            await compassShipmentCard.waitForDisplayed({timeout: timeOut})
+            await shipperCompassViewShipmentButton.waitForDisplayed({timeout: timeOut})
+            await shipperCompassViewMapViewButton.waitForDisplayed({timeout: timeOut})
 
             await shipperCompassViewMapViewButton.touchAction('tap')
-            await mapView.waitForDisplayed({timeout: 5000})
+            await mapView.waitForDisplayed({timeout: timeOut})
 
             await shipperCompassViewShipmentButton.touchAction('tap')
-            await compassShipmentCard.waitForDisplayed({timeout: 15000})
+            await compassShipmentCard.waitForDisplayed({timeout: timeOut})
 
             await compassShipmentCard.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
             }
             await this.driver.pause(1000)
-            await NTDriverSection.waitForDisplayed({timeout: 15000})
+            await NTDriverSection.waitForDisplayed({timeout: timeOut})
             if (await NTdriverPhoneText.isDisplayed()){
-                    await NTDriverCallButton.waitForDisplayed({timeout: 15000})
+                    await NTDriverCallButton.waitForDisplayed({timeout: timeOut})
                 }
-            await NTShipwellAppTrackingSection.waitForDisplayed({timeout: 15000})
-            await NTStartAppTrackingButton.waitForDisplayed({timeout: 15000})
-            await NTRequestAppInstall.waitForDisplayed({timeout: 15000})
-            await NTEquipmentSection.waitForDisplayed({timeout: 15000})
+            await NTShipwellAppTrackingSection.waitForDisplayed({timeout: timeOut})
+            await NTStartAppTrackingButton.waitForDisplayed({timeout: timeOut})
+            await NTRequestAppInstall.waitForDisplayed({timeout: timeOut})
+            await NTEquipmentSection.waitForDisplayed({timeout: timeOut})
             await this.driver.pause(1000)
         //Driver section
-            await NTDriverSection.waitForDisplayed({timeout: 15000})
+            await NTDriverSection.waitForDisplayed({timeout: timeOut})
             await NTDriverSection.touchAction('tap')
-            await NTDriverAndEquipmentHeader.waitForDisplayed({timeout: 15000})
-            await NTDriverPhoneNumberInput.waitForDisplayed({timeout: 15000})
+            await NTDriverAndEquipmentHeader.waitForDisplayed({timeout: timeOut})
+            await NTDriverPhoneNumberInput.waitForDisplayed({timeout: timeOut})
             await NTDriverPhoneNumberInput.clearValue()
             await NTDriverPhoneNumberInput.setValue('15128064080')
-            await NTSelectPowerUnit.waitForDisplayed({timeout: 15000})
+            await NTSelectPowerUnit.waitForDisplayed({timeout: timeOut})
             await NTSelectPowerUnit.touchAction('tap')
-            await NTSelectPowerUnitResult.waitForDisplayed({timeout: 15000})
+            await NTSelectPowerUnitResult.waitForDisplayed({timeout: timeOut})
             await NTSelectPowerUnitResult.touchAction('tap')
-            await NTSelectTrailer.waitForDisplayed({timeout: 15000})
+            await NTSelectTrailer.waitForDisplayed({timeout: timeOut})
             await NTSelectTrailer.clearValue()
             await NTSelectTrailer.setValue('Ford')
             await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
-            await NTAssignButton.waitForDisplayed({timeout: 15000})
+            await NTAssignButton.waitForDisplayed({timeout: timeOut})
             await NTAssignButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -227,22 +237,22 @@ class CompassNotTrackingAlert{
 
         //Send Email
             await this.driver.pause(2000)
-            await compassActionButton.waitForDisplayed({timeout: 15000})
+            await compassActionButton.waitForDisplayed({timeout: timeOut})
             await compassActionButton.touchAction('tap')
             await this.driver.pause(1000)
-            await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: 15000})
-            await NTSendNotTrackingEmailButton.waitForDisplayed({timeout: 15000})
+            await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: timeOut})
+            await NTSendNotTrackingEmailButton.waitForDisplayed({timeout: timeOut})
             await NTSendNotTrackingEmailButton.touchAction('tap')
-            await NTSendEmailContact1.waitForDisplayed({timeout: 15000})
-            await NTSendEmailContact2.waitForDisplayed({timeout: 15000})
-            await NTSendEmailAdditionalContact.waitForDisplayed({timeout: 15000})
+            await NTSendEmailContact1.waitForDisplayed({timeout: timeOut})
+            await NTSendEmailContact2.waitForDisplayed({timeout: timeOut})
+            await NTSendEmailAdditionalContact.waitForDisplayed({timeout: timeOut})
             await NTSendEmailAdditionalContact.setValue('anurag371@gmail.com')
             await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
-            await NTSendEmailSelectTemplate.waitForDisplayed({timeout: 15000})
-            await NTSendEmailCustomerMessage.waitForDisplayed({timeout: 15000})
+            await NTSendEmailSelectTemplate.waitForDisplayed({timeout: timeOut})
+            await NTSendEmailCustomerMessage.waitForDisplayed({timeout: timeOut})
             await NTSendEmailCustomerMessage.setValue('Testing, kindly ignore')
             await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
@@ -251,35 +261,35 @@ class CompassNotTrackingAlert{
             await saveButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
             }
             await this.driver.pause(2000)
-            await compassShipmentCard.waitForDisplayed({timeout: 15000})
+            await compassShipmentCard.waitForDisplayed({timeout: timeOut})
             await compassShipmentCard.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
             }
             await this.driver.pause(2000)
-            await compassActionButton.waitForDisplayed({timeout: 15000})
+            await compassActionButton.waitForDisplayed({timeout: timeOut})
             await compassActionButton.touchAction('tap')
             await this.driver.pause(1000)
-            await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: 15000})
+            await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: timeOut})
             await NTAddLocationEventOnTimeLineButton.touchAction('tap')
             await NTAdddEventlocationZipCode.setValue('78746')
-            await NTAdddEventlocationZipCodeResult.waitForDisplayed({timeout: 15000})
+            await NTAdddEventlocationZipCodeResult.waitForDisplayed({timeout: timeOut})
             await NTAdddEventlocationZipCodeResult.touchAction('tap')
             await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
-            await NTAddEventDescription.waitForDisplayed({timeout: 15000})
+            await NTAddEventDescription.waitForDisplayed({timeout: timeOut})
             await NTAddEventDescription.setValue('Testing, kindly ignore')
             await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
@@ -287,18 +297,18 @@ class CompassNotTrackingAlert{
             }
             await saveButton.touchAction('tap')
             await this.driver.pause(1000)
-            if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
             }
             await this.driver.pause(2000)
-            await backButton.waitForDisplayed({timeout: 15000})
+            await backButton.waitForDisplayed({timeout: timeOut})
             await backButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
         }
         catch (error){

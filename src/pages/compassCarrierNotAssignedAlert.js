@@ -146,7 +146,7 @@ class CompassCarrierNotAssignedAlert{
     async backButton(){
         return await this.element("~back icon")
     }
-    async carrierNotAssignedAlert(){
+    async carrierNotAssignedAlert(timeOut=20000){
         const shipperCompassViewCarrierNotAssignedAlerts= await this.shipperCompassViewCarrierNotAssignedAlerts()
         const shipperCompassViewCarrierNotAssignedTitle= await this.shipperCompassViewCarrierNotAssignedTitle()
         const compassShipmentCard= await this.compassShipmentCard()
@@ -196,6 +196,10 @@ class CompassCarrierNotAssignedAlert{
         const backButton= await this.backButton()
         
         await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+        }
+        await this.driver.pause(1000)
         if (await shipperCompassViewCarrierNotAssignedAlerts.isDisplayed()==false){
             await this.driver.touchPerform([
                 {action: "longPress", options: {x: 14, y: 215}},
@@ -212,53 +216,54 @@ class CompassCarrierNotAssignedAlert{
                 ])
             }
         }
-        //Carrier Not Assigned View   
+        //Carrier Not Assigned View
+        await shipperCompassViewCarrierNotAssignedAlerts.waitForDisplayed({timeout: timeOut})   
         await shipperCompassViewCarrierNotAssignedAlerts.touchAction('tap')
         await this.driver.pause(1000)
         try{
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             await this.driver.pause(1000)
-            await shipperCompassViewCarrierNotAssignedTitle.waitForDisplayed({ timeout: 5000 })
+            await shipperCompassViewCarrierNotAssignedTitle.waitForDisplayed({ timeout: timeOut })
             await compassShipmentCard.waitForDisplayed({timeout: 5000})
-            await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 5000})
-            await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 5000})
+            await shipperCompassViewShipmentButton.waitForDisplayed({timeout: timeOut})
+            await shipperCompassViewMapViewButton.waitForDisplayed({timeout: timeOut})
 
             await shipperCompassViewMapViewButton.touchAction('tap')
-            await mapView.waitForDisplayed({timeout: 5000})
+            await mapView.waitForDisplayed({timeout: timeOut})
 
-            await shipperCompassViewShipmentButton.waitForDisplayed({ timeout: 15000 })
+            await shipperCompassViewShipmentButton.waitForDisplayed({ timeout: timeOut })
             await shipperCompassViewShipmentButton.touchAction('tap')
 
-            await shipperCompassViewCarrierNotAssignedCard.waitForDisplayed({ timeout: 15000 })
+            await shipperCompassViewCarrierNotAssignedCard.waitForDisplayed({ timeout: timeOut })
             await shipperCompassViewCarrierNotAssignedCard.touchAction('tap')
 
-            await compassActionButton.waitForDisplayed({ timeout: 15000 })
-            await compassActionButton.waitForEnabled({ timeout: 15000 })
-            await CNAshipmentPU.waitForDisplayed({ timeout: 15000 })
-            await CNAPredictedMarketPrice.waitForDisplayed({ timeout: 15000 })
-            await CNABidsAndTenders.waitForDisplayed({ timeout: 15000 })
+            await compassActionButton.waitForDisplayed({ timeout: timeOut })
+            await compassActionButton.waitForEnabled({ timeout: timeOut })
+            await CNAshipmentPU.waitForDisplayed({ timeout: timeOut })
+            await CNAPredictedMarketPrice.waitForDisplayed({ timeout: timeOut })
+            await CNABidsAndTenders.waitForDisplayed({ timeout: timeOut })
             await this.driver.touchPerform([
                 {action: "longPress", options: {x: 4, y: 700}},
                 { action: 'wait', options: { ms: 100 }},
                 {action: "moveTo", options: {x: 4, y: 100}},
                 {action: "release"},
             ])
-            await CNARoutingGuides.waitForDisplayed({ timeout: 5000 })
+            await CNARoutingGuides.waitForDisplayed({ timeout: timeOut })
             await this.driver.pause(3000)
             await compassActionButton.touchAction('tap')
-            await CNAlogANewBidButton.waitForDisplayed({ timeout: 15000 })
-            await CNArequestBid.waitForDisplayed({ timeout: 15000 })
-            await CNAtenderToCarrier.waitForDisplayed({ timeout: 15000 })
-            await CNApushToRoutingGuide.waitForDisplayed({ timeout: 15000 })
-            await dismissButton.waitForDisplayed({ timeout: 15000 })
+            await CNAlogANewBidButton.waitForDisplayed({ timeout: timeOut })
+            await CNArequestBid.waitForDisplayed({ timeout: timeOut })
+            await CNAtenderToCarrier.waitForDisplayed({ timeout: timeOut })
+            await CNApushToRoutingGuide.waitForDisplayed({ timeout: timeOut })
+            await dismissButton.waitForDisplayed({ timeout: timeOut })
             //CNA: Log new Bid
             await CNAlogANewBidButton.touchAction('tap')
-            await CNAnewBidTitle.waitForDisplayed({ timeout: 15000 })
-            await CNAcarrierSearchText.waitForDisplayed({ timeout: 15000 })
-            await CNAbidDetailsText.waitForDisplayed({ timeout: 15000 })
-            await CNAnewBidUSDOT_CarrierTag.waitForDisplayed({ timeout: 15000 })
+            await CNAnewBidTitle.waitForDisplayed({ timeout: timeOut })
+            await CNAcarrierSearchText.waitForDisplayed({ timeout: timeOut })
+            await CNAbidDetailsText.waitForDisplayed({ timeout: timeOut })
+            await CNAnewBidUSDOT_CarrierTag.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidUSDOT_CarrierTag.setValue('12')
             await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: 40000 })
             await CNAnewBidUSDOTSearchResult.touchAction('tap')
@@ -276,7 +281,7 @@ class CompassCarrierNotAssignedAlert{
                 {action: "moveTo", options: {x: 4, y: 125}},
                 {action: "release"},
                 ])
-            await CNAnewBidAvailableLocationResult.waitForDisplayed({ timeout: 15000 })
+            await CNAnewBidAvailableLocationResult.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidAvailableLocationResult.touchAction('tap')
             await CNAnewBidBidAmount.setValue('1000')
             if (await doneButton.isDisplayed()){
@@ -290,14 +295,14 @@ class CompassCarrierNotAssignedAlert{
                 {action: "release"},
             ])
 
-            await CNACancelButton.waitForDisplayed({ timeout: 15000 })
+            await CNACancelButton.waitForDisplayed({ timeout: timeOut })
 
-            await CNACreateButton.waitForDisplayed({ timeout: 15000 })
+            await CNACreateButton.waitForDisplayed({ timeout: timeOut })
             await CNACreateButton.touchAction('tap')
-            await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: 15000 })
+            await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: timeOut })
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)

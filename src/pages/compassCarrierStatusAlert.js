@@ -38,7 +38,7 @@ class CompassCarrierStatusAlert{
     async shipwellSpinner(){
         return await this.element('~ShipwellSpinner')
     }
-    async carrierStatusAlert(){
+    async carrierStatusAlert(timeOut=20000){
         const shipperCompassViewCarrierStatusAlerts= await this.shipperCompassViewCarrierStatusAlerts()
         const shipperCompassViewCarrierStatusTitle= await this.shipperCompassViewCarrierStatusTitle()
         const compassShipmentCard= await this.compassShipmentCard()
@@ -50,6 +50,10 @@ class CompassCarrierStatusAlert{
         const shipwellSpinner= await this.shipwellSpinner()
         const backButton= await this.backButton()
 
+        await this.driver.pause(1000)
+        if (await shipwellSpinner.isDisplayed()){
+            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+        }
         await this.driver.pause(1000)
         if (await shipperCompassViewCarrierStatusAlerts.isDisplayed()==false){
             await this.driver.touchPerform([
@@ -68,43 +72,43 @@ class CompassCarrierStatusAlert{
             }
         }
     //Carrier Status View
-        await shipperCompassViewCarrierStatusAlerts.waitForDisplayed({ timeout: 15000 })
+        await shipperCompassViewCarrierStatusAlerts.waitForDisplayed({ timeout: timeOut })
         await shipperCompassViewCarrierStatusAlerts.touchAction('tap')
         await this.driver.pause(1000)
         try{
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             await this.driver.pause(1000)
-            await shipperCompassViewCarrierStatusTitle.waitForDisplayed({ timeout: 5000 })
+            await shipperCompassViewCarrierStatusTitle.waitForDisplayed({ timeout: timeOut })
             await compassShipmentCard.waitForDisplayed({timeout: 5000})
-            await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 15000})
-            await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 15000})
+            await shipperCompassViewShipmentButton.waitForDisplayed({timeout: timeOut})
+            await shipperCompassViewMapViewButton.waitForDisplayed({timeout: timeOut})
 
             await shipperCompassViewMapViewButton.touchAction('tap')
             await mapView.waitForDisplayed({timeout: 5000})
 
             await shipperCompassViewShipmentButton.touchAction('tap')
-            await compassShipmentCard.waitForDisplayed({timeout: 15000})
+            await compassShipmentCard.waitForDisplayed({timeout: timeOut})
             await compassShipmentCard.touchAction('tap')
 
-            await carrierStatusCarrierHeader.waitForDisplayed({timeout: 15000})
+            await carrierStatusCarrierHeader.waitForDisplayed({timeout: timeOut})
 
-            await stopDetailsbackButton.waitForDisplayed({timeout: 15000})
+            await stopDetailsbackButton.waitForDisplayed({timeout: timeOut})
             await stopDetailsbackButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                    await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                    await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             else{
                     await this.driver.pause(3000)
             }
             await this.driver.pause(1000)
-            await backButton.waitForDisplayed({timeout: 15000})
+            await backButton.waitForDisplayed({timeout: timeOut})
             await backButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
         }
         catch (error){

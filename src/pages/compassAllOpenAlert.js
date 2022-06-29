@@ -22,7 +22,7 @@ class OpenAlert{
         return await this.element("-ios class chain:**/XCUIElementTypeStaticText[`label == \"SHIPMENT LIST\"`]")
     }
     async shipperCompassViewMapViewButton(){
-        return await this.element("-ios class chain:**/XCUIElementTypeStaticText[`label == \"MAP VIEW\"`]")
+        return await this.element("-ios class chain:**/XCUIElementTypeButton[`label == \"MAP VIEW\"`]")
     }
     async mapView(){
         return await this.element("-ios predicate string:type == \"XCUIElementTypeMap\" ")
@@ -34,7 +34,7 @@ class OpenAlert{
         return await this.element('~ShipwellSpinner')
     }
 
-async compassAllOpenAlert(){
+async compassAllOpenAlert(timeOut=20000){
 
     const shipperCompassViewTitle= await this.shipperCompassViewTitle()
     const shipperCompassAllOpenlerts= await this.shipperCompassAllOpenlerts()
@@ -46,34 +46,37 @@ async compassAllOpenAlert(){
     const backButton= await this.backButton()
     const shipwellSpinner= await this.shipwellSpinner()
     
-    await this.driver.pause(2000)
+    await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
-        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+        await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
     }
-    await shipperCompassViewTitle.waitForDisplayed({ timeout: 7000 })
-    await shipperCompassViewTitle.waitForEnabled({ timeout: 7000 })
-    await shipperCompassAllOpenlerts.waitForDisplayed({ timeout: 15000 })
-    await shipperCompassAllOpenlerts.waitForEnabled({ timeout: 15000 })
+    await this.driver.pause(1000)
+    await shipperCompassViewTitle.waitForDisplayed({ timeout: timeOut })
+    await shipperCompassViewTitle.waitForEnabled({ timeout: timeOut })
+    await shipperCompassAllOpenlerts.waitForDisplayed({ timeout: timeOut })
+    await shipperCompassAllOpenlerts.waitForEnabled({ timeout: timeOut })
     await shipperCompassAllOpenlerts.touchAction('tap')
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
-        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+        await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
     }
     await this.driver.pause(1000)
-    await shipperCompassAllOpenTitle.waitForDisplayed({ timeout: 8000 })
+    await shipperCompassAllOpenTitle.waitForDisplayed({ timeout: timeOut })
 
-    await compassShipmentCard.waitForDisplayed({timeout: 15000})
-    await shipperCompassViewShipmentButton.waitForDisplayed({timeout: 15000})
-    await shipperCompassViewMapViewButton.waitForDisplayed({timeout: 15000})
+    await compassShipmentCard.waitForDisplayed({timeout: timeOut})
+    await shipperCompassViewShipmentButton.waitForDisplayed({timeout: timeOut})
+    await shipperCompassViewMapViewButton.waitForDisplayed({timeout: timeOut})
 
+    /* Commenting until https://shipwell.atlassian.net/browse/FI-464 is fixed
     await shipperCompassViewMapViewButton.touchAction('tap')
-    await mapView.waitForDisplayed({timeout: 15000})
+    await mapView.waitForDisplayed({timeout: timeOut})
     await this.driver.pause(1000)
-    await shipperCompassViewShipmentButton.touchAction('tap')
+    await shipperCompassViewShipmentButton.touchAction('tap')*/
+
     await backButton.touchAction('tap')
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
-        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+        await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
     }
 }
 

@@ -99,7 +99,13 @@ class RunningLateAlert{
     const stopDetailsbackButton= await this.stopDetailsbackButton()
     const dismissButton= await this.dismissButton()
     const buttonActionSheet= await this.buttonActionSheet()
-
+    
+    await this.driver.pause(1000)
+    if (await shipwellSpinner.isDisplayed()){
+        await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+    }
+    await this.driver.pause(1000)
+    
     if (await shipperCompassViewRunningLateAlerts.isDisplayed()==false){
         await this.driver.touchPerform([
             {action: "longPress", options: {x: 14, y: 215}},
@@ -122,7 +128,7 @@ class RunningLateAlert{
     await this.driver.pause(1000)
     try{
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
         }
         await this.driver.pause(1000)
         await shipperCompassViewRunningLateTitle.waitForDisplayed({ timeout: 15000 })
@@ -145,18 +151,18 @@ class RunningLateAlert{
             await editDeliveryAppointmentTime.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             await saveButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
                 await this.driver.pause(2000)
                 await compassShipmentCard.waitForDisplayed({timeout: 10000})
                 await compassShipmentCard.touchAction('tap')
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
-                    await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                    await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
                 }
                 await this.driver.pause(1000)
                 await compassActionButton.waitForDisplayed({timeout: 25000})
@@ -180,7 +186,7 @@ class RunningLateAlert{
         await markStopCompleteButton.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
         }
         await this.driver.pause(1000)
         await checkInTimeText.waitForDisplayed({timeout: 15000})
@@ -202,7 +208,7 @@ class RunningLateAlert{
             await yesButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -219,14 +225,14 @@ class RunningLateAlert{
             await stopDetailsbackButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             await this.driver.pause(1000)
             await backButton.waitForDisplayed({timeout: 15000})
             await backButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             await this.driver.pause(1000)
         }
@@ -238,7 +244,7 @@ class RunningLateAlert{
             await stopDetailsbackButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
             }
             await this.driver.pause(2000)
             await backButton.waitForDisplayed({timeout: 15000})
@@ -248,7 +254,7 @@ class RunningLateAlert{
     }
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
-        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+        await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
     }
     }
     catch (error){

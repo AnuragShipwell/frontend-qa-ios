@@ -30,7 +30,10 @@ async quickAction(){
     //const mapViewButton= await this.mapViewButton()
     //const mapPin1= await this.mapPin1()
     const shipwellSpinner= await this.shipwellSpinner()
-
+    await this.driver.pause(1000)
+    if (await shipwellSpinner.isDisplayed()==true){
+        await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+    }
     await shipperCompassOpenAllAlerts.waitForDisplayed({ timeout: 5000 })
     await shipperCompassOpenAllAlerts.touchAction('tap')
     await this.driver.pause(1000)

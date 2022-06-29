@@ -96,7 +96,7 @@ class DocUploadPage{
         return await this.element('//XCUIElementTypePickerWheel')
     }
     
-    async shipmentDocumentUpload(){
+    async shipmentDocumentUpload(timeOut=35000){
         const documentUploadButton= await this.documentUploadButton()
         const shipperCompassAllOpenTitle= await this.shipperCompassAllOpenTitle()
         const quickActionDocument= await this.quickActionDocument()
@@ -125,7 +125,7 @@ class DocUploadPage{
         const testback= await this.testback()
         const pickerWhell= await this.pickerWhell()
 
-        await this.driver.pause(3000)
+        await this.driver.pause(1000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
             await quickActionDocument.touchAction('tap')
         }
@@ -136,89 +136,89 @@ class DocUploadPage{
 
 
         await this.driver.pause(3000)
-        await shipDocumentTitle.waitForDisplayed({ timeout: 5000 })
-        await shipUploadDocumentText.waitForDisplayed({ timeout: 5000 })
+        await shipDocumentTitle.waitForDisplayed({ timeout: timeOut })
+        await shipUploadDocumentText.waitForDisplayed({ timeout: timeOut })
         
-        await shipUploadDocumentButton.waitForDisplayed({ timeout: 5000 })
+        await shipUploadDocumentButton.waitForDisplayed({ timeout: timeOut })
         await shipUploadDocumentButton.touchAction('tap')
 
-        await camera.waitForDisplayed({ timeout: 5000 })
+        await camera.waitForDisplayed({ timeout: timeOut })
         await this.driver.pause(1000)
-        await photoLibrary.waitForDisplayed({ timeout: 5000 })
+        await photoLibrary.waitForDisplayed({ timeout: timeOut })
         await photoLibrary.touchAction('tap')
         await this.driver.pause(2000)
         if (await photo.isDisplayed()){
             await photo.touchAction('tap')
             await this.driver.pause(2000)
-            await chooseButton.waitForDisplayed({ timeout: 15000 })
+            await chooseButton.waitForDisplayed({ timeout: timeOut })
             await chooseButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await chooseButton.isDisplayed()){
                 await chooseButton.touchAction('tap')
             }
             await this.driver.pause(2000)
-            await documentPreviewTitle.waitForDisplayed({ timeout: 15000 })
-            await imagePreview.waitForDisplayed({ timeout: 5000 })
+            await documentPreviewTitle.waitForDisplayed({ timeout: timeOut })
+            await imagePreview.waitForDisplayed({ timeout: timeOut })
         
-            await nextButton.waitForDisplayed({ timeout: 5000 })
+            await nextButton.waitForDisplayed({ timeout: timeOut })
             await nextButton.touchAction('tap')
         
-            await documentInfoTitle.waitForDisplayed({ timeout: 5000 })
-            await documentInfoImagePreview.waitForDisplayed({ timeout: 5000 })
+            await documentInfoTitle.waitForDisplayed({ timeout: timeOut })
+            await documentInfoImagePreview.waitForDisplayed({ timeout: timeOut })
        
-            await documentInfoDocumentType.waitForDisplayed({ timeout: 5000 })
+            await documentInfoDocumentType.waitForDisplayed({ timeout: timeOut })
             await documentInfoDocumentType.touchAction('tap')
-            await pickerWhell.waitForDisplayed({ timeout: 5000 })
+            await pickerWhell.waitForDisplayed({ timeout: timeOut })
             await pickerWhell.addValue("Proof of Delivery (POD)")
 
-            await documentInfoDescription.waitForDisplayed({ timeout: 5000 })
+            await documentInfoDescription.waitForDisplayed({ timeout: timeOut })
             //await documentInfoDescription.touchAction('tap')
             await documentInfoDescription.setValue('Testing')
 
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction("tap")
             }
-            await documentInfoSaveButton.waitForDisplayed({ timeout: 5000 })
+            await documentInfoSaveButton.waitForDisplayed({ timeout: timeOut })
             await documentInfoSaveButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
             }
             await this.driver.pause(3000)
-            await successModalOkSavebutton.waitForDisplayed({ timeout: 10000 })
+            await successModalOkSavebutton.waitForDisplayed({ timeout: timeOut })
             await successModalOkSavebutton.touchAction('tap')
             await this.driver.pause(1000)
-            await documentPreviewTitle.waitForDisplayed({ timeout: 15000 })
-            await saveImagePreview.waitForDisplayed({ timeout: 5000 })
+            await documentPreviewTitle.waitForDisplayed({ timeout: timeOut })
+            await saveImagePreview.waitForDisplayed({ timeout: timeOut })
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
         
-            await backIcon.waitForDisplayed({ timeout: 5000 })
+            await backIcon.waitForDisplayed({ timeout: timeOut })
             await backIcon.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
             }
-            await backIcon1.waitForDisplayed({ timeout: 5000 })
+            await backIcon1.waitForDisplayed({ timeout: timeOut })
             await backIcon1.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             await this.driver.pause(5000)
         }
         else{
-            await cancelButton.waitForDisplayed({ timeout: 5000 })
+            await cancelButton.waitForDisplayed({ timeout: timeOut })
             await cancelButton.touchAction('tap')
-            await testback.waitForDisplayed({ timeout: 5000 })
+            await testback.waitForDisplayed({ timeout: timeOut })
             await testback.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){

@@ -42,7 +42,7 @@ class ChatPage{
         return await this.element('~ShipwellSpinner')
     }
 
-    async chat(){
+    async chat(timeOut=35000){
         const shipperCompassAllOpenTitle= await this.shipperCompassAllOpenTitle()
         const quickActionChat= await this.quickActionChat()
         //const quickActionChatTitle= await this.quickActionChatTitle()
@@ -56,7 +56,7 @@ class ChatPage{
         const doneButton= await this.doneButton()
         const shipwellSpinner= await this.shipwellSpinner()
 
-        await this.driver.pause(2000)
+        await this.driver.pause(5000)
         if (await shipperCompassAllOpenTitle.isDisplayed()){
             await quickActionChat.touchAction('tap')
         }
@@ -64,16 +64,16 @@ class ChatPage{
             await loadChatButton.touchAction('tap')
         }
         await this.driver.pause(2000)
-        await quickActionChatInput.waitForDisplayed({ timeout: 5000 })
+        await quickActionChatInput.waitForDisplayed({ timeout: timeOut })
         await this.driver.pause(2000)
         await quickActionChatInput.touchAction('tap')
         await quickActionChatInput.setValue("Testing")
         await this.driver.hideKeyboard()
         await this.driver.pause(1000)
-        await quickActionChatSendButton.waitForDisplayed({ timeout: 5000 })
+        await quickActionChatSendButton.waitForDisplayed({ timeout: timeOut })
         await quickActionChatSendButton.touchAction('tap')
 
-        await messageBackButton.waitForDisplayed({ timeout: 5000 })
+        await messageBackButton.waitForDisplayed({ timeout: timeOut })
         await messageBackButton.touchAction('tap')
         await this.driver.pause(1000)
 

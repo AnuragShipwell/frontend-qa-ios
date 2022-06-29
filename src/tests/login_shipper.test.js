@@ -31,7 +31,7 @@ test("==004==> TESTING SHIPPER COMPASS ALL-OPEN VIEW", async () => {
     await app.compassOpenAlert.compassAllOpenAlert()
 });
 //===============================================
-test.skip("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
+test("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
   await app.compassRunningLateAlert.compassRunningLateAlert()
 });
 //==============================================
@@ -39,7 +39,7 @@ test("==006==> TESTING SHIPPER COMPASS LATE PICK UP VIEW", async () => {
   await app.compassLatePickupAlert.compassLatePickUpAlert()
 });
 //==============================================
-test.skip("==007==> TESTING SHIPPER COMPASS LATE DELIVERY VIEW", async () => {
+test("==007==> TESTING SHIPPER COMPASS LATE DELIVERY VIEW", async () => {
   await app.compassLateDeliveryAlert.lateDeliveryAlert()
 });
 //==============================================
