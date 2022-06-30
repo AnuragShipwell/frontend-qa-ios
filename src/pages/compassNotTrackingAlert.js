@@ -110,7 +110,7 @@ class CompassNotTrackingAlert{
     async backButton(){
         return await this.element("~back icon")
     }
-    async compassNotTrackingAlert(timeOut=20000){
+    async compassNotTrackingAlert(timeOut=60000){
         const shipperCompassViewNotTrackingAlerts= await this.shipperCompassViewNotTrackingAlerts()
         const shipperCompassViewNotTrackingTitle= await this.shipperCompassViewNotTrackingTitle()
         const compassShipmentCard= await this.compassShipmentCard()
@@ -178,7 +178,7 @@ class CompassNotTrackingAlert{
         await this.driver.pause(1000)
         try{
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             await this.driver.pause(1000)
             await shipperCompassViewNotTrackingTitle.waitForDisplayed({ timeout: timeOut })
@@ -195,7 +195,7 @@ class CompassNotTrackingAlert{
             await compassShipmentCard.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -232,7 +232,7 @@ class CompassNotTrackingAlert{
             await NTAssignButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -266,7 +266,7 @@ class CompassNotTrackingAlert{
             await saveButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -276,7 +276,7 @@ class CompassNotTrackingAlert{
             await compassShipmentCard.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -303,7 +303,7 @@ class CompassNotTrackingAlert{
             await saveButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -313,7 +313,7 @@ class CompassNotTrackingAlert{
             await backButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
         }
         catch (error){

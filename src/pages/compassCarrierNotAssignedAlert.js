@@ -146,7 +146,7 @@ class CompassCarrierNotAssignedAlert{
     async backButton(){
         return await this.element("~back icon")
     }
-    async carrierNotAssignedAlert(timeOut=20000){
+    async carrierNotAssignedAlert(timeOut=60000){
         const shipperCompassViewCarrierNotAssignedAlerts= await this.shipperCompassViewCarrierNotAssignedAlerts()
         const shipperCompassViewCarrierNotAssignedTitle= await this.shipperCompassViewCarrierNotAssignedTitle()
         const compassShipmentCard= await this.compassShipmentCard()
@@ -197,7 +197,7 @@ class CompassCarrierNotAssignedAlert{
         
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
         await this.driver.pause(1000)
         if (await shipperCompassViewCarrierNotAssignedAlerts.isDisplayed()==false){
@@ -222,11 +222,11 @@ class CompassCarrierNotAssignedAlert{
         await this.driver.pause(1000)
         try{
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             await this.driver.pause(1000)
             await shipperCompassViewCarrierNotAssignedTitle.waitForDisplayed({ timeout: timeOut })
-            await compassShipmentCard.waitForDisplayed({timeout: 5000})
+            await compassShipmentCard.waitForDisplayed({timeout: timeOut})
             await shipperCompassViewShipmentButton.waitForDisplayed({timeout: timeOut})
             await shipperCompassViewMapViewButton.waitForDisplayed({timeout: timeOut})
 
@@ -265,14 +265,14 @@ class CompassCarrierNotAssignedAlert{
             await CNAbidDetailsText.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidUSDOT_CarrierTag.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidUSDOT_CarrierTag.setValue('12')
-            await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: 40000 })
+            await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidUSDOTSearchResult.touchAction('tap')
             await this.driver.pause(3000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
                 await this.driver.pause(1000)
             }
-            await CNAnewBidAvailableLocation.waitForDisplayed({ timeout: 40000 })
+            await CNAnewBidAvailableLocation.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidAvailableLocation.touchAction('tap')
             await CNAnewBidAvailableLocation.setValue('Austin, TX 78701, US')
             await this.driver.touchPerform([
@@ -302,7 +302,7 @@ class CompassCarrierNotAssignedAlert{
             await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: timeOut })
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
@@ -319,73 +319,73 @@ await CNAtenderToCarrier.waitForEnabled({ timeout: 15000 })
 await CNAtenderToCarrier.touchAction('tap')*/
 
 //CNA: Routing Guide
-            await compassActionButton.waitForDisplayed({ timeout: 15000 })
+            await compassActionButton.waitForDisplayed({ timeout: timeOut })
             await compassActionButton.touchAction('tap')
-            await CNApushToRoutingGuide.waitForDisplayed({ timeout: 15000 })
+            await CNApushToRoutingGuide.waitForDisplayed({ timeout: timeOut })
             await CNApushToRoutingGuide.touchAction('tap')
-            await CNARoutingGuideTitle.waitForDisplayed({ timeout: 15000 })
-            await CNARoutingGuideInput.waitForDisplayed({ timeout: 15000 })
+            await CNARoutingGuideTitle.waitForDisplayed({ timeout: timeOut })
+            await CNARoutingGuideInput.waitForDisplayed({ timeout: timeOut })
             await CNARoutingGuideInput.setValue('Test')
-            await CNARoutingGuideResult.waitForDisplayed({ timeout: 15000 })
+            await CNARoutingGuideResult.waitForDisplayed({ timeout: timeOut })
             await CNARoutingGuideResult.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
-            await CNACreateButton.waitForDisplayed({ timeout: 15000 })
+            await CNACreateButton.waitForDisplayed({ timeout: timeOut })
             await CNACreateButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             //CNA: Request bid
             await this.driver.pause(2000)
-            await compassActionButton.waitForDisplayed({ timeout: 15000 })
+            await compassActionButton.waitForDisplayed({ timeout: timeOut })
             await compassActionButton.touchAction('tap')
             await this.driver.pause(1000)
-            await CNArequestBid.waitForDisplayed({ timeout: 15000 })
+            await CNArequestBid.waitForDisplayed({ timeout: timeOut })
             await CNArequestBid.touchAction('tap')
             await this.driver.pause(1000)
-            if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(10000)
             }
             await this.driver.pause(1000)
-            await CNARequestBidTitle.waitForDisplayed({ timeout: 10000 })
-            await CNAcarrierNameInput.waitForDisplayed({ timeout: 15000 })
+            await CNARequestBidTitle.waitForDisplayed({ timeout: timeOut })
+            await CNAcarrierNameInput.waitForDisplayed({ timeout: timeOut })
             await CNAcarrierNameInput.setValue('Anurag')
-            await CNAcarrierNameInputResult.waitForDisplayed({ timeout: 8000 })
+            await CNAcarrierNameInputResult.waitForDisplayed({ timeout: timeOut })
             await CNAcarrierNameInputResult.touchAction('tap')
             await CNAspecialInstruction.setValue("Test")
             await doneButton.touchAction('tap')
-            await CNACreateButton.waitForDisplayed({ timeout: 15000 })
+            await CNACreateButton.waitForDisplayed({ timeout: timeOut })
             await CNACreateButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(10000)
             }
             await this.driver.pause(2000)
-            await stopDetailsbackButton.waitForDisplayed({ timeout: 8000 })
-            await stopDetailsbackButton.waitForEnabled({ timeout: 8000 })
+            await stopDetailsbackButton.waitForDisplayed({ timeout: timeOut })
+            await stopDetailsbackButton.waitForEnabled({ timeout: timeOut })
             await stopDetailsbackButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                 await this.driver.pause(3000)
             }
             await this.driver.pause(1000)
-            await backButton.waitForDisplayed({ timeout: 15000 })
+            await backButton.waitForDisplayed({ timeout: timeOut })
             await backButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             }
         catch (error){

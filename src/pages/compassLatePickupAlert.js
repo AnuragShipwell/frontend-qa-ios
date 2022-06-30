@@ -72,7 +72,7 @@ class CompassLatePickupAlert{
     async dismissButton(){
         return await this.element('~Dismiss')
     }
-async compassLatePickUpAlert(timeOut=20000){
+async compassLatePickUpAlert(timeOut=60000){
     const shipperCompassViewLatePickupAlerts= await this.shipperCompassViewLatePickupAlerts()
     const shipperCompassViewLatePickupTitle= await this.shipperCompassViewLatePickupTitle()
     const compassShipmentCard= await this.compassShipmentCard()
@@ -98,7 +98,7 @@ async compassLatePickUpAlert(timeOut=20000){
 
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
-        await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+        await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
     }
     await this.driver.pause(1000)
     
@@ -122,7 +122,7 @@ async compassLatePickUpAlert(timeOut=20000){
     await this.driver.pause(1000)
     try{
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
         await this.driver.pause(1000)
         await shipperCompassViewLatePickupTitle.waitForDisplayed({ timeout: timeOut })
@@ -138,7 +138,7 @@ async compassLatePickUpAlert(timeOut=20000){
         await compassShipmentCard.touchAction('tap')
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
         await compassActionButton.waitForDisplayed({timeout: timeOut})
         await compassActionButton.touchAction('tap')
@@ -148,19 +148,19 @@ async compassLatePickUpAlert(timeOut=20000){
             await editAppointmentTimeButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             await this.driver.pause(1000)
             await saveButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 await this.driver.pause(5000)
                 await compassShipmentCard.waitForDisplayed({timeout: timeOut})
                 await compassShipmentCard.touchAction('tap')
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
-                    await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                    await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
                 await this.driver.pause(1000)
                 await compassActionButton.waitForDisplayed({timeout: timeOut})
@@ -180,7 +180,7 @@ async compassLatePickUpAlert(timeOut=20000){
             await markStopCompleteButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             await this.driver.pause(1000)
             await checkInTimeText.waitForDisplayed({timeout: timeOut})
@@ -201,7 +201,7 @@ async compassLatePickUpAlert(timeOut=20000){
                 await yesButton.touchAction('tap')
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
-                    await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                    await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
                 await this.driver.pause(1000)
                 await backButton.waitForDisplayed({timeout: timeOut})
@@ -215,14 +215,14 @@ async compassLatePickUpAlert(timeOut=20000){
                 await stopDetailsbackButton.touchAction('tap')
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
-                    await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                    await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
                 await this.driver.pause(1000)
                 await backButton.waitForDisplayed({timeout: timeOut})
                 await backButton.touchAction('tap')
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
-                    await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                    await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
                 await this.driver.pause(1000)
             }
@@ -234,7 +234,7 @@ async compassLatePickUpAlert(timeOut=20000){
             await stopDetailsbackButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             await this.driver.pause(1000)
             await backButton.waitForDisplayed({timeout: timeOut})
@@ -244,7 +244,7 @@ async compassLatePickUpAlert(timeOut=20000){
         }
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
-        await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+        await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
     }
 }
 catch (error){

@@ -38,7 +38,7 @@ class CompassCarrierStatusAlert{
     async shipwellSpinner(){
         return await this.element('~ShipwellSpinner')
     }
-    async carrierStatusAlert(timeOut=20000){
+    async carrierStatusAlert(timeOut=60000){
         const shipperCompassViewCarrierStatusAlerts= await this.shipperCompassViewCarrierStatusAlerts()
         const shipperCompassViewCarrierStatusTitle= await this.shipperCompassViewCarrierStatusTitle()
         const compassShipmentCard= await this.compassShipmentCard()
@@ -52,7 +52,7 @@ class CompassCarrierStatusAlert{
 
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
         await this.driver.pause(1000)
         if (await shipperCompassViewCarrierStatusAlerts.isDisplayed()==false){
@@ -77,7 +77,7 @@ class CompassCarrierStatusAlert{
         await this.driver.pause(1000)
         try{
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             await this.driver.pause(1000)
             await shipperCompassViewCarrierStatusTitle.waitForDisplayed({ timeout: timeOut })
@@ -98,7 +98,7 @@ class CompassCarrierStatusAlert{
             await stopDetailsbackButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()==true){
-                    await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                    await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else{
                     await this.driver.pause(3000)
@@ -108,7 +108,7 @@ class CompassCarrierStatusAlert{
             await backButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
         }
         catch (error){
