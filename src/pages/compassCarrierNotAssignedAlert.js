@@ -328,14 +328,15 @@ await CNAtenderToCarrier.touchAction('tap')*/
             await CNARoutingGuideInput.setValue('Test')
             await CNARoutingGuideResult.waitForDisplayed({ timeout: 15000 })
             await CNARoutingGuideResult.touchAction('tap')
+            await this.driver.pause(1000)
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            }
             await CNACreateButton.waitForDisplayed({ timeout: 15000 })
             await CNACreateButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-            }
-            else{
-                await this.driver.pause(3000)
             }
             //CNA: Request bid
             await this.driver.pause(2000)
