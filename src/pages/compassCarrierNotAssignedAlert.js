@@ -265,9 +265,16 @@ class CompassCarrierNotAssignedAlert{
             await CNAbidDetailsText.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidUSDOT_CarrierTag.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidUSDOT_CarrierTag.setValue('12')
+            await this.driver.pause(1000)
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+            }
             await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidUSDOTSearchResult.touchAction('tap')
-            await this.driver.pause(3000)
+            await this.driver.pause(1000)
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+            }
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
                 await this.driver.pause(1000)
@@ -275,6 +282,9 @@ class CompassCarrierNotAssignedAlert{
             await CNAnewBidAvailableLocation.waitForDisplayed({ timeout: timeOut })
             await CNAnewBidAvailableLocation.touchAction('tap')
             await CNAnewBidAvailableLocation.setValue('Austin, TX 78701, US')
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+            }
             await this.driver.touchPerform([
                 {action: "longPress", options: {x: 4, y: 350}},
                 { action: 'wait', options: { ms: 100 }},
@@ -299,13 +309,9 @@ class CompassCarrierNotAssignedAlert{
 
             await CNACreateButton.waitForDisplayed({ timeout: timeOut })
             await CNACreateButton.touchAction('tap')
-            await CNAnewBidUSDOTSearchResult.waitForDisplayed({ timeout: timeOut })
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
-            }
-            else{
-                await this.driver.pause(3000)
             }
             await this.driver.pause(2000)
 
@@ -323,9 +329,19 @@ await CNAtenderToCarrier.touchAction('tap')*/
             await compassActionButton.touchAction('tap')
             await CNApushToRoutingGuide.waitForDisplayed({ timeout: timeOut })
             await CNApushToRoutingGuide.touchAction('tap')
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+            }
             await CNARoutingGuideTitle.waitForDisplayed({ timeout: timeOut })
             await CNARoutingGuideInput.waitForDisplayed({ timeout: timeOut })
             await CNARoutingGuideInput.setValue('Test')
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+            }
+            if (await doneButton.isDisplayed()){
+                await doneButton.touchAction('tap')
+                await this.driver.pause(1000)
+           }
             await CNARoutingGuideResult.waitForDisplayed({ timeout: timeOut })
             await CNARoutingGuideResult.touchAction('tap')
             await this.driver.pause(1000)
@@ -338,6 +354,13 @@ await CNAtenderToCarrier.touchAction('tap')*/
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
+            else if(await CNACancelButton.isDisplayed()){
+                await CNACancelButton.touchAction('tap')
+                if (await shipwellSpinner.isDisplayed()){
+                    await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+                }
+            }
+            await this.driver.pause(1000)
             //CNA: Request bid
             await this.driver.pause(2000)
             await compassActionButton.waitForDisplayed({ timeout: timeOut })
@@ -356,18 +379,21 @@ await CNAtenderToCarrier.touchAction('tap')*/
             await CNARequestBidTitle.waitForDisplayed({ timeout: timeOut })
             await CNAcarrierNameInput.waitForDisplayed({ timeout: timeOut })
             await CNAcarrierNameInput.setValue('Anurag')
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+            }
             await CNAcarrierNameInputResult.waitForDisplayed({ timeout: timeOut })
             await CNAcarrierNameInputResult.touchAction('tap')
             await CNAspecialInstruction.setValue("Test")
-            await doneButton.touchAction('tap')
+            if (await doneButton.isDisplayed()){
+                await doneButton.touchAction('tap')
+                await this.driver.pause(1000)
+           }
             await CNACreateButton.waitForDisplayed({ timeout: timeOut })
             await CNACreateButton.touchAction('tap')
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
-            }
-            else{
-                await this.driver.pause(10000)
             }
             await this.driver.pause(2000)
             await stopDetailsbackButton.waitForDisplayed({ timeout: timeOut })
