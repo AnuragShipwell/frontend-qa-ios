@@ -139,6 +139,7 @@ class RunningLateAlert{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
+        await this.driver.pause(5000)
         await compassActionButton.waitForDisplayed({timeout: timeOut})
         await compassActionButton.touchAction('tap')
         await this.driver.pause(1000)
@@ -154,7 +155,7 @@ class RunningLateAlert{
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
-                await this.driver.pause(1000)
+                await this.driver.pause(5000)
                 await compassShipmentCard.waitForDisplayed({timeout: timeOut})
                 await compassShipmentCard.touchAction('tap')
                 console.log("==================TESTO if SAVE worked=========================")
@@ -162,11 +163,11 @@ class RunningLateAlert{
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
-                await this.driver.pause(1000)
+                await this.driver.pause(5000)
                 console.log("==================TESTO if SAVE worked=========================")
                 await compassActionButton.waitForDisplayed({timeout: timeOut})
                 await compassActionButton.touchAction('tap')
-                await this.driver.pause(1000)
+                await this.driver.pause(5000)
             }
             else if (await cancelButton.isDisplayed()) {
                 console.log("==================TESTO if SAVE failed and Cancelled displayed=========================")
@@ -206,7 +207,7 @@ class RunningLateAlert{
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
-                await this.driver.pause(2000)
+                await this.driver.pause(5000)
                 await backButton.waitForDisplayed({timeout: timeOut})
                 await backButton.touchAction('tap')
                 await this.driver.pause(1000)

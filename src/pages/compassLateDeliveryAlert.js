@@ -124,7 +124,7 @@ async lateDeliveryAlert(timeOut=60000){
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
-        await this.driver.pause(1000)
+        await this.driver.pause(5000)
         if (await shipperCompassViewLateDeliveryTitle.isDisplayed()){
             await backButton.waitForDisplayed({timeout: timeOut})
             await backButton.touchAction('tap')

@@ -313,7 +313,7 @@ class CompassCarrierNotAssignedAlert{
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
-            await this.driver.pause(2000)
+            await this.driver.pause(5000)
 
 /*
 //Tender to Carrier
@@ -362,7 +362,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
             }
             await this.driver.pause(1000)
             //CNA: Request bid
-            await this.driver.pause(2000)
+            await this.driver.pause(5000)
             await compassActionButton.waitForDisplayed({ timeout: timeOut })
             await compassActionButton.touchAction('tap')
             await this.driver.pause(1000)
@@ -395,7 +395,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
-            await this.driver.pause(2000)
+            await this.driver.pause(5000)
             await stopDetailsbackButton.waitForDisplayed({ timeout: timeOut })
             await stopDetailsbackButton.waitForEnabled({ timeout: timeOut })
             await stopDetailsbackButton.touchAction('tap')

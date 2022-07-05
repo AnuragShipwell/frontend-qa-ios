@@ -282,10 +282,7 @@ class CompassNotTrackingAlert{
             if (await shipwellSpinner.isDisplayed()==true){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
-            else{
-                await this.driver.pause(3000)
-            }
-            await this.driver.pause(2000)
+            await this.driver.pause(5000)
             await compassActionButton.waitForDisplayed({timeout: timeOut})
             await compassActionButton.touchAction('tap')
             await this.driver.pause(1000)
@@ -298,6 +295,7 @@ class CompassNotTrackingAlert{
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
+            await this.driver.pause(1000)
             await NTAddEventDescription.waitForDisplayed({timeout: timeOut})
             await NTAddEventDescription.setValue('Testing, kindly ignore')
             await this.driver.pause(1000)
@@ -309,10 +307,7 @@ class CompassNotTrackingAlert{
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
-            else{
-                await this.driver.pause(3000)
-            }
-            await this.driver.pause(2000)
+            await this.driver.pause(5000)
             await backButton.waitForDisplayed({timeout: timeOut})
             await backButton.touchAction('tap')
             await this.driver.pause(1000)

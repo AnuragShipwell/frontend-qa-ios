@@ -162,7 +162,7 @@ async compassLatePickUpAlert(timeOut=60000){
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
-                await this.driver.pause(1000)
+                await this.driver.pause(5000)
                 await compassActionButton.waitForDisplayed({timeout: timeOut})
                 await compassActionButton.touchAction('tap')
                 await this.driver.pause(1000)
