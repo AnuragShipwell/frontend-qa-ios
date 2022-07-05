@@ -75,7 +75,7 @@ class RunningLateAlert{
         return await this.element("-ios class chain:**/XCUIElementTypeWindow[1]/XCUIElementTypeOther[2]/XCUIElementTypeSheet")
     }
 
-    async compassRunningLateAlert(timeOut=60000){
+    async compassRunningLateAlert(timeOut=120000){
     const shipperCompassViewRunningLateAlerts= await this.shipperCompassViewRunningLateAlerts()
     const shipperCompassViewRunningLateTitle= await this.shipperCompassViewRunningLateTitle()
     const compassShipmentCard= await this.compassShipmentCard()
@@ -157,16 +157,19 @@ class RunningLateAlert{
                 await this.driver.pause(1000)
                 await compassShipmentCard.waitForDisplayed({timeout: timeOut})
                 await compassShipmentCard.touchAction('tap')
+                console.log("==================TESTO if SAVE worked=========================")
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
                 await this.driver.pause(1000)
+                console.log("==================TESTO if SAVE worked=========================")
                 await compassActionButton.waitForDisplayed({timeout: timeOut})
                 await compassActionButton.touchAction('tap')
                 await this.driver.pause(1000)
             }
             else if (await cancelButton.isDisplayed()) {
+                console.log("==================TESTO if SAVE failed and Cancelled displayed=========================")
                 await cancelButton.touchAction('tap')
                 await compassActionButton.waitForDisplayed({timeout: timeOut})
                 await compassActionButton.touchAction('tap')
