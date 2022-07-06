@@ -338,10 +338,6 @@ await CNAtenderToCarrier.touchAction('tap')*/
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
-            if (await doneButton.isDisplayed()){
-                await doneButton.touchAction('tap')
-                await this.driver.pause(1000)
-           }
             await CNARoutingGuideResult.waitForDisplayed({ timeout: timeOut })
             await CNARoutingGuideResult.touchAction('tap')
             await this.driver.pause(1000)
