@@ -155,17 +155,37 @@ async compassLatePickUpAlert(timeOut=60000){
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
-                await this.driver.pause(5000)
+
+                await this.driver.pause(8000)
+                if (await shipperCompassViewLatePickupAlerts.isDisplayed()==false){
+                    await this.driver.touchPerform([
+                        {action: "longPress", options: {x: 14, y: 215}},
+                        { action: 'wait', options: { ms: 100 }},
+                        {action: "moveTo", options: {x: 14, y: 680}},
+                        {action: "release"},
+                    ])
+                    if(await shipperCompassViewLatePickupAlerts.isDisplayed()==false){
+                        await this.driver.touchPerform([
+                            {action: "longPress", options: {x: 14, y: 680}},
+                            { action: 'wait', options: { ms: 100 }},
+                            {action: "moveTo", options: {x: 14, y: 215}},
+                            {action: "release"},
+                        ])
+                    }
+                }
+                await shipperCompassViewLatePickupAlerts.touchAction('tap')
+                await this.driver.pause(1000)
+                if (await shipwellSpinner.isDisplayed()){
+                    await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+                }
                 await compassShipmentCard.waitForDisplayed({timeout: timeOut})
                 await compassShipmentCard.touchAction('tap')
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
-                await this.driver.pause(5000)
                 await compassActionButton.waitForDisplayed({timeout: timeOut})
                 await compassActionButton.touchAction('tap')
-                await this.driver.pause(1000)
             }
             else if (cancelButton.isDisplayed()){
                 await cancelButton.touchAction('tap')
@@ -202,11 +222,14 @@ async compassLatePickUpAlert(timeOut=60000){
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+                    await this.driver.pause(1000)
+                    if (await cancelButton.isDisplayed()){
+                        await cancelButton.touchAction('tap')
+                    }
                 }
                 await this.driver.pause(1000)
-                await backButton.waitForDisplayed({timeout: timeOut})
-                await backButton.touchAction('tap')
-                await this.driver.pause(1000)
+                //await backButton.waitForDisplayed({timeout: timeOut})
+                //await backButton.touchAction('tap')
             }
             else if (await cancelButton.isDisplayed()){
                 await cancelButton.touchAction('tap')

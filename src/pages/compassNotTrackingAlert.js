@@ -250,7 +250,14 @@ class CompassNotTrackingAlert{
             await this.driver.pause(1000)
             await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: timeOut})
             await NTSendNotTrackingEmailButton.waitForDisplayed({timeout: timeOut})
+            
             await NTSendNotTrackingEmailButton.touchAction('tap')
+            await this.driver.pause(1000)
+            
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+            }
+
             await NTSendEmailCarrierContact.waitForDisplayed({timeout: timeOut})
             await NTSendEmailStop1Contact.waitForDisplayed({timeout: timeOut})
             await NTSendEmailStop2Contact.waitForDisplayed({timeout: timeOut})
@@ -269,17 +276,14 @@ class CompassNotTrackingAlert{
             }
             await saveButton.touchAction('tap')
             await this.driver.pause(1000)
-            if (await shipwellSpinner.isDisplayed()==true){
+            if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
-            }
-            else{
-                await this.driver.pause(3000)
             }
             await this.driver.pause(2000)
             await compassShipmentCard.waitForDisplayed({timeout: timeOut})
             await compassShipmentCard.touchAction('tap')
             await this.driver.pause(1000)
-            if (await shipwellSpinner.isDisplayed()==true){
+            if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             await this.driver.pause(5000)

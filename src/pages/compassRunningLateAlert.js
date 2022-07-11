@@ -51,7 +51,7 @@ class RunningLateAlert{
         return await this.element("-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][1]")
     }
     async timePickerWheelMinutes(){
-        return await this.element("//XCUIElementTypeApplication[@name=\"Test Freight\"]/XCUIElementTypeWindow[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeDatePicker/XCUIElementTypePicker/XCUIElementTypePickerWheel[3]")
+        return await this.element("//XCUIElementTypePickerWheel[3]")
     }
     async checkOutEventTime(){
         return await this.element("-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][2]")
@@ -155,22 +155,38 @@ class RunningLateAlert{
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
-                await this.driver.pause(5000)
-                await compassShipmentCard.waitForDisplayed({timeout: timeOut})
-                await compassShipmentCard.touchAction('tap')
-                console.log("==================TESTO if SAVE worked=========================")
+                await this.driver.pause(8000)
+                if (await shipperCompassViewRunningLateAlerts.isDisplayed()==false){
+                    await this.driver.touchPerform([
+                        {action: "longPress", options: {x: 14, y: 215}},
+                        { action: 'wait', options: { ms: 100 }},
+                        {action: "moveTo", options: {x: 14, y: 680}},
+                        {action: "release"},
+                    ])
+                    if(await shipperCompassViewRunningLateAlerts.isDisplayed()==false){
+                        await this.driver.touchPerform([
+                            {action: "longPress", options: {x: 14, y: 680}},
+                            { action: 'wait', options: { ms: 100 }},
+                            {action: "moveTo", options: {x: 14, y: 215}},
+                            {action: "release"},
+                        ])
+                    }
+                }
+                await shipperCompassViewRunningLateAlerts.touchAction('tap')
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
-                await this.driver.pause(5000)
-                console.log("==================TESTO if SAVE worked=========================")
+                await compassShipmentCard.waitForDisplayed({timeout: timeOut})
+                await compassShipmentCard.touchAction('tap')
+                await this.driver.pause(1000)
+                if (await shipwellSpinner.isDisplayed()){
+                    await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+                }
                 await compassActionButton.waitForDisplayed({timeout: timeOut})
                 await compassActionButton.touchAction('tap')
-                await this.driver.pause(5000)
             }
             else if (await cancelButton.isDisplayed()) {
-                console.log("==================TESTO if SAVE failed and Cancelled displayed=========================")
                 await cancelButton.touchAction('tap')
                 await compassActionButton.waitForDisplayed({timeout: timeOut})
                 await compassActionButton.touchAction('tap')
@@ -206,10 +222,14 @@ class RunningLateAlert{
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+                    await this.driver.pause(1000)
+                    if (await cancelButton.isDisplayed()){
+                        await cancelButton.touchAction('tap')
+                    }
                 }
                 await this.driver.pause(5000)
-                await backButton.waitForDisplayed({timeout: timeOut})
-                await backButton.touchAction('tap')
+                //await backButton.waitForDisplayed({timeout: timeOut})
+                //await backButton.touchAction('tap')
                 await this.driver.pause(1000)
             }
             else if (await cancelButton.isDisplayed()){
