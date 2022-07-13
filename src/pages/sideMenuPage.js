@@ -30,10 +30,10 @@ class SideMenuPage{
         return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Settings\"`]')
     }
     async shipmentActiveButton(){
-        return await this.element('-ios class chain:**/XCUIElementTypeTable[`name == \"SWSideMenuController-table\"`]/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
+        return await this.element('~ACTIVE')
     }
     async shipmentDeliveredButton(){
-        return await this.element('-ios class chain:**/XCUIElementTypeTable[`name == \"SWSideMenuController-table\"`]/XCUIElementTypeCell[2]/XCUIElementTypeOther/XCUIElementTypeOther')
+        return await this.element('~DELIVERED')
     }
     async inboxMessagesButton(){
         return await this.element('~MESSAGES')
@@ -42,7 +42,7 @@ class SideMenuPage{
         return await this.element('~NOTIFICATIONS')
     }
 
-    async sideMenu(){
+    async sideMenu(timeOut=60000){
 
     const hamburger= await this.hamburger()
     const shipperText= await this.shipperText()
@@ -62,23 +62,27 @@ class SideMenuPage{
         await hamburger.touchAction('tap')
     }
     await this.driver.pause(2000)
-    await shipperText.waitForDisplayed({ timeout: 5000 })
-    await shipperName.waitForDisplayed({ timeout: 5000 })
-    await shipperCompanyName.waitForDisplayed({ timeout: 5000 })
-    await compassButton.waitForDisplayed({ timeout: 5000 })
-    await settingsButton.waitForDisplayed({ timeout: 5000 })
+    await shipperText.waitForDisplayed({ timeout: timeOut })
+    await shipperName.waitForDisplayed({ timeout: timeOut })
+    await shipperCompanyName.waitForDisplayed({ timeout: timeOut })
+    await compassButton.waitForDisplayed({ timeout: timeOut })
+    await settingsButton.waitForDisplayed({ timeout: timeOut })
 
-    await shipmentButton.waitForDisplayed({ timeout: 5000 })
+    await shipmentButton.waitForDisplayed({ timeout: timeOut })
     await shipmentButton.touchAction('tap')
+    await this.driver.pause(2000)
 
-    await shipmentActiveButton.waitForDisplayed({ timeout: 5000 })
-    await shipmentDeliveredButton.waitForDisplayed({ timeout: 5000 })
+    await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
+    await shipmentDeliveredButton.waitForDisplayed({ timeout: timeOut })
 
-    await inboxButton.waitForDisplayed({ timeout: 5000 })
+    await inboxButton.waitForDisplayed({ timeout: timeOut })
     await inboxButton.touchAction('tap')
-
-    await inboxMessagesButton.waitForDisplayed({ timeout: 5000 })
-    await inboxNotificationsButton1.waitForDisplayed({ timeout: 5000 })
+    await this.driver.pause(2000)
+    
+    await inboxMessagesButton.waitForDisplayed({ timeout: timeOut })
+    await inboxNotificationsButton1.waitForDisplayed({ timeout: timeOut })
+    await this.driver.pause(2000)
+    await inboxButton.touchAction('tap')
     await this.driver.pause(3000)
 }
 
