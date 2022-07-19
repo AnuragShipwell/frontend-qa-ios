@@ -197,9 +197,6 @@ class CompassNotTrackingAlert{
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
-            else{
-                await this.driver.pause(3000)
-            }
             await this.driver.pause(1000)
             await NTDriverSection.waitForDisplayed({timeout: timeOut})
             if (await NTdriverPhoneText.isDisplayed()){

@@ -43,7 +43,7 @@ test("==007==> TESTING SHIPPER COMPASS LATE DELIVERY VIEW", async () => {
   await app.compassLateDeliveryAlert.lateDeliveryAlert()
 });
 //==============================================
-test("==008==> TESTING SHIPPER COMPASS NOT TRACKING VIEW", async () => {
+test.skip("==008==> TESTING SHIPPER COMPASS NOT TRACKING VIEW", async () => {
   await app.compassNotTrackingAlert.compassNotTrackingAlert()
 });
 //==============================================
@@ -61,6 +61,8 @@ test("==011==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {
   await app.docUploadPage.shipmentDocumentUpload()
   await app.internalNotePage.shipmentInternalNotes()
 });
+
+
 //==============================================
 test("==012==> TESTING SHIPPER SIDE MENU COMPONENT", async () => {
     await app.sideMenuPage.sideMenu()
@@ -68,10 +70,10 @@ test("==012==> TESTING SHIPPER SIDE MENU COMPONENT", async () => {
 /*
 //==============================================
 test("==013==> TESTING SHIPPER SHIPMENT VIEW: ACTIVE AND DELIVERED", async () => {
-    await app.shipmentPage.shipment("KCJSG5", 15000)
-});*/
+    await app.shipmentPage.shipment()
+});
 //==============================================
-/*test("==014==> TESTING INBOX: MESSAGES AND NOTIFICATIONS VIEW", async () => {
+test("==014==> TESTING INBOX: MESSAGES AND NOTIFICATIONS VIEW", async () => {
   await app.inboxPage.inbox()
 });*/
 });
