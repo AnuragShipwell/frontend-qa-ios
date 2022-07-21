@@ -69,16 +69,16 @@ class SideMenuPage{
     await settingsButton.waitForDisplayed({ timeout: timeOut })
 
     await shipmentButton.waitForDisplayed({ timeout: timeOut })
-    await shipmentButton.touchAction('tap')
+    //await shipmentButton.touchAction('tap')
     await this.driver.pause(2000)
 
-    await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
-    await shipmentDeliveredButton.waitForDisplayed({ timeout: timeOut })
+    //await shipmentActiveButton.waitForDisplayed({ timeout: timeOut })
+    //await shipmentDeliveredButton.waitForDisplayed({ timeout: timeOut })
 
     await inboxButton.waitForDisplayed({ timeout: timeOut })
     await inboxButton.touchAction('tap')
     await this.driver.pause(2000)
-    
+
     await inboxMessagesButton.waitForDisplayed({ timeout: timeOut })
     await inboxNotificationsButton1.waitForDisplayed({ timeout: timeOut })
     await this.driver.pause(2000)
