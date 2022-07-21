@@ -334,7 +334,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
             }
             await CNARoutingGuideTitle.waitForDisplayed({ timeout: timeOut })
             await CNARoutingGuideInput.waitForDisplayed({ timeout: timeOut })
-            await CNARoutingGuideInput.setValue('Test')
+            await CNARoutingGuideInput.setValue('Test defaults')
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
