@@ -151,7 +151,7 @@ class CompassNotTrackingAlert{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
         }
-        await this.driver.pause(1000)
+        await this.driver.pause(3000)
 
         if (await shipperCompassViewNotTrackingAlerts.isDisplayed()==false){
             await this.driver.touchPerform([

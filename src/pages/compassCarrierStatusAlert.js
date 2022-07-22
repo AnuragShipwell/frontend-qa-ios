@@ -54,7 +54,7 @@ class CompassCarrierStatusAlert{
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
-        await this.driver.pause(1000)
+        await this.driver.pause(3000)
         if (await shipperCompassViewCarrierStatusAlerts.isDisplayed()==false){
             await this.driver.touchPerform([
                 {action: "longPress", options: {x: 14, y: 215}},

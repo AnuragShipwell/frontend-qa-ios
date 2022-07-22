@@ -99,8 +99,12 @@ class RunningLateAlert{
     const stopDetailsbackButton= await this.stopDetailsbackButton()
     const dismissButton= await this.dismissButton()
     const buttonActionSheet= await this.buttonActionSheet()
-
+    
     await this.driver.pause(1000)
+    if (await shipwellSpinner.isDisplayed()){
+        await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+    }
+    await this.driver.pause(3000)
 
     if (await shipperCompassViewRunningLateAlerts.isDisplayed()==false){
         await this.driver.touchPerform([
@@ -142,7 +146,7 @@ class RunningLateAlert{
         await this.driver.pause(5000)
         await compassActionButton.waitForDisplayed({timeout: timeOut})
         await compassActionButton.touchAction('tap')
-        await this.driver.pause(1000)
+        await this.driver.pause(3000)
         //Edit Appointment Time
         if (await editDeliveryAppointmentTime.isDisplayed()){
             await editDeliveryAppointmentTime.touchAction('tap')
@@ -215,8 +219,9 @@ class RunningLateAlert{
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
             }
+            await saveButton.waitForDisplayed({timeout: timeOut})
             await saveButton.touchAction('tap')
-            await this.driver.pause(1000)
+            await this.driver.pause(3000)
             if (await yesButton.isDisplayed()){
                 await yesButton.touchAction('tap')
                 await this.driver.pause(1000)
@@ -230,7 +235,6 @@ class RunningLateAlert{
                 await this.driver.pause(5000)
                 //await backButton.waitForDisplayed({timeout: timeOut})
                 //await backButton.touchAction('tap')
-                await this.driver.pause(1000)
             }
             else if (await cancelButton.isDisplayed()){
                 await cancelButton.touchAction('tap')
@@ -251,7 +255,7 @@ class RunningLateAlert{
                 await this.driver.pause(1000)
             }
         }
-        else if (await dismissButton.isDisplayed()){
+        if (await dismissButton.isDisplayed()){
             await dismissButton.touchAction('tap')
             await stopDetailsbackButton.waitForDisplayed({timeout: timeOut})
             await stopDetailsbackButton.touchAction('tap')

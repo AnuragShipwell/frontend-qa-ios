@@ -63,7 +63,7 @@ async lateDeliveryAlert(timeOut=60000){
     if (await shipwellSpinner.isDisplayed()){
         await shipwellSpinner.waitForDisplayed({timeout: 35000, reverse: true})
     }
-    await this.driver.pause(1000)
+    await this.driver.pause(3000)
     if (await shipperCompassViewLateDeliveryAlerts.isDisplayed()==false){
         await this.driver.touchPerform([
             {action: "longPress", options: {x: 14, y: 215}},

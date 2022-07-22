@@ -5,7 +5,9 @@ class CompassLatePickupAlert{
     async element(selector){
         return await this.driver.$(selector)
     }
-
+    async shipperCompassViewTitle(){
+        return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Compass\"`]')
+    }
     async shipperCompassViewLatePickupAlerts(){
         return await this.element('~Late Pickup')
     }
@@ -95,27 +97,29 @@ async compassLatePickUpAlert(timeOut=60000){
     const backButton= await this.backButton()
     const stopDetailsbackButton= await this.stopDetailsbackButton()
     const dismissButton= await this.dismissButton()
+    const shipperCompassViewTitle= await this.shipperCompassViewTitle()
 
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
         await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
     }
-    await this.driver.pause(1000)
-    
-    if (await shipperCompassViewLatePickupAlerts.isDisplayed()==false){
-        await this.driver.touchPerform([
-            {action: "longPress", options: {x: 14, y: 215}},
-            { action: 'wait', options: { ms: 100 }},
-            {action: "moveTo", options: {x: 14, y: 680}},
-            {action: "release"},
-        ])
-        if(await shipperCompassViewLatePickupAlerts.isDisplayed()==false){
+    await this.driver.pause(3000)
+    if (await shipperCompassViewTitle.isDisplayed()){
+        if (await shipperCompassViewLatePickupAlerts.isDisplayed()==false){
             await this.driver.touchPerform([
-                {action: "longPress", options: {x: 14, y: 680}},
+                {action: "longPress", options: {x: 14, y: 215}},
                 { action: 'wait', options: { ms: 100 }},
-                {action: "moveTo", options: {x: 14, y: 215}},
+                {action: "moveTo", options: {x: 14, y: 680}},
                 {action: "release"},
             ])
+            if(await shipperCompassViewLatePickupAlerts.isDisplayed()==false){
+                await this.driver.touchPerform([
+                    {action: "longPress", options: {x: 14, y: 680}},
+                    { action: 'wait', options: { ms: 100 }},
+                    {action: "moveTo", options: {x: 14, y: 215}},
+                    {action: "release"},
+                ])
+            }
         }
     }
     await shipperCompassViewLatePickupAlerts.touchAction('tap')
