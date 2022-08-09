@@ -54,13 +54,13 @@ class CompassNotTrackingAlert{
         return await this.element('~assign-driver-number-text-field')
     }
     async NTSelectPowerUnit(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]')
+        return await this.element('(//XCUIElementTypeTextField[@name=\"enterEmail\"])[1]')
     }
     async NTSelectPowerUnitResult(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeTable/XCUIElementTypeCell[1]')
+        return await this.element('//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeOther/XCUIElementTypeOther')
     }
     async NTSelectTrailer(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]')
+        return await this.element('(//XCUIElementTypeTextField[@name=\"enterEmail\"])[2]')
     }
     async doneButton(){
         return await this.element("~Done")
@@ -72,7 +72,7 @@ class CompassNotTrackingAlert{
         return await this.element('~Actions')
     }
     async NTAddLocationEventOnTimeLineButton(){
-        return await this.element('~Add Location Event on Timeline')
+        return await this.element('~Add Location Event')
     }
     async NTSendNotTrackingEmailButton(){
         return await this.element('~Send Not Tracking Email')
@@ -93,13 +93,13 @@ class CompassNotTrackingAlert{
         return await this.element('-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][2]')
     }
     async NTSendEmailCustomerMessage(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeTextView')
+        return await this.element('//XCUIElementTypeOther[2]/XCUIElementTypeOther[2]')
     }
     async NTAdddEventlocationZipCode(){
         return await this.element('-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][3]')
     }
     async NTAdddEventlocationZipCodeResult(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther')
+        return await this.element('~Austin, TX 78746, US')
     }
     async NTAddEventDescription(){
         return await this.element('-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][1]')

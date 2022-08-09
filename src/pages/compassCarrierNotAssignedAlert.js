@@ -63,7 +63,7 @@ class CompassCarrierNotAssignedAlert{
         return await this.element('-ios class chain:**/XCUIElementTypeTextField[`label == \"enterEmail\"`][1]')
     }
     async CNAcarrierNameInput(){
-        return await this.element('-ios class chain:**/XCUIElementTypeOther[`name == \"SWSideMenuContainerController\"`]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeScrollView/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]')
+        return await this.element('//XCUIElementTypeOther[2]/XCUIElementTypeOther[2]')
     }
     async CNAspecialInstruction(){
         return await this.element('(//XCUIElementTypeTextField[@name=\"enterEmail\"])[3]')

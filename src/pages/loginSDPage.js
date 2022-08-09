@@ -11,33 +11,37 @@ async loginViewImDriverButton(){
 async loginViewIHaveShipwellAccountButton(){
     return await this.element("~I have a Shipwell Account")
 }
-async loginViewSignInImage(){
-    return await this.element("-ios class chain:**/XCUIElementTypeStaticText[`label == \"Sign In\"`][1]")
-}
+
+//async loginViewSignInImage(){
+  //  return await this.element("-ios class chain:**/XCUIElementTypeStaticText[`label == \"Sign In\"`][1]")
+//}
+
 async loginViewEmailInput(){
-    return await this.element("~enterEmail")
+    return await this.element("-ios class chain:**/XCUIElementTypeTextField[`value == \"Email *\"`]")
 }
 async loginViewPasswordInput(){
-    return await this.element("~enterPassword")
+    return await this.element("-ios class chain:**/XCUIElementTypeSecureTextField[`value == \"Password *\"`]")
 }
+/*
 async loginViewRememberMeButton(){
     return await this.element("~remember me icon")
 }
 async loginViewRememberMeText(){
     return await this.element("~Remember Me")
 }
+*/
 async loginViewSignInButton(){
-    return await this.element("-ios class chain:**/XCUIElementTypeStaticText[`label == \"Sign In\"`][2]")
+    return await this.element("~Sign In")
 }
-async loginViewSignUpText(){
-    return await this.element("~Don't have an account? Sign Up")
+async createAnAccountButton(){
+    return await this.element("-ios class chain:**/XCUIElementTypeLink[`label == \"Create an Account\"`][2]")
 }
 async loginViewForgotPasswordButton(){
-    return await this.element("~Forgot Password")
+    return await this.element("-ios class chain:**/XCUIElementTypeStaticText[`label == \"Forgot Password\"`]")
 }
-async loginViewRememberMeSelected(){
+/*async loginViewRememberMeSelected(){
     return await this.element("~remember me icon selected")
-}
+}*/
 async shipwellSpinner(){
     return await this.element('~ShipwellSpinner')
 }
@@ -45,15 +49,15 @@ async shipwellSpinner(){
 async loginShipperDispatcher(email, password){
     const loginViewImDriverButton= await this.loginViewImDriverButton()
     const loginViewIHaveShipwellAccountButton= await this.loginViewIHaveShipwellAccountButton()
-    const loginViewSignInImage= await this.loginViewSignInImage()
+    //const loginViewSignInImage= await this.loginViewSignInImage()
     const loginViewEmailInput= await this.loginViewEmailInput()
     const loginViewPasswordInput= await this.loginViewPasswordInput()
-    const loginViewRememberMeButton= await this.loginViewRememberMeButton()
-    const loginViewRememberMeText= await this.loginViewRememberMeText()
+    //const loginViewRememberMeButton= await this.loginViewRememberMeButton()
+    //const loginViewRememberMeText= await this.loginViewRememberMeText()
     const loginViewSignInButton= await this.loginViewSignInButton()
-    const loginViewSignUpText= await this.loginViewSignUpText()
+    const createAnAccountButton= await this.createAnAccountButton()
     const loginViewForgotPasswordButton= await this.loginViewForgotPasswordButton()
-    const loginViewRememberMeSelected= await this.loginViewRememberMeSelected()
+    //const loginViewRememberMeSelected= await this.loginViewRememberMeSelected()
     const shipwellSpinner= await this.shipwellSpinner()
 
     await this.driver.pause(2000)
@@ -62,9 +66,9 @@ async loginShipperDispatcher(email, password){
     await loginViewIHaveShipwellAccountButton.waitForDisplayed({ timeout: 5000 })
     await loginViewIHaveShipwellAccountButton.touchAction('tap')
     
-    await loginViewSignInImage.waitForDisplayed({ timeout: 5000 })
-    await loginViewRememberMeText.waitForDisplayed({ timeout: 5000 })
-    await loginViewSignUpText.waitForDisplayed({ timeout: 5000 })
+    //await loginViewSignInImage.waitForDisplayed({ timeout: 5000 })
+    //await loginViewRememberMeText.waitForDisplayed({ timeout: 5000 })
+    await createAnAccountButton.waitForDisplayed({ timeout: 5000 })
     await loginViewForgotPasswordButton.waitForDisplayed({ timeout: 5000 })
 
     await loginViewEmailInput.waitForDisplayed({ timeout: 5000 })
@@ -75,11 +79,11 @@ async loginShipperDispatcher(email, password){
     await loginViewPasswordInput.touchAction('tap')
     await loginViewPasswordInput.setValue(password)
 
-    await loginViewRememberMeButton.waitForDisplayed({ timeout: 5000 })
-    await loginViewRememberMeButton.touchAction('tap')
+    //await loginViewRememberMeButton.waitForDisplayed({ timeout: 5000 })
+    //await loginViewRememberMeButton.touchAction('tap')
 
-    await loginViewRememberMeSelected.waitForDisplayed({ timeout: 5000 })
-    await loginViewRememberMeSelected.touchAction('tap')
+    //await loginViewRememberMeSelected.waitForDisplayed({ timeout: 5000 })
+    //await loginViewRememberMeSelected.touchAction('tap')
     await loginViewSignInButton.waitForDisplayed({ timeout: 5000 })
     await loginViewSignInButton.touchAction('tap')
     await this.driver.pause(1000)
