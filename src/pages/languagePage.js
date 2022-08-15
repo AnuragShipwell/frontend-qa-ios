@@ -31,6 +31,11 @@ async languageViewInputBoxEnglish(){
 async languageViewSaveButton(){
     return await this.element('~Save')
 }
+async languageViewPermissionAllowButton(){
+    return await this.element('~Allow')
+}
+
+
 
 async languageSelectionFlow(){
     const languageViewText= await this.languageViewText()
@@ -41,6 +46,7 @@ async languageSelectionFlow(){
     const languageViewInputBoxEnglish= await this.languageViewInputBoxEnglish()
     const languageViewSaveButton= await this.languageViewSaveButton()
     const allowButton= await this.allowButton()
+    const languageViewPermissionAllowButton=await this.languageViewPermissionAllowButton()
 
     await this.driver.pause(5000)
     if (await allowButton.isDisplayed()){
@@ -65,6 +71,10 @@ async languageSelectionFlow(){
     
     await languageViewSaveButton.waitForDisplayed({ timeout: 10000 })
     await languageViewSaveButton.touchAction('tap')
+    await this.driver.pause(3000)
+    if (await languageViewPermissionAllowButton.isDisplayed()){
+        await languageViewPermissionAllowButton.touchAction('tap')
+    }
     await this.driver.pause(3000)
 }
 
