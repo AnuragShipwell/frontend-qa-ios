@@ -50,7 +50,9 @@ async compassAllOpenAlert(timeOut=60000){
     if (await shipwellSpinner.isDisplayed()){
         await shipwellSpinner.waitForDisplayed({timeout: 50000, reverse: true})
     }
-    await this.driver.pause(1000)
+    await this.driver.pause(2000)
+    console.log("TESTO Compass View")
+    await this.driver.getPageSource()
     await shipperCompassViewTitle.waitForDisplayed({ timeout: timeOut })
     await shipperCompassViewTitle.waitForEnabled({ timeout: timeOut })
     await shipperCompassAllOpenlerts.waitForDisplayed({ timeout: timeOut })
