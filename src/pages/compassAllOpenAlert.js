@@ -34,7 +34,7 @@ class OpenAlert{
         return await this.element('~ShipwellSpinner')
     }
 
-async compassAllOpenAlert(timeOut=35000){
+async compassAllOpenAlert(timeOut=60000){
 
     const shipperCompassViewTitle= await this.shipperCompassViewTitle()
     const shipperCompassAllOpenlerts= await this.shipperCompassAllOpenlerts()
@@ -46,7 +46,7 @@ async compassAllOpenAlert(timeOut=35000){
     const backButton= await this.backButton()
     const shipwellSpinner= await this.shipwellSpinner()
     
-    await this.driver.pause(1000)
+    await this.driver.pause(3000)
     if (await shipwellSpinner.isDisplayed()){
         await shipwellSpinner.waitForDisplayed({timeout: 50000, reverse: true})
     }
