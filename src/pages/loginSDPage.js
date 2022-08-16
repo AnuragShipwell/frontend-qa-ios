@@ -46,7 +46,7 @@ async shipwellSpinner(){
     return await this.element('~ShipwellSpinner')
 }
 
-async loginShipperDispatcher(email, password){
+async loginShipperDispatcher(email, password, timeOut=15000){
     const loginViewImDriverButton= await this.loginViewImDriverButton()
     const loginViewIHaveShipwellAccountButton= await this.loginViewIHaveShipwellAccountButton()
     //const loginViewSignInImage= await this.loginViewSignInImage()
@@ -61,21 +61,22 @@ async loginShipperDispatcher(email, password){
     const shipwellSpinner= await this.shipwellSpinner()
 
     await this.driver.pause(2000)
-    await loginViewImDriverButton.waitForDisplayed({ timeout: 5000 })
+    await loginViewImDriverButton.waitForDisplayed({ timeout: timeOut })
 
-    await loginViewIHaveShipwellAccountButton.waitForDisplayed({ timeout: 5000 })
+    await loginViewIHaveShipwellAccountButton.waitForDisplayed({ timeout: timeOut })
     await loginViewIHaveShipwellAccountButton.touchAction('tap')
+    await this.driver.pause(2000)
     
     //await loginViewSignInImage.waitForDisplayed({ timeout: 5000 })
     //await loginViewRememberMeText.waitForDisplayed({ timeout: 5000 })
-    await createAnAccountButton.waitForDisplayed({ timeout: 5000 })
-    await loginViewForgotPasswordButton.waitForDisplayed({ timeout: 5000 })
+    await createAnAccountButton.waitForDisplayed({ timeout: timeOut })
+    await loginViewForgotPasswordButton.waitForDisplayed({ timeout: timeOut })
 
-    await loginViewEmailInput.waitForDisplayed({ timeout: 5000 })
+    await loginViewEmailInput.waitForDisplayed({ timeout: timeOut })
     await loginViewEmailInput.touchAction('tap')
     await loginViewEmailInput.setValue(email)
 
-    await loginViewPasswordInput.waitForDisplayed({ timeout: 5000 })
+    await loginViewPasswordInput.waitForDisplayed({ timeout: timeOut })
     await loginViewPasswordInput.touchAction('tap')
     await loginViewPasswordInput.setValue(password)
 

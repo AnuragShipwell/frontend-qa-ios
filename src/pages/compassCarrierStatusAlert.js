@@ -14,6 +14,9 @@ class CompassCarrierStatusAlert{
     async compassShipmentCard(){
         return await this.element("-ios class chain:**/XCUIElementTypeOther[`name == \"SWCompassShipmentListViewController\"`]/XCUIElementTypeTable/XCUIElementTypeCell[1]")
     }
+    async compassShipmentCard02(){
+        return await this.element("//XCUIElementTypeOther[@name=\"SWCompassShipmentListViewController\"]/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+    }
     async shipperCompassViewShipmentButton(){
         return await this.element("-ios class chain:**/XCUIElementTypeStaticText[`label == \"SHIPMENT LIST\"`]")
     }
@@ -42,6 +45,7 @@ class CompassCarrierStatusAlert{
         const shipperCompassViewCarrierStatusAlerts= await this.shipperCompassViewCarrierStatusAlerts()
         const shipperCompassViewCarrierStatusTitle= await this.shipperCompassViewCarrierStatusTitle()
         const compassShipmentCard= await this.compassShipmentCard()
+        const compassShipmentCard02= await this.compassShipmentCard02()
         const shipperCompassViewShipmentButton= await this.shipperCompassViewShipmentButton()
         const shipperCompassViewMapViewButton= await this.shipperCompassViewMapViewButton()
         const mapView= await this.mapView()
@@ -91,6 +95,15 @@ class CompassCarrierStatusAlert{
             await shipperCompassViewShipmentButton.touchAction('tap')
             await compassShipmentCard.waitForDisplayed({timeout: timeOut})
             await compassShipmentCard.touchAction('tap')
+            await this.driver.pause(3000)
+            if (await compassShipmentCard.isDisplayed()){
+                await compassShipmentCard02.waitForDisplayed({timeout: timeOut})
+                await compassShipmentCard02.touchAction('tap')
+            }
+            await this.driver.pause(1000)
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+            }
 
             await carrierStatusCarrierHeader.waitForDisplayed({timeout: timeOut})
 

@@ -26,6 +26,9 @@ class CompassLateDeliveryAlert{
     async compassShipmentCard(){
         return await this.element("-ios class chain:**/XCUIElementTypeOther[`name == \"SWCompassShipmentListViewController\"`]/XCUIElementTypeTable/XCUIElementTypeCell[1]")
     }
+    async compassShipmentCard02(){
+        return await this.element("//XCUIElementTypeOther[@name=\"SWCompassShipmentListViewController\"]/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+    }
     async compassActionButton(){
         return await this.element('~Actions')
     }
@@ -53,6 +56,7 @@ async lateDeliveryAlert(timeOut=60000){
     const mapView= await this.mapView()
     const shipwellSpinner= await this.shipwellSpinner()
     const compassShipmentCard= await this.compassShipmentCard()
+    const compassShipmentCard02= await this.compassShipmentCard02()
     const compassActionButton= await this.compassActionButton()
     const editDeliveryAppointmentTime= await this.editDeliveryAppointmentTime()
     const saveButton= await this.saveButton()
@@ -102,6 +106,11 @@ async lateDeliveryAlert(timeOut=60000){
         }
         await compassShipmentCard.waitForDisplayed({timeout: timeOut})
         await compassShipmentCard.touchAction('tap')
+        await this.driver.pause(3000)
+        if (await compassShipmentCard.isDisplayed()){
+            await compassShipmentCard02.waitForDisplayed({timeout: timeOut})
+            await compassShipmentCard02.touchAction('tap')
+        }
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
             await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})

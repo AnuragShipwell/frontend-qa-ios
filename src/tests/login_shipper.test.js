@@ -31,7 +31,7 @@ test("==004==> TESTING SHIPPER COMPASS ALL-OPEN VIEW", async () => {
     await app.compassOpenAlert.compassAllOpenAlert()
 });
 //===============================================
-test("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
+test.skip("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
   await app.compassRunningLateAlert.compassRunningLateAlert()
 });
 //==============================================

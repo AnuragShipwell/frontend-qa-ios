@@ -14,6 +14,9 @@ class CompassNotTrackingAlert{
     async compassShipmentCard(){
         return await this.element("-ios class chain:**/XCUIElementTypeOther[`name == \"SWCompassShipmentListViewController\"`]/XCUIElementTypeTable/XCUIElementTypeCell[1]")
     }
+    async compassShipmentCard02(){
+        return await this.element("//XCUIElementTypeOther[@name=\"SWCompassShipmentListViewController\"]/XCUIElementTypeTable/XCUIElementTypeCell[2]")
+    }
     async shipperCompassViewShipmentButton(){
         return await this.element("-ios class chain:**/XCUIElementTypeStaticText[`label == \"SHIPMENT LIST\"`]")
     }
@@ -114,6 +117,7 @@ class CompassNotTrackingAlert{
         const shipperCompassViewNotTrackingAlerts= await this.shipperCompassViewNotTrackingAlerts()
         const shipperCompassViewNotTrackingTitle= await this.shipperCompassViewNotTrackingTitle()
         const compassShipmentCard= await this.compassShipmentCard()
+        const compassShipmentCard02= await this.compassShipmentCard02()
         const shipperCompassViewShipmentButton= await this.shipperCompassViewShipmentButton()
         const shipperCompassViewMapViewButton= await this.shipperCompassViewMapViewButton()
         const mapView= await this.mapView()
@@ -193,6 +197,11 @@ class CompassNotTrackingAlert{
             await compassShipmentCard.waitForDisplayed({timeout: timeOut})
 
             await compassShipmentCard.touchAction('tap')
+            await this.driver.pause(3000)
+            if (await compassShipmentCard.isDisplayed()){
+                await compassShipmentCard02.waitForDisplayed({timeout: timeOut})
+                await compassShipmentCard02.touchAction('tap')
+            }
             await this.driver.pause(1000)
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
@@ -267,38 +276,6 @@ class CompassNotTrackingAlert{
             await NTSendEmailSelectTemplate.waitForDisplayed({timeout: timeOut})
             await NTSendEmailCustomerMessage.waitForDisplayed({timeout: timeOut})
             await NTSendEmailCustomerMessage.setValue('Testing, kindly ignore')
-            await this.driver.pause(1000)
-            if (await doneButton.isDisplayed()){
-                await doneButton.touchAction('tap')
-            }
-            await saveButton.touchAction('tap')
-            await this.driver.pause(1000)
-            if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
-            }
-            await this.driver.pause(2000)
-            await compassShipmentCard.waitForDisplayed({timeout: timeOut})
-            await compassShipmentCard.touchAction('tap')
-            await this.driver.pause(1000)
-            if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
-            }
-            await this.driver.pause(5000)
-            await compassActionButton.waitForDisplayed({timeout: timeOut})
-            await compassActionButton.touchAction('tap')
-            await this.driver.pause(1000)
-            await NTAddLocationEventOnTimeLineButton.waitForDisplayed({timeout: timeOut})
-            await NTAddLocationEventOnTimeLineButton.touchAction('tap')
-            await NTAdddEventlocationZipCode.setValue('78746')
-            await NTAdddEventlocationZipCodeResult.waitForDisplayed({timeout: timeOut})
-            await NTAdddEventlocationZipCodeResult.touchAction('tap')
-            await this.driver.pause(1000)
-            if (await doneButton.isDisplayed()){
-                await doneButton.touchAction('tap')
-            }
-            await this.driver.pause(1000)
-            await NTAddEventDescription.waitForDisplayed({timeout: timeOut})
-            await NTAddEventDescription.setValue('Testing, kindly ignore')
             await this.driver.pause(1000)
             if (await doneButton.isDisplayed()){
                 await doneButton.touchAction('tap')
