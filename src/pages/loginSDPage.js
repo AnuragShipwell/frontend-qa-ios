@@ -61,11 +61,18 @@ async loginShipperDispatcher(email, password, timeOut=15000){
     const shipwellSpinner= await this.shipwellSpinner()
 
     await this.driver.pause(2000)
+    console.log("TESTO before tapping I have email")
+    await this.driver.getPageSource()
+
     await loginViewImDriverButton.waitForDisplayed({ timeout: timeOut })
 
     await loginViewIHaveShipwellAccountButton.waitForDisplayed({ timeout: timeOut })
     await loginViewIHaveShipwellAccountButton.touchAction('tap')
     await this.driver.pause(2000)
+
+    await this.driver.pause(2000)
+    console.log("TESTO After tapping I have email")
+    await this.driver.getPageSource()
     
     //await loginViewSignInImage.waitForDisplayed({ timeout: 5000 })
     //await loginViewRememberMeText.waitForDisplayed({ timeout: 5000 })
@@ -75,10 +82,16 @@ async loginShipperDispatcher(email, password, timeOut=15000){
     await loginViewEmailInput.waitForDisplayed({ timeout: timeOut })
     await loginViewEmailInput.touchAction('tap')
     await loginViewEmailInput.setValue(email)
+    await this.driver.pause(2000)
+    console.log("TESTO After setting email")
+    await this.driver.getPageSource()
 
     await loginViewPasswordInput.waitForDisplayed({ timeout: timeOut })
     await loginViewPasswordInput.touchAction('tap')
     await loginViewPasswordInput.setValue(password)
+    await this.driver.pause(2000)
+    console.log("TESTO After setting password")
+    await this.driver.getPageSource()
 
     //await loginViewRememberMeButton.waitForDisplayed({ timeout: 5000 })
     //await loginViewRememberMeButton.touchAction('tap')
@@ -87,6 +100,10 @@ async loginShipperDispatcher(email, password, timeOut=15000){
     //await loginViewRememberMeSelected.touchAction('tap')
     await loginViewSignInButton.waitForDisplayed({ timeout: 5000 })
     await loginViewSignInButton.touchAction('tap')
+    await this.driver.pause(2000)
+    console.log("TESTO After tapping sign in")
+    await this.driver.getPageSource()
+
     await this.driver.pause(1000)
     if (await shipwellSpinner.isDisplayed()){
          await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})

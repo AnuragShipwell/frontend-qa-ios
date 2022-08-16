@@ -76,6 +76,8 @@ async languageSelectionFlow(){
         await languageViewPermissionAllowButton.touchAction('tap')
     }
     await this.driver.pause(3000)
+    console.log("TESTO After tapping on Allow")
+    await this.driver.getPageSource()
 }
 
 }
