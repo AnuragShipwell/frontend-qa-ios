@@ -244,7 +244,7 @@ async compassLatePickUpAlert(timeOut=60000){
                 //await backButton.waitForDisplayed({timeout: timeOut})
                 //await backButton.touchAction('tap')
             }
-            else if (await cancelButton.isDisplayed()){
+            if (await cancelButton.isDisplayed()){
                 await cancelButton.touchAction('tap')
                 await this.driver.pause(1000)
                 await stopDetailsbackButton.waitForDisplayed({timeout: timeOut})

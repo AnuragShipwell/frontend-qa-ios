@@ -23,6 +23,7 @@ import CompassLateDeliveryAlert from "../pages/compassLateDeliveryAlert"
 import CompassNotTrackingAlert from "../pages/compassNotTrackingAlert"
 import CompassCarrierNotAssignedAlert from "../pages/compassCarrierNotAssignedAlert"
 import CompassCarrierStatusAlert from "../pages/compassCarrierStatusAlert"
+import ShipperOnboardingPage from "../pages/shipperOnboardingPage"
 
 class App {
   constructor() {
@@ -55,6 +56,7 @@ class App {
     this.compassNotTrackingAlert= new CompassNotTrackingAlert(this.driver)
     this.compassCarrierNotAssginedAlert=  new CompassCarrierNotAssignedAlert(this.driver)
     this.compassCarrierStatusAlert= new CompassCarrierStatusAlert(this.driver)
+    this.shipperOnboardingPage= new ShipperOnboardingPage(this.driver)
   }
 
   async stop() {

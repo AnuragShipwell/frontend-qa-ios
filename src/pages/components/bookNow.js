@@ -1,3 +1,4 @@
+import pause from "webdriverio/build/commands/browser/pause";
 import touchAction from "webdriverio/build/commands/browser/touchAction";
 
 class BookNow{
@@ -22,8 +23,11 @@ class BookNow{
     async lbBookNowLoadCardLoadText(){
         return await this.element('~Load:')
     }
+    //async lbBookNowLoadCardLoadID(){
+      //  return await this.element('~LoadCardId')
+    //}
     async lbBookNowLoadCardLoadID(){
-        return await this.element('~LoadCardId')
+        return await this.element('(//XCUIElementTypeStaticText[@name="LoadCardId"])[2]')
     }
     async lbBookNowLoadCardpickupCount(){
         return await this.element('~LoadCardPickUpCount')
@@ -142,8 +146,11 @@ class BookNow{
     async shipwellSpinner(){
         return await this.element('~ShipwellSpinner')
     }
+    async findMoreLoadButton(){
+        return await this.element('~Find More Loads')
+    }
 
-    async bookNow(){
+    async bookNow(timeOut=60000){
         const clearTextButton= await this.clearTextButton()
         const loadBoardSearchField= await this.loadBoardSearchField()
         const lbBookNowLoadCard= await this.lbBookNowLoadCard()
@@ -188,99 +195,52 @@ class BookNow{
         const bookNowCancelButton= await this.bookNowCancelButton()
         const bookNowBookBtn= await this.bookNowBookBtn()
         const shipwellSpinner= await this.shipwellSpinner()
-        
-        await this.driver.pause(4000)
-        if (await clearTextButton.waitForDisplayed()==true ){
-            await clearTextButton.touchAction('tap')
-            await this.driver.pause(1000)
-            if (await shipwellSpinner.isDisplayed()){
-                await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-            }
+        const findMoreLoadButton= await this.findMoreLoadButton()
+       
+        for (let i=0; i<40; i++){
+            if (await lbBookNowLoadCardBookNowButton.isDisplayed()==false){
+            
+                await this.driver.touchPerform([
+                {action: "longPress", options: {x: 33, y: 550}},
+                {action: "moveTo", options: {x: 33, y: 300}},
+                {action: "release"},
+            ])
+            await this.driver.pause(3000)
+        }
             else{
-                await this.driver.pause(4000)
+                break;
             }
+            
         }
-        await loadBoardSearchField.touchAction('tap')
-        await loadBoardSearchField.setValue('LIDPPFACX')
-        await this.driver.pause(500)
-        if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-        }
-        await lbBookNowLoadCardLoadID.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCard.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardLoadText.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardpickupCount.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardDeliveryCount.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardEquipment.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardMiles.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardWeight.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardLowestBid.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardBookNowAmount.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardPickUpAddress.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardDropOffAddress.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardPlaceBidButton.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadCardBookNowButton.waitForDisplayed({ timeout: 5000 })
+        await lbBookNowLoadCardBookNowButton.waitForDisplayed({ timeout: timeOut })
+        await lbBookNowLoadCardBookNowButton.touchAction('tap')
+        await this.driver.pause(2000)
 
-        await lbBookNowLoadCardLoadID.touchAction('tap')
-        await this.driver.pause(500)
+        await bookNowTitle.waitForDisplayed({ timeout: timeOut })
+        await bookNowSubTitle.waitForDisplayed({ timeout: timeOut })
+        await bookNowAreYouSure.waitForDisplayed({ timeout: timeOut })
+        await bookNowPickUpAddress.waitForDisplayed({ timeout: timeOut })
+        await bookNowDeliveryAddress.waitForDisplayed({ timeout: timeOut })
+        await bookNowMode.waitForDisplayed({ timeout: timeOut })
+        await bookNowEquipment.waitForDisplayed({ timeout: timeOut })
+        await bookNowTotalStops.waitForDisplayed({ timeout: timeOut })
+        await bookNowTotalMiles.waitForDisplayed({ timeout: timeOut })
+        await bookNowTotalWeight.waitForDisplayed({ timeout: timeOut })
+        await bookNowBookBtn.waitForDisplayed({ timeout: timeOut })
+        await bookNowCancelButton.waitForDisplayed({ timeout: timeOut })
+        await bookNowBookBtn.touchAction('tap')
+        await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
-        await lbBookNowLoadDetailsTitle.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadDetailsChatButton.waitForDisplayed({ timeout: 5000 })
-        
-        await lbBookNowLoadDetailsChatButton.touchAction('tap')
-        await this.driver.pause(500)
+        await this.driver.pause(2000)
+        await findMoreLoadButton.waitForDisplayed({ timeout: timeOut })
+        await findMoreLoadButton.touchAction('tap')
+        await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
-        await lbBookNowLoadDetailsChatInput.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadDetailsChatSend.waitForDisplayed({ timeout: 5000 })
-        await messageBackButton.waitForDisplayed({ timeout: 5000 })
-        await messageBackButton.touchAction('tap')
-        
-        await lbBookNowLoadDetailsPlaceBidButton.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadDetailsLowestBid.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadDetailsBookNowButton.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadDetailsMap.waitForDisplayed({ timeout: 5000 })
-
-        await this.driver.touchPerform([
-            {action: "longPress", options: {x: 162, y: 662}},
-            { action: 'wait', options: { ms: 100 }},
-            {action: "moveTo", options: {x: 162, y: 296}},
-            {action: "release"},
-        ])
-        await lbBookNowLoadDetailsPickUpCard.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadDetailsDeliveryCard.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadDetailsText.waitForDisplayed({ timeout: 5000 })
-        await lbBookNowLoadDetailsStatus.waitForDisplayed({ timeout: 5000 })
-
-        await this.driver.touchPerform([
-            {action: "longPress", options: {x: 162, y: 662}},
-            { action: 'wait', options: { ms: 100 }},
-            {action: "moveTo", options: {x: 162, y: 296}},
-            {action: "release"},
-        ])
-        await lbBookNowLoadDetailsBookNowButton.touchAction('tap')
-        await bookNowTitle.waitForDisplayed({ timeout: 5000 })
-        await bookNowSubTitle.waitForDisplayed({ timeout: 5000 })
-        await bookNowAreYouSure.waitForDisplayed({ timeout: 5000 })
-        await bookNowPickUpAddress.waitForDisplayed({ timeout: 5000 })
-        await bookNowDeliveryAddress.waitForDisplayed({ timeout: 5000 })
-        await bookNowMode.waitForDisplayed({ timeout: 5000 })
-        await bookNowEquipment.waitForDisplayed({ timeout: 5000 })
-        await bookNowTotalStops.waitForDisplayed({ timeout: 5000 })
-        await bookNowTotalMiles.waitForDisplayed({ timeout: 5000 })
-        await bookNowTotalWeight.waitForDisplayed({ timeout: 5000 })
-        await bookNowBookBtn.waitForDisplayed({ timeout: 5000 })
-        await bookNowCancelButton.waitForDisplayed({ timeout: 5000 })
-        await bookNowCancelButton.touchAction('tap')
-        
-        await backButton.touchAction('tap')
-        await this.driver.pause(500)
-        if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 15000, reverse: true})
-        }
+        await this.driver.pause(5000)
 }
 
 

@@ -242,13 +242,14 @@ class CompassNotTrackingAlert{
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }
             else if (await NTAssignButton.isDisplayed()){
+                await this.driver.pause(4000)
                 await backButton.touchAction('tap')
                 await this.driver.pause(1000)
                 if (await shipwellSpinner.isDisplayed()){
                     await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
                 }
             }
-            await this.driver.pause(2000)
+            await this.driver.pause(3000)
 
         //Send Email
             await compassActionButton.waitForDisplayed({timeout: timeOut})

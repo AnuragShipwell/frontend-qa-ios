@@ -76,7 +76,7 @@ async loginShipperDispatcher(email, password, timeOut=15000){
     
     //await loginViewSignInImage.waitForDisplayed({ timeout: 5000 })
     //await loginViewRememberMeText.waitForDisplayed({ timeout: 5000 })
-    await createAnAccountButton.waitForDisplayed({ timeout: timeOut })
+    //await createAnAccountButton.waitForDisplayed({ timeout: timeOut })
     await loginViewForgotPasswordButton.waitForDisplayed({ timeout: timeOut })
 
     await loginViewEmailInput.waitForDisplayed({ timeout: timeOut })

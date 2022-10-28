@@ -105,7 +105,7 @@ class CompassCarrierNotAssignedAlert{
          return await this.element("~enterEmail")
     }
     async CNARoutingGuideResult(){
-         return await this.element("~Test defaults")
+         return await this.element("~Anurag Routing Test")
     }
     async CNARequestBidTitle(){
           return await this.element('-ios class chain:**/XCUIElementTypeStaticText[`label == \"Request Bids\"`]')
@@ -314,7 +314,7 @@ class CompassCarrierNotAssignedAlert{
             ])
 
             await CNACancelButton.waitForDisplayed({ timeout: timeOut })
-
+            await this.driver.pause(1000)
             await CNACreateButton.waitForDisplayed({ timeout: timeOut })
             await CNACreateButton.touchAction('tap')
             await this.driver.pause(1000)
@@ -342,7 +342,7 @@ await CNAtenderToCarrier.touchAction('tap')*/
             }
             await CNARoutingGuideTitle.waitForDisplayed({ timeout: timeOut })
             await CNARoutingGuideInput.waitForDisplayed({ timeout: timeOut })
-            await CNARoutingGuideInput.setValue('Test defaults')
+            await CNARoutingGuideInput.setValue('Anurag')
             if (await shipwellSpinner.isDisplayed()){
                 await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
             }

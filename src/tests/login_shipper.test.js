@@ -27,35 +27,39 @@ test("==003==> TESTING SHIPPER LOGIN FLOW", async () => {
   await app.loginSDPage.loginShipperDispatcher("anurag@shipwell.com", "Kmv!!1234")
 });
 //===============================================
-test("==004==> TESTING SHIPPER COMPASS ALL-OPEN VIEW", async () => {
+test("==004==> TESTING SHIPPER ONBOARDING", async () => {
+  await app.shipperOnboardingPage.shipperOnboarding()
+});
+//===============================================
+test("==005==> TESTING SHIPPER COMPASS ALL-OPEN VIEW", async () => {
     await app.compassOpenAlert.compassAllOpenAlert()
 });
 //===============================================
-test.skip("==005==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
+test("==006==> TESTING SHIPPER COMPASS RUNNING LATE VIEW", async () => {
   await app.compassRunningLateAlert.compassRunningLateAlert()
 });
 //==============================================
-test("==006==> TESTING SHIPPER COMPASS LATE PICK UP VIEW", async () => {
+test("==007==> TESTING SHIPPER COMPASS LATE PICK UP VIEW", async () => {
   await app.compassLatePickupAlert.compassLatePickUpAlert()
 });
 //==============================================
-test("==007==> TESTING SHIPPER COMPASS LATE DELIVERY VIEW", async () => {
+test("==008==> TESTING SHIPPER COMPASS LATE DELIVERY VIEW", async () => {
   await app.compassLateDeliveryAlert.lateDeliveryAlert()
 });
 //==============================================
-test("==008==> TESTING SHIPPER COMPASS NOT TRACKING VIEW", async () => {
+test("==009==> TESTING SHIPPER COMPASS NOT TRACKING VIEW", async () => {
   await app.compassNotTrackingAlert.compassNotTrackingAlert()
 });
 //==============================================
-test("==009==> TESTING SHIPPER COMPASS CARRIER NOT ASSIGNED VIEW", async () => {
+test("==010==> TESTING SHIPPER COMPASS CARRIER NOT ASSIGNED VIEW", async () => {
   await app.compassCarrierNotAssginedAlert.carrierNotAssignedAlert()
 });
 //==============================================
-test("==010==> TESTING SHIPPER COMPASS CARRIER STATUS VIEW", async () => {
+test("==011==> TESTING SHIPPER COMPASS CARRIER STATUS VIEW", async () => {
   await app.compassCarrierStatusAlert.carrierStatusAlert()
 });
 //==============================================
-test("==011==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {
+test("==012==> TESTING SHIPPER QUICK ACTION and NAVIGATION", async () => {
   await app.quickActionPage.quickAction()
   await app.chatPage.chat()
   await app.docUploadPage.shipmentDocumentUpload()

@@ -42,7 +42,7 @@ class ChatPage{
         return await this.element('~ShipwellSpinner')
     }
 
-    async chat(timeOut=35000){
+    async chat(timeOut=60000){
         const shipperCompassAllOpenTitle= await this.shipperCompassAllOpenTitle()
         const quickActionChat= await this.quickActionChat()
         //const quickActionChatTitle= await this.quickActionChatTitle()
@@ -62,27 +62,39 @@ class ChatPage{
         }
         else{
             await loadChatButton.touchAction('tap')
+            await this.driver.pause(1000)
+            if (await shipwellSpinner.isDisplayed()){
+                await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
+                await this.driver.pause(1000)
+            }
         }
         await this.driver.pause(2000)
         await quickActionChatInput.waitForDisplayed({ timeout: timeOut })
         await this.driver.pause(2000)
         await quickActionChatInput.touchAction('tap')
         await quickActionChatInput.setValue("Testing")
-        await this.driver.hideKeyboard()
         await this.driver.pause(1000)
-        await quickActionChatSendButton.waitForDisplayed({ timeout: timeOut })
-        await quickActionChatSendButton.touchAction('tap')
+        if (await quickActionChatSendButton.isDisplayed()==false){
+            await this.driver.hideKeyboard()
+            await this.driver.pause(1000)
+            await quickActionChatSendButton.waitForDisplayed({ timeout: timeOut })
+            await quickActionChatSendButton.touchAction('tap')
+        }
+        else{
+            await quickActionChatSendButton.waitForDisplayed({ timeout: timeOut })
+            await quickActionChatSendButton.touchAction('tap')
+        }
 
         await messageBackButton.waitForDisplayed({ timeout: timeOut })
         await messageBackButton.touchAction('tap')
-        await this.driver.pause(1000)
+        await this.driver.pause(5000)
 
         if (await loadTitle.isDisplayed()){
             await loadDetailBackButton.touchAction('tap')
         }
         await this.driver.pause(1000)
         if (await shipwellSpinner.isDisplayed()){
-            await shipwellSpinner.waitForDisplayed({timeout: 25000, reverse: true})
+            await shipwellSpinner.waitForDisplayed({timeout: timeOut, reverse: true})
         }
     }
 }
